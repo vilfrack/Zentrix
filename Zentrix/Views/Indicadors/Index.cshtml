@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Zentrix.Models.BD.Indicador>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.objetivoEstrategico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.target)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rojo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amarillo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.verde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.objetivoEstrategico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.target)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rojo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.amarillo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.verde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDIndicador }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDIndicador }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDIndicador })
+        </td>
+    </tr>
+}
+
+</table>

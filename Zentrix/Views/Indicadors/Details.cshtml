@@ -1,0 +1,75 @@
+﻿@model Zentrix.Models.BD.Indicador
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Indicador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.objetivoEstrategico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.objetivoEstrategico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.target)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.target)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rojo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rojo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amarillo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amarillo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.verde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.verde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDIndicador }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

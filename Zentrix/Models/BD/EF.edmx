@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Indicador">
+          <Key>
+            <PropertyRef Name="IDIndicador" />
+          </Key>
+          <Property Name="IDIndicador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="objetivoEstrategico" Type="varchar" MaxLength="100" />
+          <Property Name="target" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="rojo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="amarillo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="verde" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="MasterPerspectivaIndicador">
+          <Key>
+            <PropertyRef Name="IDPerspectivaIndicador" />
+          </Key>
+          <Property Name="IDPerspectivaIndicador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDIndicador" Type="int" />
+          <Property Name="IDPerspectiva" Type="int" />
+        </EntityType>
+        <EntityType Name="Perspectiva">
+          <Key>
+            <PropertyRef Name="IDPerspectiva" />
+          </Key>
+          <Property Name="IDPerspectiva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Perspectiva" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_MasterPerspectivaIndicador_Indicador">
+          <End Role="Indicador" Type="Self.Indicador" Multiplicity="0..1" />
+          <End Role="MasterPerspectivaIndicador" Type="Self.MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicador">
+              <PropertyRef Name="IDIndicador" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDIndicador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterPerspectivaIndicador_Perspectiva">
+          <End Role="Perspectiva" Type="Self.Perspectiva" Multiplicity="0..1" />
+          <End Role="MasterPerspectivaIndicador" Type="Self.MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perspectiva">
+              <PropertyRef Name="IDPerspectiva" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDPerspectiva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDModelStoreContainer">
+          <EntitySet Name="Indicador" EntityType="Self.Indicador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterPerspectivaIndicador" EntityType="Self.MasterPerspectivaIndicador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perspectiva" EntityType="Self.Perspectiva" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Indicador" Association="Self.FK_MasterPerspectivaIndicador_Indicador">
+            <End Role="Indicador" EntitySet="Indicador" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Perspectiva" Association="Self.FK_MasterPerspectivaIndicador_Perspectiva">
+            <End Role="Perspectiva" EntitySet="Perspectiva" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Indicador">
+          <Key>
+            <PropertyRef Name="IDIndicador" />
+          </Key>
+          <Property Name="IDIndicador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="objetivoEstrategico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="target" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="rojo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="amarillo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="verde" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPerspectivaIndicador" Relationship="BDModel.FK_MasterPerspectivaIndicador_Indicador" FromRole="Indicador" ToRole="MasterPerspectivaIndicador" />
+        </EntityType>
+        <EntityType Name="MasterPerspectivaIndicador">
+          <Key>
+            <PropertyRef Name="IDPerspectivaIndicador" />
+          </Key>
+          <Property Name="IDPerspectivaIndicador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDIndicador" Type="Int32" />
+          <Property Name="IDPerspectiva" Type="Int32" />
+          <NavigationProperty Name="Indicador" Relationship="BDModel.FK_MasterPerspectivaIndicador_Indicador" FromRole="MasterPerspectivaIndicador" ToRole="Indicador" />
+          <NavigationProperty Name="Perspectiva" Relationship="BDModel.FK_MasterPerspectivaIndicador_Perspectiva" FromRole="MasterPerspectivaIndicador" ToRole="Perspectiva" />
+        </EntityType>
+        <EntityType Name="Perspectiva">
+          <Key>
+            <PropertyRef Name="IDPerspectiva" />
+          </Key>
+          <Property Name="IDPerspectiva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Perspectiva1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterPerspectivaIndicador" Relationship="BDModel.FK_MasterPerspectivaIndicador_Perspectiva" FromRole="Perspectiva" ToRole="MasterPerspectivaIndicador" />
+        </EntityType>
+        <EntityContainer Name="BDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Indicador" EntityType="Self.Indicador" />
+          <EntitySet Name="MasterPerspectivaIndicador" EntityType="Self.MasterPerspectivaIndicador" />
+          <EntitySet Name="Perspectiva" EntityType="Self.Perspectiva" />
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Indicador" Association="BDModel.FK_MasterPerspectivaIndicador_Indicador">
+            <End Role="Indicador" EntitySet="Indicador" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Perspectiva" Association="BDModel.FK_MasterPerspectivaIndicador_Perspectiva">
+            <End Role="Perspectiva" EntitySet="Perspectiva" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_MasterPerspectivaIndicador_Indicador">
+          <End Type="BDModel.Indicador" Role="Indicador" Multiplicity="0..1" />
+          <End Type="BDModel.MasterPerspectivaIndicador" Role="MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicador">
+              <PropertyRef Name="IDIndicador" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDIndicador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterPerspectivaIndicador_Perspectiva">
+          <End Type="BDModel.Perspectiva" Role="Perspectiva" Multiplicity="0..1" />
+          <End Type="BDModel.MasterPerspectivaIndicador" Role="MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perspectiva">
+              <PropertyRef Name="IDPerspectiva" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDPerspectiva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDModelStoreContainer" CdmEntityContainer="BDEntities">
+          <EntitySetMapping Name="Indicador">
+            <EntityTypeMapping TypeName="BDModel.Indicador">
+              <MappingFragment StoreEntitySet="Indicador">
+                <ScalarProperty Name="IDIndicador" ColumnName="IDIndicador" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="objetivoEstrategico" ColumnName="objetivoEstrategico" />
+                <ScalarProperty Name="target" ColumnName="target" />
+                <ScalarProperty Name="rojo" ColumnName="rojo" />
+                <ScalarProperty Name="amarillo" ColumnName="amarillo" />
+                <ScalarProperty Name="verde" ColumnName="verde" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterPerspectivaIndicador">
+            <EntityTypeMapping TypeName="BDModel.MasterPerspectivaIndicador">
+              <MappingFragment StoreEntitySet="MasterPerspectivaIndicador">
+                <ScalarProperty Name="IDPerspectivaIndicador" ColumnName="IDPerspectivaIndicador" />
+                <ScalarProperty Name="IDIndicador" ColumnName="IDIndicador" />
+                <ScalarProperty Name="IDPerspectiva" ColumnName="IDPerspectiva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perspectiva">
+            <EntityTypeMapping TypeName="BDModel.Perspectiva">
+              <MappingFragment StoreEntitySet="Perspectiva">
+                <ScalarProperty Name="IDPerspectiva" ColumnName="IDPerspectiva" />
+                <ScalarProperty Name="Perspectiva1" ColumnName="Perspectiva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
