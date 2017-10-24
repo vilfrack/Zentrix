@@ -17,6 +17,7 @@
           <Property Name="amarillo" Type="decimal" Precision="18" Scale="2" />
           <Property Name="verde" Type="decimal" Precision="18" Scale="2" />
           <Property Name="fecha" Type="date" />
+          <Property Name="conseguido" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="MasterPerspectivaIndicador">
           <Key>
@@ -87,6 +88,7 @@
           <Property Name="verde" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="fecha" Type="DateTime" Precision="0" />
           <NavigationProperty Name="MasterPerspectivaIndicador" Relationship="BDModel.FK_MasterPerspectivaIndicador_Indicador" FromRole="Indicador" ToRole="MasterPerspectivaIndicador" />
+          <Property Name="conseguido" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="MasterPerspectivaIndicador">
           <Key>
@@ -152,6 +154,7 @@
           <EntitySetMapping Name="Indicador">
             <EntityTypeMapping TypeName="BDModel.Indicador">
               <MappingFragment StoreEntitySet="Indicador">
+                <ScalarProperty Name="conseguido" ColumnName="conseguido" />
                 <ScalarProperty Name="IDIndicador" ColumnName="IDIndicador" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="objetivoEstrategico" ColumnName="objetivoEstrategico" />

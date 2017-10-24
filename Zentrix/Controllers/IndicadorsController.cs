@@ -60,6 +60,7 @@ namespace Zentrix.Controllers
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
                 ind.fecha = indicador.fecha;
+                ind.conseguido = 8000;
                 db.Indicador.Add(ind);
                 db.SaveChanges();
                 //MasterPerspectivaIndicador

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Zentrix.Models.BD.Indicador>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+
+}
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/gauge/FlexGauge.js"></script>
+<style>
+    /** these classes are pre-generated **/
+    /*.fg-dial {
+        font-size: 200%;
+        font-weight: bold;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 100px;
+        width: 100%;
+    }*/
+                .existingDivWithClass {
+                font-size: 200%;
+                font-weight: bold;
+                left: 0;
+                position: absolute;
+                text-align: center;
+                top: 100px;
+                width: 230%;
+            }
+</style>
+
+<h2>Index</h2>
+
+@foreach (var item in Model)
+{
+    bool bAmarillo = false;
+    bool bVerde = false;
+    bool bRojo = false;
+    string clase = "btn-primary";
+    //campo x 100 / target
+    decimal rojo = Convert.ToDecimal(item.rojo);
+    decimal verde = Convert.ToDecimal(item.verde);
+    decimal amarillo = Convert.ToDecimal(item.amarillo);
+    decimal target = Convert.ToDecimal(item.target);
+    decimal obtenido = Convert.ToDecimal(item.conseguido);
+    //---------------------------------------------------
+    decimal resultadoRojo = rojo * 100 / target;
+    decimal resultadoVerde = verde * 100 / target;
+    decimal resultadoAmarillo = amarillo * 100 / target;
+    decimal resultadoObtenido = obtenido * 100 / target;
+    //----------------------------------------------------
+    if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+    {
+        bRojo = true;
+    }
+    if (resultadoObtenido >= resultadoAmarillo && resultadoObtenido < resultadoVerde)
+    {
+        bAmarillo = true;
+    }
+    if (resultadoObtenido >= resultadoVerde)
+    {
+        bVerde = true;
+    }
+    if (bRojo)
+    {
+        clase = "btn-danger";
+    }
+    if (bAmarillo)
+    {
+        clase = "btn-warning";
+    }
+    if (bVerde)
+    {
+        clase = "btn-success";
+    }
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-4" id="@count">
+                    <div class="existingDivWithClass"></div>
+                </div>
+            </div>
+            <h4>@item.nombre</h4>
+        </div>
+    </div>
+    <script>
+var gauge = new FlexGauge({
+    appendTo: '#'+@count+'',
+    dialValue: true,
+    styleArcFg: '@clase',
+    styleSrc: 'background-color',
+    dialClass: 'existingDivWithClass',
+    arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
+    arcFillTotal: 100//% total esto se extrae desde la base de datos
+});
+    </script>
+    count++;
+}
+
+
+
+
+@*<div id="demo">
+
+</div>
+<div class="existingDivWithClass"></div>*@
+@*<script>
+    //var gauge = new FlexGauge({
+    //    dialValue: true,
+    //    dialLabel: true,
+    //    appendTo: '#demo',
+    //    animateEasing: true,
+    //    styleArcFg: 'btn-warning',
+    //    styleSrc: 'background-color',
+    //    elementWidth: 150,
+    //    elementHeight: 150,
+    //    arcSize: 65,//tamanio de la grafica
+    //    //arcFillPercent: .80,//numero del porcentaje, este es el valor que debe ser extraido por base de datos
+    //    arcStrokeFg: 20,
+    //    arcStrokeBg: 10,
+
+    //    dialUnit: '$',
+    //    dialUnitPosition: 'before',
+    //    dialClass: 'existingDivWithClass',
+    //    dialUnits: 'unit',
+    //    arcFillInt: 50,//numero obtenido esto se extrae desde la base de datos
+    //    arcFillTotal: 100//numero total esto se extrae desde la base de datos
+
+    //});
+
+</script>*@
+
