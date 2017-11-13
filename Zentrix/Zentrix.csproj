@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CMIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndicadoresController.cs" />
     <Compile Include="Controllers\IndicadorsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -292,6 +293,11 @@
     <Content Include="Views\Indicadors\Edit.cshtml" />
     <Content Include="Views\Indicadors\Index.cshtml" />
     <Content Include="Views\CMI\Index.cshtml" />
+    <Content Include="Views\Indicadores\Index.cshtml" />
+    <Content Include="Views\Indicadores\DetailFincanciera.cshtml" />
+    <Content Include="Views\Indicadores\DetailCliente.cshtml" />
+    <Content Include="Views\Indicadores\DetailInterna.cshtml" />
+    <Content Include="Views\Indicadores\DetailAprendizaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

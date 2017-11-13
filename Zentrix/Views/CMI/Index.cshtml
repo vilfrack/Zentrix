@@ -76,7 +76,7 @@
                 <div class="panel panel-default">
                  <div class="panel-body">
                     <div class="col-md-4" id="@count">
-                        <div class="existingDivWithClass"></div>
+                        <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
                     </div>
                 </div>
                     <h4>Indicador @item.nombre</h4>
@@ -93,6 +93,9 @@
                     arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
                     arcFillTotal: 100//% total esto se extrae desde la base de datos
                 });
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
             </script>
             count++;
         }
