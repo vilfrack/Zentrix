@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Zentrix.Models.BD;
@@ -16,48 +18,39 @@ namespace Zentrix.Controllers
         {
             return View();
         }
+        /*
+         1 Financiera
+         2 Interna
+         3 Clientes
+         4 Aprendizaje
+        */
         #region DETAILS
         public ActionResult DetailFincanciera()
         {
-            return PartialView(db.Indicador.ToList());
+            return PartialView(db.Indicador.Where(w=>w.IDPerspectiva==1).ToList());
         }
         public ActionResult DetailCliente()
         {
-            return PartialView(db.Indicador.ToList());
+            return PartialView(db.Indicador.Where(w => w.IDPerspectiva == 3).ToList());
         }
         public ActionResult DetailInterna()
         {
-            return PartialView(db.Indicador.ToList());
+            return PartialView(db.Indicador.Where(w => w.IDPerspectiva == 2).ToList());
         }
         public ActionResult DetailAprendizaje()
         {
-            return PartialView(db.Indicador.ToList());
+            return PartialView(db.Indicador.Where(w => w.IDPerspectiva == 4).ToList());
         }
         #endregion
-        #region CREATE GET
-        public ActionResult CreateFincanciera()
+
+        public ActionResult Create()
         {
+            Perpestiva();
             return View();
         }
-        public ActionResult CreateCliente()
-        {
-            return View();
-        }
-        public ActionResult CreateInterna()
-        {
-            return View();
-        }
-        public ActionResult CreateAprendizaje()
-        {
-            return View();
-        }
-        #endregion
-        #region CREATE POST
         [HttpPost]
-        public ActionResult CreateFincanciera(ViewIndicadorPerspectiva indicador, string IDPerspectiva)
+        public ActionResult Create(ViewIndicadorPerspectiva indicador, string IDPerspectiva)
         {
-            //IDPerspectiva = 1 Financiera
-            IDPerspectiva = "1";
             if (ModelState.IsValid)
             {
                 Indicador ind = new Indicador();
@@ -69,106 +62,65 @@ namespace Zentrix.Controllers
                 ind.verde = indicador.verde;
                 ind.fecha = indicador.fecha;
                 ind.conseguido = 8000;
+                ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.Indicador.Add(ind);
-                db.SaveChanges();
-                //MasterPerspectivaIndicador
-                var IDIndicador = db.Indicador.OrderByDescending(x => x.IDIndicador).Select(s => s.IDIndicador).First();
-                MasterPerspectivaIndicador master = new MasterPerspectivaIndicador();
-                master.IDIndicador = IDIndicador;
-                master.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
-                db.MasterPerspectivaIndicador.Add(master);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(indicador);
         }
-        [HttpPost]
-        public ActionResult CreateCliente(ViewIndicadorPerspectiva indicador, string IDPerspectiva)
+
+        public ActionResult Edit(int? id)
         {
-            //IDPerspectiva = 3 Clientes
-            IDPerspectiva = "3";
+            Perpestiva();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Indicador indicador = db.Indicador.Find(id);
+            if (indicador == null)
+            {
+                return HttpNotFound();
+            }
+            return View(indicador);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Indicador indicador)
+        {
             if (ModelState.IsValid)
             {
-                Indicador ind = new Indicador();
-                ind.nombre = indicador.nombre;
-                ind.objetivoEstrategico = indicador.objetivoEstrategico;
-                ind.target = indicador.target;
-                ind.rojo = indicador.rojo;
-                ind.amarillo = indicador.amarillo;
-                ind.verde = indicador.verde;
-                ind.fecha = indicador.fecha;
-                ind.conseguido = 8000;
-                db.Indicador.Add(ind);
-                db.SaveChanges();
-                //MasterPerspectivaIndicador
-                var IDIndicador = db.Indicador.OrderByDescending(x => x.IDIndicador).Select(s => s.IDIndicador).First();
-                MasterPerspectivaIndicador master = new MasterPerspectivaIndicador();
-                master.IDIndicador = IDIndicador;
-                master.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
-                db.MasterPerspectivaIndicador.Add(master);
+                db.Entry(indicador).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(indicador);
         }
-        [HttpPost]
-        public ActionResult CreateInterna(ViewIndicadorPerspectiva indicador, string IDPerspectiva)
+        public ActionResult Delete(int? id)
         {
-            //IDPerspectiva = 2 Interna
-            IDPerspectiva = "2";
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                Indicador ind = new Indicador();
-                ind.nombre = indicador.nombre;
-                ind.objetivoEstrategico = indicador.objetivoEstrategico;
-                ind.target = indicador.target;
-                ind.rojo = indicador.rojo;
-                ind.amarillo = indicador.amarillo;
-                ind.verde = indicador.verde;
-                ind.fecha = indicador.fecha;
-                ind.conseguido = 8000;
-                db.Indicador.Add(ind);
-                db.SaveChanges();
-                //MasterPerspectivaIndicador
-                var IDIndicador = db.Indicador.OrderByDescending(x => x.IDIndicador).Select(s => s.IDIndicador).First();
-                MasterPerspectivaIndicador master = new MasterPerspectivaIndicador();
-                master.IDIndicador = IDIndicador;
-                master.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
-                db.MasterPerspectivaIndicador.Add(master);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Indicador indicador = db.Indicador.Find(id);
+            if (indicador == null)
+            {
+                return HttpNotFound();
             }
             return View(indicador);
         }
-        [HttpPost]
-        public ActionResult CreateAprendizaje(ViewIndicadorPerspectiva indicador, string IDPerspectiva)
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            //IDPerspectiva = 4 Aprendizaje
-            IDPerspectiva = "4";
-            if (ModelState.IsValid)
-            {
-                Indicador ind = new Indicador();
-                ind.nombre = indicador.nombre;
-                ind.objetivoEstrategico = indicador.objetivoEstrategico;
-                ind.target = indicador.target;
-                ind.rojo = indicador.rojo;
-                ind.amarillo = indicador.amarillo;
-                ind.verde = indicador.verde;
-                ind.fecha = indicador.fecha;
-                ind.conseguido = 8000;
-                db.Indicador.Add(ind);
-                db.SaveChanges();
-                //MasterPerspectivaIndicador
-                var IDIndicador = db.Indicador.OrderByDescending(x => x.IDIndicador).Select(s => s.IDIndicador).First();
-                MasterPerspectivaIndicador master = new MasterPerspectivaIndicador();
-                master.IDIndicador = IDIndicador;
-                master.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
-                db.MasterPerspectivaIndicador.Add(master);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(indicador);
+            Indicador indicador = db.Indicador.Find(id);
+            db.Indicador.Remove(indicador);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
-        #endregion
+        private void Perpestiva()
+        {
+            ViewBag.Perpestiva = new SelectList(db.Perspectiva.ToList(), "IDPerspectiva", "Perspectiva1");
+        }
     }
 }

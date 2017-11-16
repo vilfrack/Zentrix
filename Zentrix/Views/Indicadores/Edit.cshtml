@@ -2,27 +2,28 @@
 
 @{
     SelectList DropPerpestiva = ViewBag.Perpestiva;
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Indicadores"))
 {
-    @Html.AntiForgeryToken()
+    @*@Html.AntiForgeryToken()*@
 
     <div class="form-horizontal">
         <h4>Indicador</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+        @Html.HiddenFor(model => model.IDIndicador)
+
         <div class="form-group">
             @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -30,7 +31,7 @@
             @Html.LabelFor(model => model.objetivoEstrategico, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.objetivoEstrategico, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.objetivoEstrategico, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.objetivoEstrategico, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -38,7 +39,7 @@
             @Html.LabelFor(model => model.target, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.target, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.target, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.target, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -46,7 +47,7 @@
             @Html.LabelFor(model => model.rojo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.rojo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.rojo, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.rojo, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -54,7 +55,7 @@
             @Html.LabelFor(model => model.amarillo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.amarillo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.amarillo, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.amarillo, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -62,7 +63,7 @@
             @Html.LabelFor(model => model.verde, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.verde, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.verde, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.verde, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -73,17 +74,15 @@
                     @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
                 </div>
             </div>*@
-
         <div class="form-group">
             <label class="control-label col-md-2"> Seleccionar perspectiva</label>
             <div class="col-md-10">
                 @Html.DropDownList("IDPerspectiva", DropPerpestiva, "Seleccionar", new { @class = "form-control select2-allow-clear" })
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -93,8 +92,8 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@
 
 

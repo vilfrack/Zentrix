@@ -7,9 +7,7 @@
 
 <h2>Financiera</h2>
 
-<p>
-    @Html.ActionLink("Crear indicador", "CreateFincanciera")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -61,9 +59,8 @@
                     @Html.DisplayFor(modelItem => item.fecha)
                 </td>*@
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IDIndicador }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IDIndicador }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IDIndicador })
+                @Html.ActionLink("Editar", "Edit", new { id = item.IDIndicador }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IDIndicador })
             </td>
         </tr>
     }

@@ -2,8 +2,13 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int countFinanciera = 0;
     int count = 0;
 
+    bool boolFinanciera = Model.Where(w => w.IDPerspectiva == 1).Any();
+    bool boolCliente = Model.Where(w => w.IDPerspectiva == 3).Any();
+    bool boolInterna = Model.Where(w => w.IDPerspectiva == 2).Any();
+    bool boolAprendizaje = Model.Where(w => w.IDPerspectiva == 4).Any();
 }
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/gauge/FlexGauge.js"></script>
@@ -26,12 +31,91 @@
         padding-left: 15%;
     }
 </style>
-<div class="col-sm-12">
-    <div class="row">
-        <h2>Perspectiva financiera</h2>
+@if (boolFinanciera)
+{
+    <div class="col-sm-12">
+        <div class="row">
+            <h2>Perspectiva financiera</h2>
 
-        @foreach (var item in Model)
+            @foreach (var item in Model.Where(w => w.IDPerspectiva == 1))
+            {
+                bool bAmarillo = false;
+                bool bVerde = false;
+                bool bRojo = false;
+                string clase = "btn-primary";
+                //campo x 100 / target
+                decimal rojo = Convert.ToDecimal(item.rojo);
+                decimal verde = Convert.ToDecimal(item.verde);
+                decimal amarillo = Convert.ToDecimal(item.amarillo);
+                decimal target = Convert.ToDecimal(item.target);
+                decimal obtenido = Convert.ToDecimal(item.conseguido);
+                //---------------------------------------------------
+                decimal resultadoRojo = rojo * 100 / target;
+                decimal resultadoVerde = verde * 100 / target;
+                decimal resultadoAmarillo = amarillo * 100 / target;
+                decimal resultadoObtenido = obtenido * 100 / target;
+                //----------------------------------------------------
+                if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+                {
+                    bRojo = true;
+                }
+                if (resultadoObtenido >= resultadoAmarillo && resultadoObtenido < resultadoVerde)
+                {
+                    bAmarillo = true;
+                }
+                if (resultadoObtenido >= resultadoVerde)
+                {
+                    bVerde = true;
+                }
+                if (bRojo)
+                {
+                    clase = "btn-danger";
+                }
+                if (bAmarillo)
+                {
+                    clase = "btn-warning";
+                }
+                if (bVerde)
+                {
+                    clase = "btn-success";
+                }
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-4" id="@countFinanciera">
+                                <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
+                            </div>
+                        </div>
+                        <h4>Indicador @item.nombre</h4>
+
+                    </div>
+                </div>
+                <script>
+                var gauge = new FlexGauge({
+                    appendTo: '#'+@countFinanciera+'',
+                    dialValue: true,
+                    styleArcFg: '@clase',
+                    styleSrc: 'background-color',
+                    dialClass: 'existingDivWithClass',
+                    arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
+                    arcFillTotal: 100//% total esto se extrae desde la base de datos
+                });
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+                </script>
+                countFinanciera++;
+            }
+        </div>
+    </div>
+}
+@if (boolCliente)
+{
+    <div class="col-sm-12">
+        <h2>Perspectiva Clientes</h2>
+        @foreach (var item in Model.Where(w => w.IDPerspectiva == 3))
         {
+            string Clientes = "Clientes" + count;
             bool bAmarillo = false;
             bool bVerde = false;
             bool bRojo = false;
@@ -74,67 +158,183 @@
             }
             <div class="col-md-4">
                 <div class="panel panel-default">
-                 <div class="panel-body">
-                    <div class="col-md-4" id="@count">
-                        <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
+                    <div class="panel-body">
+                        <div class="col-md-4" id="@Clientes">
+                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
+                        </div>
                     </div>
-                </div>
                     <h4>Indicador @item.nombre</h4>
 
+                </div>
             </div>
-        </div>
             <script>
-                var gauge = new FlexGauge({
-                    appendTo: '#'+@count+'',
-                    dialValue: true,
-                    styleArcFg: '@clase',
-                    styleSrc: 'background-color',
-                    dialClass: 'existingDivWithClass',
-                    arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
-                    arcFillTotal: 100//% total esto se extrae desde la base de datos
-                });
-                $(function () {
-                    $('[data-toggle="tooltip"]').tooltip()
-                })
+            var gauge = new FlexGauge({
+                appendTo: '#@Clientes',
+                dialValue: true,
+                styleArcFg: '@clase',
+                styleSrc: 'background-color',
+                dialClass: 'existingDivWithClass',
+                arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
+                arcFillTotal: 100//% total esto se extrae desde la base de datos
+            });
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
             </script>
             count++;
         }
     </div>
-</div>
-<div class="col-sm-12">
-        <h2>Perspectiva Clientes</h2>
-        <div class="panel-body">
-            <div class="col-md-4" id="example1">
-                <script>
-                    var gauge = new FlexGauge({
-                        appendTo: '#example1'
-                    });
-                </script>
-            </div>
-        </div>
-</div>
-<div class="col-sm-12">
-    <h2>Perspectiva Interna</h2>
-    <div class="panel-body">
-        <div class="col-md-4" id="example2">
-            <script>
-                var gauge = new FlexGauge({
-                    appendTo: '#example2'
-                });
-            </script>
-        </div>
-    </div>
-</div>
-<div class="col-sm-12">
-    <h2>Perspectiva Aprendizaje</h2>
-    <div class="panel-body">
-        <div class="col-md-4" id="example3">
-            <script>
-                var gauge = new FlexGauge({
-                    appendTo: '#example3'
-                });
-            </script>
-        </div>
+}
+@if (boolInterna)
+{
+    <div class="col-sm-12">
+        <h2>Perspectiva Interna</h2>
+        @foreach (var item in Model.Where(w => w.IDPerspectiva == 2))
+        {
+            string Interna = "Interna" + count;
+            bool bAmarillo = false;
+            bool bVerde = false;
+            bool bRojo = false;
+            string clase = "btn-primary";
+            //campo x 100 / target
+            decimal rojo = Convert.ToDecimal(item.rojo);
+            decimal verde = Convert.ToDecimal(item.verde);
+            decimal amarillo = Convert.ToDecimal(item.amarillo);
+            decimal target = Convert.ToDecimal(item.target);
+            decimal obtenido = Convert.ToDecimal(item.conseguido);
+            //---------------------------------------------------
+            decimal resultadoRojo = rojo * 100 / target;
+            decimal resultadoVerde = verde * 100 / target;
+            decimal resultadoAmarillo = amarillo * 100 / target;
+            decimal resultadoObtenido = obtenido * 100 / target;
+            //----------------------------------------------------
+            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+            {
+                bRojo = true;
+            }
+            if (resultadoObtenido >= resultadoAmarillo && resultadoObtenido < resultadoVerde)
+            {
+                bAmarillo = true;
+            }
+            if (resultadoObtenido >= resultadoVerde)
+            {
+                bVerde = true;
+            }
+            if (bRojo)
+            {
+                clase = "btn-danger";
+            }
+            if (bAmarillo)
+            {
+                clase = "btn-warning";
+            }
+            if (bVerde)
+            {
+                clase = "btn-success";
+            }
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-4" id="@Interna">
+                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
+                        </div>
+                    </div>
+                    <h4>Indicador @item.nombre</h4>
 
+                </div>
+            </div>
+            <script>
+            var gauge = new FlexGauge({
+                appendTo: '#@Interna',
+                dialValue: true,
+                styleArcFg: '@clase',
+                styleSrc: 'background-color',
+                dialClass: 'existingDivWithClass',
+                arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
+                arcFillTotal: 100//% total esto se extrae desde la base de datos
+            });
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            </script>
+            count++;
+        }
     </div>
-</div>
+}
+@if (boolAprendizaje)
+{
+    <div class="col-sm-12">
+        <h2>Perspectiva Aprendizaje</h2>
+        @foreach (var item in Model.Where(w => w.IDPerspectiva == 4))
+        {
+            string Aprendizaje = "Aprendizaje" + count;
+            bool bAmarillo = false;
+            bool bVerde = false;
+            bool bRojo = false;
+            string clase = "btn-primary";
+            //campo x 100 / target
+            decimal rojo = Convert.ToDecimal(item.rojo);
+            decimal verde = Convert.ToDecimal(item.verde);
+            decimal amarillo = Convert.ToDecimal(item.amarillo);
+            decimal target = Convert.ToDecimal(item.target);
+            decimal obtenido = Convert.ToDecimal(item.conseguido);
+            //---------------------------------------------------
+            decimal resultadoRojo = rojo * 100 / target;
+            decimal resultadoVerde = verde * 100 / target;
+            decimal resultadoAmarillo = amarillo * 100 / target;
+            decimal resultadoObtenido = obtenido * 100 / target;
+            //----------------------------------------------------
+            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+            {
+                bRojo = true;
+            }
+            if (resultadoObtenido >= resultadoAmarillo && resultadoObtenido < resultadoVerde)
+            {
+                bAmarillo = true;
+            }
+            if (resultadoObtenido >= resultadoVerde)
+            {
+                bVerde = true;
+            }
+            if (bRojo)
+            {
+                clase = "btn-danger";
+            }
+            if (bAmarillo)
+            {
+                clase = "btn-warning";
+            }
+            if (bVerde)
+            {
+                clase = "btn-success";
+            }
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-4" id="@Aprendizaje">
+                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
+                        </div>
+                    </div>
+                    <h4>Indicador @item.nombre</h4>
+
+                </div>
+            </div>
+            <script>
+            var gauge = new FlexGauge({
+                appendTo: '#@Aprendizaje',
+                dialValue: true,
+                styleArcFg: '@clase',
+                styleSrc: 'background-color',
+                dialClass: 'existingDivWithClass',
+                arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
+                arcFillTotal: 100//% total esto se extrae desde la base de datos
+            });
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            </script>
+            count++;
+        }
+    </div>
+}
+

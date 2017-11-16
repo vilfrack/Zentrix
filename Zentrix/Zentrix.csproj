@@ -302,6 +302,9 @@
     <Content Include="Views\Indicadores\CreateCliente.cshtml" />
     <Content Include="Views\Indicadores\CreateInterna.cshtml" />
     <Content Include="Views\Indicadores\CreateAprendizaje.cshtml" />
+    <Content Include="Views\Indicadores\Create.cshtml" />
+    <Content Include="Views\Indicadores\Edit.cshtml" />
+    <Content Include="Views\Indicadores\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

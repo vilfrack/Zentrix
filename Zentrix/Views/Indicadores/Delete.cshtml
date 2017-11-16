@@ -1,0 +1,83 @@
+﻿
+@model Zentrix.Models.BD.Indicador
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Indicador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.objetivoEstrategico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.objetivoEstrategico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.target)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.target)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rojo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rojo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amarillo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amarillo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.verde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.verde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
