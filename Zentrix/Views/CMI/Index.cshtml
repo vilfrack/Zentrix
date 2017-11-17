@@ -39,6 +39,7 @@
 
             @foreach (var item in Model.Where(w => w.IDPerspectiva == 1))
             {
+                string Fincanciera = "Financiera" + count;
                 bool bAmarillo = false;
                 bool bVerde = false;
                 bool bRojo = false;
@@ -53,7 +54,8 @@
                 decimal resultadoRojo = rojo * 100 / target;
                 decimal resultadoVerde = verde * 100 / target;
                 decimal resultadoAmarillo = amarillo * 100 / target;
-                decimal resultadoObtenido = obtenido * 100 / target;
+                int resultadoObtenido = Convert.ToInt32(obtenido * 100 / target);
+
                 //----------------------------------------------------
                 if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
                 {
@@ -82,7 +84,7 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="col-md-4" id="@countFinanciera">
+                            <div class="col-md-4" id="@count">
                                 <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
                             </div>
                         </div>
@@ -91,20 +93,20 @@
                     </div>
                 </div>
                 <script>
-                var gauge = new FlexGauge({
-                    appendTo: '#'+@countFinanciera+'',
-                    dialValue: true,
-                    styleArcFg: '@clase',
-                    styleSrc: 'background-color',
-                    dialClass: 'existingDivWithClass',
-                    arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
-                    arcFillTotal: 100//% total esto se extrae desde la base de datos
-                });
-                $(function () {
-                    $('[data-toggle="tooltip"]').tooltip()
-                })
+                    var gauge = new FlexGauge({
+                        appendTo: '#@count',
+                        dialValue: true,
+                        styleArcFg: '@clase',
+                        styleSrc: 'background-color',
+                        dialClass: 'existingDivWithClass',
+                        arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
+                        arcFillTotal: 100//% total esto se extrae desde la base de datos
+                    });
+                    $(function () {
+                        $('[data-toggle="tooltip"]').tooltip()
+                    })
                 </script>
-                countFinanciera++;
+                count++;
             }
         </div>
     </div>
@@ -130,7 +132,7 @@
             decimal resultadoRojo = rojo * 100 / target;
             decimal resultadoVerde = verde * 100 / target;
             decimal resultadoAmarillo = amarillo * 100 / target;
-            decimal resultadoObtenido = obtenido * 100 / target;
+            int resultadoObtenido = Convert.ToInt32(obtenido * 100 / target);
             //----------------------------------------------------
             if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
             {
@@ -206,7 +208,7 @@
             decimal resultadoRojo = rojo * 100 / target;
             decimal resultadoVerde = verde * 100 / target;
             decimal resultadoAmarillo = amarillo * 100 / target;
-            decimal resultadoObtenido = obtenido * 100 / target;
+            int resultadoObtenido = Convert.ToInt32(obtenido * 100 / target);
             //----------------------------------------------------
             if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
             {
@@ -282,7 +284,7 @@
             decimal resultadoRojo = rojo * 100 / target;
             decimal resultadoVerde = verde * 100 / target;
             decimal resultadoAmarillo = amarillo * 100 / target;
-            decimal resultadoObtenido = obtenido * 100 / target;
+            int resultadoObtenido = Convert.ToInt32(obtenido * 100 / target);
             //----------------------------------------------------
             if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
             {

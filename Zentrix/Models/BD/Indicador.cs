@@ -27,7 +27,7 @@ namespace Zentrix.Models.BD
         public Nullable<decimal> rojo { get; set; }
         public Nullable<decimal> amarillo { get; set; }
         public Nullable<decimal> verde { get; set; }
-        public Nullable<System.DateTime> fecha { get; set; }
+        public string fecha { get; set; }
         public Nullable<decimal> conseguido { get; set; }
         public Nullable<int> IDPerspectiva { get; set; }
     

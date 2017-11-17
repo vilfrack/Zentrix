@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f7429ec0fc143b4a75380f73edc347e" Name="Diagram1">
+        <EntityTypeShape EntityType="SAINTPALLModel.Perspectiva" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAEPRD" Width="1.5" PointX="3.5" PointY="3" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAFACT" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAPROD" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.MasterPerspectivaIndicador" Width="1.5" PointX="1.125" PointY="4.5" />
+        <AssociationConnector Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Perspectiva" />
+        <EntityTypeShape EntityType="SAINTPALLModel.Indicador" Width="1.5" PointX="3.375" PointY="5" />
+        <AssociationConnector Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

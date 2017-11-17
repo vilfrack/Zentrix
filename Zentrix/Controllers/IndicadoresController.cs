@@ -12,7 +12,8 @@ namespace Zentrix.Controllers
 {
     public class IndicadoresController : Controller
     {
-        private BDEntities db = new BDEntities();
+        private SAINTPALLEntities db = new SAINTPALLEntities();
+        private Helper.Helper help = new Helper.Helper();
         // GET: Indicadores
         public ActionResult Index()
         {
@@ -53,6 +54,7 @@ namespace Zentrix.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 Indicador ind = new Indicador();
                 ind.nombre = indicador.nombre;
                 ind.objetivoEstrategico = indicador.objetivoEstrategico;
@@ -61,7 +63,7 @@ namespace Zentrix.Controllers
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
                 ind.fecha = indicador.fecha;
-                ind.conseguido = 8000;
+                ind.conseguido = help.GetResult();
                 ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.Indicador.Add(ind);
                 db.SaveChanges();
@@ -86,11 +88,20 @@ namespace Zentrix.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Indicador indicador)
+        public ActionResult Edit(ViewIndicadorPerspectiva indicador, string IDPerspectiva)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(indicador).State = EntityState.Modified;
+                var ind = db.Indicador.Find(indicador.IDIndicador);
+                ind.nombre = indicador.nombre;
+                ind.objetivoEstrategico = indicador.objetivoEstrategico;
+                ind.target = indicador.target;
+                ind.rojo = indicador.rojo;
+                ind.amarillo = indicador.amarillo;
+                ind.verde = indicador.verde;
+                ind.fecha = indicador.fecha;
+                ind.conseguido = help.GetResult();
+                ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

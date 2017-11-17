@@ -13,10 +13,10 @@ namespace Zentrix.Models.BD
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BDEntities : DbContext
+    public partial class SAINTPALLEntities : DbContext
     {
-        public BDEntities()
-            : base("name=BDEntities")
+        public SAINTPALLEntities()
+            : base("name=SAINTPALLEntities")
         {
         }
     
@@ -25,8 +25,11 @@ namespace Zentrix.Models.BD
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Indicador> Indicador { get; set; }
-        public virtual DbSet<MasterPerspectivaIndicador> MasterPerspectivaIndicador { get; set; }
         public virtual DbSet<Perspectiva> Perspectiva { get; set; }
+        public virtual DbSet<SAEPRD> SAEPRD { get; set; }
+        public virtual DbSet<SAFACT> SAFACT { get; set; }
+        public virtual DbSet<SAPROD> SAPROD { get; set; }
+        public virtual DbSet<MasterPerspectivaIndicador> MasterPerspectivaIndicador { get; set; }
+        public virtual DbSet<Indicador> Indicador { get; set; }
     }
 }

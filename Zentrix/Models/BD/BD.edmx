@@ -1,0 +1,813 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SAINTPALLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Indicador">
+          <Key>
+            <PropertyRef Name="IDIndicador" />
+          </Key>
+          <Property Name="IDIndicador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="objetivoEstrategico" Type="varchar" MaxLength="100" />
+          <Property Name="target" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="rojo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="amarillo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="verde" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fecha" Type="varchar" MaxLength="50" />
+          <Property Name="conseguido" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IDPerspectiva" Type="int" />
+        </EntityType>
+        <EntityType Name="MasterPerspectivaIndicador">
+          <Key>
+            <PropertyRef Name="IDPerspectivaIndicador" />
+          </Key>
+          <Property Name="IDPerspectivaIndicador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDIndicador" Type="int" />
+          <Property Name="IDPerspectiva" Type="int" />
+        </EntityType>
+        <EntityType Name="Perspectiva">
+          <Key>
+            <PropertyRef Name="IDPerspectiva" />
+          </Key>
+          <Property Name="IDPerspectiva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Perspectiva" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SAEPRD">
+          <Key>
+            <PropertyRef Name="CodProd" />
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="CodProd" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Periodo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="ExInicial" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoCompra" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntCompra" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoVentas" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntVentas" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoCargos" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntCargos" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoDescarg" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntDescarg" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntInicial" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="ExFinal" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostoFinal" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SAFACT">
+          <Key>
+            <PropertyRef Name="TipoFac" />
+            <PropertyRef Name="NumeroD" />
+          </Key>
+          <Property Name="TipoFac" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="NumeroD" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CodSucu" Type="varchar" MaxLength="5" />
+          <Property Name="CodEsta" Type="varchar" MaxLength="10" />
+          <Property Name="CodUsua" Type="varchar" MaxLength="10" />
+          <Property Name="Signo" Type="smallint" Nullable="false" />
+          <Property Name="OTipo" Type="varchar" MaxLength="1" />
+          <Property Name="ONumero" Type="varchar" MaxLength="10" />
+          <Property Name="NumeroK" Type="varchar" MaxLength="15" />
+          <Property Name="EsExPickup" Type="smallint" Nullable="false" />
+          <Property Name="Moneda" Type="varchar" MaxLength="5" />
+          <Property Name="Factor" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MontoMEx" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CodClie" Type="varchar" MaxLength="15" />
+          <Property Name="CodVend" Type="varchar" MaxLength="10" />
+          <Property Name="CodUbic" Type="varchar" MaxLength="10" />
+          <Property Name="Descrip" Type="varchar" MaxLength="60" />
+          <Property Name="Direc1" Type="varchar" MaxLength="60" />
+          <Property Name="Direc2" Type="varchar" MaxLength="60" />
+          <Property Name="Direc3" Type="varchar" MaxLength="60" />
+          <Property Name="Pais" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="Ciudad" Type="int" Nullable="false" />
+          <Property Name="Telef" Type="varchar" MaxLength="30" />
+          <Property Name="ID3" Type="varchar" MaxLength="25" />
+          <Property Name="NIT" Type="varchar" MaxLength="15" />
+          <Property Name="Monto" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoTax" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Fletes" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="TGravable" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="TExento" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostoPrd" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostoSrv" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="DesctoP" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="RetenIVA" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="FechaE" Type="datetime" />
+          <Property Name="FechaV" Type="datetime" />
+          <Property Name="CancelI" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelA" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelE" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelC" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelT" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelG" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoExtra" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Descto1" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="PctAnual" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoInt1" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Descto2" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="PctManejo" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoInt2" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoFinanc" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="DetalChq" Type="varchar" MaxLength="40" />
+          <Property Name="TotalPrd" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="TotalSrv" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="OrdenC" Type="varchar" MaxLength="30" />
+          <Property Name="CodOper" Type="varchar" MaxLength="10" />
+          <Property Name="NGiros" Type="int" Nullable="false" />
+          <Property Name="NMeses" Type="int" Nullable="false" />
+          <Property Name="MtoComiVta" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoComiCob" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoComiVtaD" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoComiCobD" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Notas1" Type="varchar" MaxLength="60" />
+          <Property Name="Notas2" Type="varchar" MaxLength="60" />
+          <Property Name="Notas3" Type="varchar" MaxLength="60" />
+          <Property Name="Notas4" Type="varchar" MaxLength="60" />
+          <Property Name="Notas5" Type="varchar" MaxLength="60" />
+          <Property Name="Notas6" Type="varchar" MaxLength="60" />
+          <Property Name="Notas7" Type="varchar" MaxLength="60" />
+          <Property Name="Notas8" Type="varchar" MaxLength="60" />
+          <Property Name="Notas9" Type="varchar" MaxLength="60" />
+          <Property Name="Notas10" Type="varchar" MaxLength="60" />
+          <Property Name="CAMBIO" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="EsConsig" Type="smallint" Nullable="false" />
+          <Property Name="TipoTra" Type="varchar" MaxLength="1" />
+          <Property Name="NumeroC" Type="varchar" MaxLength="10" />
+          <Property Name="NroCtrol" Type="varchar" MaxLength="20" />
+          <Property Name="NumeroF" Type="varchar" MaxLength="20" />
+          <Property Name="NumeroP" Type="varchar" MaxLength="15" />
+          <Property Name="Status" Type="varchar" MaxLength="2" />
+          <Property Name="SaldoAct" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoPagos" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoNCredito" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoNDebito" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="FechaI" Type="datetime" />
+          <Property Name="ValorPtos" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelP" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="NumeroR" Type="varchar" MaxLength="10" />
+          <Property Name="NumeroD1" Type="varchar" MaxLength="15" />
+          <Property Name="FechaD1" Type="datetime" />
+          <Property Name="NumeroT" Type="varchar" MaxLength="15" />
+          <Property Name="MtoTotal" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Contado" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Credito" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="NumeroZ" Type="varchar" MaxLength="10" />
+          <Property Name="FechaR" Type="datetime" />
+          <Property Name="FechaT" Type="datetime" />
+          <Property Name="NROUNICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroE" Type="varchar" MaxLength="10" />
+          <Property Name="Municipio" Type="int" Nullable="false" />
+          <Property Name="CodConv" Type="varchar" MaxLength="10" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="20" />
+          <Property Name="EsCorrel" Type="smallint" Nullable="false" />
+          <Property Name="AutSRI" Type="varchar" MaxLength="10" />
+          <Property Name="FechaSRI" Type="datetime" />
+          <Property Name="NroEstable" Type="varchar" MaxLength="10" />
+          <Property Name="PtoEmision" Type="varchar" MaxLength="10" />
+          <Property Name="TipoTraE" Type="smallint" Nullable="false" />
+          <Property Name="NumeroNCF" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SAPROD">
+          <Key>
+            <PropertyRef Name="CodProd" />
+          </Key>
+          <Property Name="CodProd" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CodInst" Type="int" Nullable="false" />
+          <Property Name="Descrip" Type="varchar" MaxLength="40" />
+          <Property Name="Descrip2" Type="varchar" MaxLength="40" />
+          <Property Name="Descrip3" Type="varchar" MaxLength="40" />
+          <Property Name="Refere" Type="varchar" MaxLength="15" />
+          <Property Name="Marca" Type="varchar" MaxLength="20" />
+          <Property Name="Unidad" Type="varchar" MaxLength="3" />
+          <Property Name="UndEmpaq" Type="varchar" MaxLength="3" />
+          <Property Name="CantEmpaq" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Precio1" Type="decimal" Precision="28" Scale="5" />
+          <Property Name="Precio2" Type="decimal" Precision="28" Scale="5" />
+          <Property Name="Precio3" Type="decimal" Precision="28" Scale="5" />
+          <Property Name="PrecioU" Type="decimal" Precision="28" Scale="5" />
+          <Property Name="CostAct" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostPro" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostAnt" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Existen" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="ExUnidad" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Compro" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Pedido" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Solici" Type="int" Nullable="false" />
+          <Property Name="Minimo" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Maximo" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Tara" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="DEsComp" Type="smallint" Nullable="false" />
+          <Property Name="DEsComi" Type="smallint" Nullable="false" />
+          <Property Name="DEsSeri" Type="smallint" Nullable="false" />
+          <Property Name="DEsProdu" Type="smallint" Nullable="false" />
+          <Property Name="DEsLote" Type="smallint" Nullable="false" />
+          <Property Name="DEsVence" Type="smallint" Nullable="false" />
+          <Property Name="DEsTabla" Type="smallint" Nullable="false" />
+          <Property Name="DEsPsico" Type="smallint" Nullable="false" />
+          <Property Name="DEsAttr1" Type="smallint" Nullable="false" />
+          <Property Name="DEsAttr2" Type="smallint" Nullable="false" />
+          <Property Name="DEsAttr3" Type="smallint" Nullable="false" />
+          <Property Name="EsPublish" Type="smallint" Nullable="false" />
+          <Property Name="EsImport" Type="smallint" Nullable="false" />
+          <Property Name="EsExento" Type="smallint" Nullable="false" />
+          <Property Name="EsEnser" Type="smallint" Nullable="false" />
+          <Property Name="EsOferta" Type="smallint" Nullable="false" />
+          <Property Name="EsPesa" Type="smallint" Nullable="false" />
+          <Property Name="EsEmpaque" Type="smallint" Nullable="false" />
+          <Property Name="ExDecimal" Type="smallint" Nullable="false" />
+          <Property Name="DiasEntr" Type="int" Nullable="false" />
+          <Property Name="FechaUV" Type="datetime" />
+          <Property Name="FechaUC" Type="datetime" />
+          <Property Name="ExistenCon" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="ExUnidadCon" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="EdoABP" Type="varchar" MaxLength="5" />
+          <Property Name="Activo" Type="smallint" Nullable="false" />
+          <Property Name="PrecioU2" Type="decimal" Precision="28" Scale="5" />
+          <Property Name="PrecioU3" Type="decimal" Precision="28" Scale="5" />
+          <Property Name="Peso" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Volumen" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="UndVol" Type="varchar" MaxLength="3" />
+          <Property Name="EsReten" Type="smallint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MasterPerspectivaIndicador_Indicador">
+          <End Role="Indicador" Type="Self.Indicador" Multiplicity="0..1" />
+          <End Role="MasterPerspectivaIndicador" Type="Self.MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicador">
+              <PropertyRef Name="IDIndicador" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDIndicador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterPerspectivaIndicador_Perspectiva">
+          <End Role="Perspectiva" Type="Self.Perspectiva" Multiplicity="0..1" />
+          <End Role="MasterPerspectivaIndicador" Type="Self.MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perspectiva">
+              <PropertyRef Name="IDPerspectiva" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDPerspectiva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAINTPALLModelStoreContainer">
+          <EntitySet Name="Indicador" EntityType="Self.Indicador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterPerspectivaIndicador" EntityType="Self.MasterPerspectivaIndicador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perspectiva" EntityType="Self.Perspectiva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAEPRD" EntityType="Self.SAEPRD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAFACT" EntityType="Self.SAFACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAPROD" EntityType="Self.SAPROD" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Indicador" Association="Self.FK_MasterPerspectivaIndicador_Indicador">
+            <End Role="Indicador" EntitySet="Indicador" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Perspectiva" Association="Self.FK_MasterPerspectivaIndicador_Perspectiva">
+            <End Role="Perspectiva" EntitySet="Perspectiva" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAINTPALLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Perspectiva">
+          <Key>
+            <PropertyRef Name="IDPerspectiva" />
+          </Key>
+          <Property Name="IDPerspectiva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Perspectiva1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterPerspectivaIndicador" Relationship="SAINTPALLModel.FK_MasterPerspectivaIndicador_Perspectiva" FromRole="Perspectiva" ToRole="MasterPerspectivaIndicador" />
+        </EntityType>
+        <EntityType Name="SAEPRD">
+          <Key>
+            <PropertyRef Name="CodProd" />
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="CodProd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Periodo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExInicial" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoCompra" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntCompra" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoVentas" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntVentas" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoCargos" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntCargos" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoDescarg" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntDescarg" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CntInicial" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="ExFinal" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostoFinal" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SAFACT">
+          <Key>
+            <PropertyRef Name="TipoFac" />
+            <PropertyRef Name="NumeroD" />
+          </Key>
+          <Property Name="TipoFac" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NumeroD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodSucu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CodEsta" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CodUsua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Signo" Type="Int16" Nullable="false" />
+          <Property Name="OTipo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ONumero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroK" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EsExPickup" Type="Int16" Nullable="false" />
+          <Property Name="Moneda" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Factor" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MontoMEx" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CodClie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CodVend" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CodUbic" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Descrip" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Direc1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Direc2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Direc3" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Ciudad" Type="Int32" Nullable="false" />
+          <Property Name="Telef" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID3" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="NIT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoTax" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Fletes" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="TGravable" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="TExento" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostoPrd" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostoSrv" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="DesctoP" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="RetenIVA" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="FechaE" Type="DateTime" Precision="3" />
+          <Property Name="FechaV" Type="DateTime" Precision="3" />
+          <Property Name="CancelI" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelA" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelE" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelC" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelT" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelG" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoExtra" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Descto1" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="PctAnual" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoInt1" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Descto2" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="PctManejo" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoInt2" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoFinanc" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="DetalChq" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPrd" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="TotalSrv" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="OrdenC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CodOper" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NGiros" Type="Int32" Nullable="false" />
+          <Property Name="NMeses" Type="Int32" Nullable="false" />
+          <Property Name="MtoComiVta" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoComiCob" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoComiVtaD" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoComiCobD" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Notas1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas3" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas4" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas5" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas6" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas7" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas8" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas9" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Notas10" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CAMBIO" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="EsConsig" Type="Int16" Nullable="false" />
+          <Property Name="TipoTra" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NroCtrol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="SaldoAct" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoPagos" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoNCredito" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="MtoNDebito" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="FechaI" Type="DateTime" Precision="3" />
+          <Property Name="ValorPtos" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CancelP" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="NumeroR" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroD1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FechaD1" Type="DateTime" Precision="3" />
+          <Property Name="NumeroT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MtoTotal" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Contado" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Credito" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="NumeroZ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FechaR" Type="DateTime" Precision="3" />
+          <Property Name="FechaT" Type="DateTime" Precision="3" />
+          <Property Name="NROUNICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Municipio" Type="Int32" Nullable="false" />
+          <Property Name="CodConv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EsCorrel" Type="Int16" Nullable="false" />
+          <Property Name="AutSRI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FechaSRI" Type="DateTime" Precision="3" />
+          <Property Name="NroEstable" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PtoEmision" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TipoTraE" Type="Int16" Nullable="false" />
+          <Property Name="NumeroNCF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SAPROD">
+          <Key>
+            <PropertyRef Name="CodProd" />
+          </Key>
+          <Property Name="CodProd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodInst" Type="Int32" Nullable="false" />
+          <Property Name="Descrip" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Descrip2" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Descrip3" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Refere" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="UndEmpaq" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CantEmpaq" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Precio1" Type="Decimal" Precision="28" Scale="5" />
+          <Property Name="Precio2" Type="Decimal" Precision="28" Scale="5" />
+          <Property Name="Precio3" Type="Decimal" Precision="28" Scale="5" />
+          <Property Name="PrecioU" Type="Decimal" Precision="28" Scale="5" />
+          <Property Name="CostAct" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostPro" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="CostAnt" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Existen" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="ExUnidad" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Compro" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Pedido" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Solici" Type="Int32" Nullable="false" />
+          <Property Name="Minimo" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Maximo" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Tara" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="DEsComp" Type="Int16" Nullable="false" />
+          <Property Name="DEsComi" Type="Int16" Nullable="false" />
+          <Property Name="DEsSeri" Type="Int16" Nullable="false" />
+          <Property Name="DEsProdu" Type="Int16" Nullable="false" />
+          <Property Name="DEsLote" Type="Int16" Nullable="false" />
+          <Property Name="DEsVence" Type="Int16" Nullable="false" />
+          <Property Name="DEsTabla" Type="Int16" Nullable="false" />
+          <Property Name="DEsPsico" Type="Int16" Nullable="false" />
+          <Property Name="DEsAttr1" Type="Int16" Nullable="false" />
+          <Property Name="DEsAttr2" Type="Int16" Nullable="false" />
+          <Property Name="DEsAttr3" Type="Int16" Nullable="false" />
+          <Property Name="EsPublish" Type="Int16" Nullable="false" />
+          <Property Name="EsImport" Type="Int16" Nullable="false" />
+          <Property Name="EsExento" Type="Int16" Nullable="false" />
+          <Property Name="EsEnser" Type="Int16" Nullable="false" />
+          <Property Name="EsOferta" Type="Int16" Nullable="false" />
+          <Property Name="EsPesa" Type="Int16" Nullable="false" />
+          <Property Name="EsEmpaque" Type="Int16" Nullable="false" />
+          <Property Name="ExDecimal" Type="Int16" Nullable="false" />
+          <Property Name="DiasEntr" Type="Int32" Nullable="false" />
+          <Property Name="FechaUV" Type="DateTime" Precision="3" />
+          <Property Name="FechaUC" Type="DateTime" Precision="3" />
+          <Property Name="ExistenCon" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="ExUnidadCon" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="EdoABP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Int16" Nullable="false" />
+          <Property Name="PrecioU2" Type="Decimal" Precision="28" Scale="5" />
+          <Property Name="PrecioU3" Type="Decimal" Precision="28" Scale="5" />
+          <Property Name="Peso" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Volumen" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="UndVol" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="EsReten" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SAINTPALLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Perspectiva" EntityType="Self.Perspectiva" />
+          <EntitySet Name="SAEPRD" EntityType="Self.SAEPRD" />
+          <EntitySet Name="SAFACT" EntityType="Self.SAFACT" />
+          <EntitySet Name="SAPROD" EntityType="Self.SAPROD" />
+          <EntitySet Name="MasterPerspectivaIndicador" EntityType="SAINTPALLModel.MasterPerspectivaIndicador" />
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Perspectiva" Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Perspectiva">
+            <End Role="Perspectiva" EntitySet="Perspectiva" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
+          <EntitySet Name="Indicador" EntityType="SAINTPALLModel.Indicador" />
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Indicador" Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador">
+            <End Role="Indicador" EntitySet="Indicador" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MasterPerspectivaIndicador">
+          <Key>
+            <PropertyRef Name="IDPerspectivaIndicador" />
+          </Key>
+          <Property Name="IDPerspectivaIndicador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDIndicador" Type="Int32" />
+          <Property Name="IDPerspectiva" Type="Int32" />
+          <NavigationProperty Name="Perspectiva" Relationship="SAINTPALLModel.FK_MasterPerspectivaIndicador_Perspectiva" FromRole="MasterPerspectivaIndicador" ToRole="Perspectiva" />
+          <NavigationProperty Name="Indicador" Relationship="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" FromRole="MasterPerspectivaIndicador" ToRole="Indicador" />
+        </EntityType>
+        <Association Name="FK_MasterPerspectivaIndicador_Perspectiva">
+          <End Type="SAINTPALLModel.Perspectiva" Role="Perspectiva" Multiplicity="0..1" />
+          <End Type="SAINTPALLModel.MasterPerspectivaIndicador" Role="MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perspectiva">
+              <PropertyRef Name="IDPerspectiva" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDPerspectiva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Indicador">
+          <Key>
+            <PropertyRef Name="IDIndicador" />
+          </Key>
+          <Property Name="IDIndicador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="objetivoEstrategico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="target" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="rojo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="amarillo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="verde" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="conseguido" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IDPerspectiva" Type="Int32" />
+          <NavigationProperty Name="MasterPerspectivaIndicador" Relationship="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" FromRole="Indicador" ToRole="MasterPerspectivaIndicador" />
+        </EntityType>
+        <Association Name="FK_MasterPerspectivaIndicador_Indicador">
+          <End Type="SAINTPALLModel.Indicador" Role="Indicador" Multiplicity="0..1" />
+          <End Type="SAINTPALLModel.MasterPerspectivaIndicador" Role="MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicador">
+              <PropertyRef Name="IDIndicador" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDIndicador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAINTPALLModelStoreContainer" CdmEntityContainer="SAINTPALLEntities">
+          <EntitySetMapping Name="Perspectiva">
+            <EntityTypeMapping TypeName="SAINTPALLModel.Perspectiva">
+              <MappingFragment StoreEntitySet="Perspectiva">
+                <ScalarProperty Name="IDPerspectiva" ColumnName="IDPerspectiva" />
+                <ScalarProperty Name="Perspectiva1" ColumnName="Perspectiva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAEPRD">
+            <EntityTypeMapping TypeName="SAINTPALLModel.SAEPRD">
+              <MappingFragment StoreEntitySet="SAEPRD">
+                <ScalarProperty Name="CodProd" ColumnName="CodProd" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="ExInicial" ColumnName="ExInicial" />
+                <ScalarProperty Name="MtoCompra" ColumnName="MtoCompra" />
+                <ScalarProperty Name="CntCompra" ColumnName="CntCompra" />
+                <ScalarProperty Name="MtoVentas" ColumnName="MtoVentas" />
+                <ScalarProperty Name="CntVentas" ColumnName="CntVentas" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="MtoCargos" ColumnName="MtoCargos" />
+                <ScalarProperty Name="CntCargos" ColumnName="CntCargos" />
+                <ScalarProperty Name="MtoDescarg" ColumnName="MtoDescarg" />
+                <ScalarProperty Name="CntDescarg" ColumnName="CntDescarg" />
+                <ScalarProperty Name="CntInicial" ColumnName="CntInicial" />
+                <ScalarProperty Name="ExFinal" ColumnName="ExFinal" />
+                <ScalarProperty Name="CostoFinal" ColumnName="CostoFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAFACT">
+            <EntityTypeMapping TypeName="SAINTPALLModel.SAFACT">
+              <MappingFragment StoreEntitySet="SAFACT">
+                <ScalarProperty Name="TipoFac" ColumnName="TipoFac" />
+                <ScalarProperty Name="NumeroD" ColumnName="NumeroD" />
+                <ScalarProperty Name="CodSucu" ColumnName="CodSucu" />
+                <ScalarProperty Name="CodEsta" ColumnName="CodEsta" />
+                <ScalarProperty Name="CodUsua" ColumnName="CodUsua" />
+                <ScalarProperty Name="Signo" ColumnName="Signo" />
+                <ScalarProperty Name="OTipo" ColumnName="OTipo" />
+                <ScalarProperty Name="ONumero" ColumnName="ONumero" />
+                <ScalarProperty Name="NumeroK" ColumnName="NumeroK" />
+                <ScalarProperty Name="EsExPickup" ColumnName="EsExPickup" />
+                <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="MontoMEx" ColumnName="MontoMEx" />
+                <ScalarProperty Name="CodClie" ColumnName="CodClie" />
+                <ScalarProperty Name="CodVend" ColumnName="CodVend" />
+                <ScalarProperty Name="CodUbic" ColumnName="CodUbic" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+                <ScalarProperty Name="Direc1" ColumnName="Direc1" />
+                <ScalarProperty Name="Direc2" ColumnName="Direc2" />
+                <ScalarProperty Name="Direc3" ColumnName="Direc3" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Telef" ColumnName="Telef" />
+                <ScalarProperty Name="ID3" ColumnName="ID3" />
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="MtoTax" ColumnName="MtoTax" />
+                <ScalarProperty Name="Fletes" ColumnName="Fletes" />
+                <ScalarProperty Name="TGravable" ColumnName="TGravable" />
+                <ScalarProperty Name="TExento" ColumnName="TExento" />
+                <ScalarProperty Name="CostoPrd" ColumnName="CostoPrd" />
+                <ScalarProperty Name="CostoSrv" ColumnName="CostoSrv" />
+                <ScalarProperty Name="DesctoP" ColumnName="DesctoP" />
+                <ScalarProperty Name="RetenIVA" ColumnName="RetenIVA" />
+                <ScalarProperty Name="FechaE" ColumnName="FechaE" />
+                <ScalarProperty Name="FechaV" ColumnName="FechaV" />
+                <ScalarProperty Name="CancelI" ColumnName="CancelI" />
+                <ScalarProperty Name="CancelA" ColumnName="CancelA" />
+                <ScalarProperty Name="CancelE" ColumnName="CancelE" />
+                <ScalarProperty Name="CancelC" ColumnName="CancelC" />
+                <ScalarProperty Name="CancelT" ColumnName="CancelT" />
+                <ScalarProperty Name="CancelG" ColumnName="CancelG" />
+                <ScalarProperty Name="MtoExtra" ColumnName="MtoExtra" />
+                <ScalarProperty Name="Descto1" ColumnName="Descto1" />
+                <ScalarProperty Name="PctAnual" ColumnName="PctAnual" />
+                <ScalarProperty Name="MtoInt1" ColumnName="MtoInt1" />
+                <ScalarProperty Name="Descto2" ColumnName="Descto2" />
+                <ScalarProperty Name="PctManejo" ColumnName="PctManejo" />
+                <ScalarProperty Name="MtoInt2" ColumnName="MtoInt2" />
+                <ScalarProperty Name="MtoFinanc" ColumnName="MtoFinanc" />
+                <ScalarProperty Name="DetalChq" ColumnName="DetalChq" />
+                <ScalarProperty Name="TotalPrd" ColumnName="TotalPrd" />
+                <ScalarProperty Name="TotalSrv" ColumnName="TotalSrv" />
+                <ScalarProperty Name="OrdenC" ColumnName="OrdenC" />
+                <ScalarProperty Name="CodOper" ColumnName="CodOper" />
+                <ScalarProperty Name="NGiros" ColumnName="NGiros" />
+                <ScalarProperty Name="NMeses" ColumnName="NMeses" />
+                <ScalarProperty Name="MtoComiVta" ColumnName="MtoComiVta" />
+                <ScalarProperty Name="MtoComiCob" ColumnName="MtoComiCob" />
+                <ScalarProperty Name="MtoComiVtaD" ColumnName="MtoComiVtaD" />
+                <ScalarProperty Name="MtoComiCobD" ColumnName="MtoComiCobD" />
+                <ScalarProperty Name="Notas1" ColumnName="Notas1" />
+                <ScalarProperty Name="Notas2" ColumnName="Notas2" />
+                <ScalarProperty Name="Notas3" ColumnName="Notas3" />
+                <ScalarProperty Name="Notas4" ColumnName="Notas4" />
+                <ScalarProperty Name="Notas5" ColumnName="Notas5" />
+                <ScalarProperty Name="Notas6" ColumnName="Notas6" />
+                <ScalarProperty Name="Notas7" ColumnName="Notas7" />
+                <ScalarProperty Name="Notas8" ColumnName="Notas8" />
+                <ScalarProperty Name="Notas9" ColumnName="Notas9" />
+                <ScalarProperty Name="Notas10" ColumnName="Notas10" />
+                <ScalarProperty Name="CAMBIO" ColumnName="CAMBIO" />
+                <ScalarProperty Name="EsConsig" ColumnName="EsConsig" />
+                <ScalarProperty Name="TipoTra" ColumnName="TipoTra" />
+                <ScalarProperty Name="NumeroC" ColumnName="NumeroC" />
+                <ScalarProperty Name="NroCtrol" ColumnName="NroCtrol" />
+                <ScalarProperty Name="NumeroF" ColumnName="NumeroF" />
+                <ScalarProperty Name="NumeroP" ColumnName="NumeroP" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SaldoAct" ColumnName="SaldoAct" />
+                <ScalarProperty Name="MtoPagos" ColumnName="MtoPagos" />
+                <ScalarProperty Name="MtoNCredito" ColumnName="MtoNCredito" />
+                <ScalarProperty Name="MtoNDebito" ColumnName="MtoNDebito" />
+                <ScalarProperty Name="FechaI" ColumnName="FechaI" />
+                <ScalarProperty Name="ValorPtos" ColumnName="ValorPtos" />
+                <ScalarProperty Name="CancelP" ColumnName="CancelP" />
+                <ScalarProperty Name="NumeroR" ColumnName="NumeroR" />
+                <ScalarProperty Name="NumeroD1" ColumnName="NumeroD1" />
+                <ScalarProperty Name="FechaD1" ColumnName="FechaD1" />
+                <ScalarProperty Name="NumeroT" ColumnName="NumeroT" />
+                <ScalarProperty Name="MtoTotal" ColumnName="MtoTotal" />
+                <ScalarProperty Name="Contado" ColumnName="Contado" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="NumeroZ" ColumnName="NumeroZ" />
+                <ScalarProperty Name="FechaR" ColumnName="FechaR" />
+                <ScalarProperty Name="FechaT" ColumnName="FechaT" />
+                <ScalarProperty Name="NROUNICO" ColumnName="NROUNICO" />
+                <ScalarProperty Name="NumeroE" ColumnName="NumeroE" />
+                <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+                <ScalarProperty Name="CodConv" ColumnName="CodConv" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="EsCorrel" ColumnName="EsCorrel" />
+                <ScalarProperty Name="AutSRI" ColumnName="AutSRI" />
+                <ScalarProperty Name="FechaSRI" ColumnName="FechaSRI" />
+                <ScalarProperty Name="NroEstable" ColumnName="NroEstable" />
+                <ScalarProperty Name="PtoEmision" ColumnName="PtoEmision" />
+                <ScalarProperty Name="TipoTraE" ColumnName="TipoTraE" />
+                <ScalarProperty Name="NumeroNCF" ColumnName="NumeroNCF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAPROD">
+            <EntityTypeMapping TypeName="SAINTPALLModel.SAPROD">
+              <MappingFragment StoreEntitySet="SAPROD">
+                <ScalarProperty Name="CodProd" ColumnName="CodProd" />
+                <ScalarProperty Name="CodInst" ColumnName="CodInst" />
+                <ScalarProperty Name="Descrip" ColumnName="Descrip" />
+                <ScalarProperty Name="Descrip2" ColumnName="Descrip2" />
+                <ScalarProperty Name="Descrip3" ColumnName="Descrip3" />
+                <ScalarProperty Name="Refere" ColumnName="Refere" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="UndEmpaq" ColumnName="UndEmpaq" />
+                <ScalarProperty Name="CantEmpaq" ColumnName="CantEmpaq" />
+                <ScalarProperty Name="Precio1" ColumnName="Precio1" />
+                <ScalarProperty Name="Precio2" ColumnName="Precio2" />
+                <ScalarProperty Name="Precio3" ColumnName="Precio3" />
+                <ScalarProperty Name="PrecioU" ColumnName="PrecioU" />
+                <ScalarProperty Name="CostAct" ColumnName="CostAct" />
+                <ScalarProperty Name="CostPro" ColumnName="CostPro" />
+                <ScalarProperty Name="CostAnt" ColumnName="CostAnt" />
+                <ScalarProperty Name="Existen" ColumnName="Existen" />
+                <ScalarProperty Name="ExUnidad" ColumnName="ExUnidad" />
+                <ScalarProperty Name="Compro" ColumnName="Compro" />
+                <ScalarProperty Name="Pedido" ColumnName="Pedido" />
+                <ScalarProperty Name="Solici" ColumnName="Solici" />
+                <ScalarProperty Name="Minimo" ColumnName="Minimo" />
+                <ScalarProperty Name="Maximo" ColumnName="Maximo" />
+                <ScalarProperty Name="Tara" ColumnName="Tara" />
+                <ScalarProperty Name="DEsComp" ColumnName="DEsComp" />
+                <ScalarProperty Name="DEsComi" ColumnName="DEsComi" />
+                <ScalarProperty Name="DEsSeri" ColumnName="DEsSeri" />
+                <ScalarProperty Name="DEsProdu" ColumnName="DEsProdu" />
+                <ScalarProperty Name="DEsLote" ColumnName="DEsLote" />
+                <ScalarProperty Name="DEsVence" ColumnName="DEsVence" />
+                <ScalarProperty Name="DEsTabla" ColumnName="DEsTabla" />
+                <ScalarProperty Name="DEsPsico" ColumnName="DEsPsico" />
+                <ScalarProperty Name="DEsAttr1" ColumnName="DEsAttr1" />
+                <ScalarProperty Name="DEsAttr2" ColumnName="DEsAttr2" />
+                <ScalarProperty Name="DEsAttr3" ColumnName="DEsAttr3" />
+                <ScalarProperty Name="EsPublish" ColumnName="EsPublish" />
+                <ScalarProperty Name="EsImport" ColumnName="EsImport" />
+                <ScalarProperty Name="EsExento" ColumnName="EsExento" />
+                <ScalarProperty Name="EsEnser" ColumnName="EsEnser" />
+                <ScalarProperty Name="EsOferta" ColumnName="EsOferta" />
+                <ScalarProperty Name="EsPesa" ColumnName="EsPesa" />
+                <ScalarProperty Name="EsEmpaque" ColumnName="EsEmpaque" />
+                <ScalarProperty Name="ExDecimal" ColumnName="ExDecimal" />
+                <ScalarProperty Name="DiasEntr" ColumnName="DiasEntr" />
+                <ScalarProperty Name="FechaUV" ColumnName="FechaUV" />
+                <ScalarProperty Name="FechaUC" ColumnName="FechaUC" />
+                <ScalarProperty Name="ExistenCon" ColumnName="ExistenCon" />
+                <ScalarProperty Name="ExUnidadCon" ColumnName="ExUnidadCon" />
+                <ScalarProperty Name="EdoABP" ColumnName="EdoABP" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PrecioU2" ColumnName="PrecioU2" />
+                <ScalarProperty Name="PrecioU3" ColumnName="PrecioU3" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Volumen" ColumnName="Volumen" />
+                <ScalarProperty Name="UndVol" ColumnName="UndVol" />
+                <ScalarProperty Name="EsReten" ColumnName="EsReten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterPerspectivaIndicador">
+            <EntityTypeMapping TypeName="SAINTPALLModel.MasterPerspectivaIndicador">
+              <MappingFragment StoreEntitySet="MasterPerspectivaIndicador">
+                <ScalarProperty Name="IDPerspectiva" ColumnName="IDPerspectiva" />
+                <ScalarProperty Name="IDIndicador" ColumnName="IDIndicador" />
+                <ScalarProperty Name="IDPerspectivaIndicador" ColumnName="IDPerspectivaIndicador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Indicador">
+            <EntityTypeMapping TypeName="SAINTPALLModel.Indicador">
+              <MappingFragment StoreEntitySet="Indicador">
+                <ScalarProperty Name="IDPerspectiva" ColumnName="IDPerspectiva" />
+                <ScalarProperty Name="conseguido" ColumnName="conseguido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="verde" ColumnName="verde" />
+                <ScalarProperty Name="amarillo" ColumnName="amarillo" />
+                <ScalarProperty Name="rojo" ColumnName="rojo" />
+                <ScalarProperty Name="target" ColumnName="target" />
+                <ScalarProperty Name="objetivoEstrategico" ColumnName="objetivoEstrategico" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="IDIndicador" ColumnName="IDIndicador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

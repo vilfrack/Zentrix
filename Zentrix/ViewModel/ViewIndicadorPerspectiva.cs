@@ -14,6 +14,6 @@ namespace Zentrix.ViewModel
         public Nullable<decimal> rojo { get; set; }
         public Nullable<decimal> amarillo { get; set; }
         public Nullable<decimal> verde { get; set; }
-        public DateTime? fecha { get; set; }
+        public string fecha { get; set; }
     }
 }

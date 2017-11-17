@@ -25,7 +25,17 @@ namespace Zentrix
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+
                       "~/Content/site.css"));
+
+            //bundles.Add(new StyleBundle("~/Content/DatepickerCss").Include(
+            //         "~/Content/bootstrap-datepicker.css"));
+            bundles.Add(new ScriptBundle("~/bundles/DataPikerCss").Include(
+"~/Content/bootstrap-datepicker.css").IncludeDirectory("~/Content", ".css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/DataPikerJs").Include(
+                "~/Scripts/bootstrap-datepicker.js").IncludeDirectory("~/Scripts", ".js"));
+
         }
     }
 }

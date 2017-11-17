@@ -13,10 +13,11 @@ namespace Zentrix.Controllers
 {
     public class CMIController : Controller
     {
-        private BDEntities db = new BDEntities();
+
+        private SAINTPALLEntities db = new SAINTPALLEntities();
         public ActionResult Index()
         {
-
+            
             return View(db.Indicador.ToList());
         }
     }

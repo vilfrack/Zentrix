@@ -178,30 +178,40 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Helper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BD\EF.Context.cs">
+    <Compile Include="Models\BD\BD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EF.Context.tt</DependentUpon>
+      <DependentUpon>BD.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BD\EF.cs">
+    <Compile Include="Models\BD\BD.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EF.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BD\EF.Designer.cs">
+    <Compile Include="Models\BD\BD.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EF.edmx</DependentUpon>
+      <DependentUpon>BD.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\BD\Indicador.cs">
-      <DependentUpon>EF.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BD\MasterPerspectivaIndicador.cs">
-      <DependentUpon>EF.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BD\Perspectiva.cs">
-      <DependentUpon>EF.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BD\SAEPRD.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BD\SAFACT.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BD\SAPROD.cs">
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -210,32 +220,34 @@
     <Compile Include="ViewModel\ViewIndicadorPerspectiva.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\BD\EF.Context.tt">
+    <Content Include="Models\BD\BD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EF.edmx</DependentUpon>
-      <LastGenOutput>EF.Context.cs</LastGenOutput>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BD\EF.tt">
+    <Content Include="Models\BD\BD.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EF.edmx</DependentUpon>
-      <LastGenOutput>EF.cs</LastGenOutput>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\BD\EF.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EF.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\BD\EF.edmx.diagram">
-      <DependentUpon>EF.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\gauge\FlexGauge.js" />
+    <EntityDeploy Include="Models\BD\BD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BD\BD.edmx.diagram">
+      <DependentUpon>BD.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
