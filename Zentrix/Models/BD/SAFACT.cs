@@ -118,10 +118,10 @@ namespace Zentrix.Models.BD
         public string ZipCode { get; set; }
         public short EsCorrel { get; set; }
         public string AutSRI { get; set; }
-        public Nullable<System.DateTime> FechaSRI { get; set; }
         public string NroEstable { get; set; }
         public string PtoEmision { get; set; }
         public short TipoTraE { get; set; }
         public string NumeroNCF { get; set; }
+        public decimal TGravable0 { get; set; }
     }
 }

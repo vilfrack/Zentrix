@@ -18,7 +18,7 @@ namespace Zentrix.Models.BD
         public Nullable<int> IDIndicador { get; set; }
         public Nullable<int> IDPerspectiva { get; set; }
     
-        public virtual Perspectiva Perspectiva { get; set; }
         public virtual Indicador Indicador { get; set; }
+        public virtual Perspectiva Perspectiva { get; set; }
     }
 }

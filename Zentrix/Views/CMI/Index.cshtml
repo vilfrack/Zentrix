@@ -86,13 +86,18 @@
                 int resultadoVerde = Convert.ToInt32((verde / target) * 100);
                 int resultadoAmarillo = Convert.ToInt32((amarillo / target) * 100);
                 int resultadoObtenido = Convert.ToInt32((obtenido / target) * 100);
-
+                //---CALCULO DE LOS PORCENTAJES
+                int totalPorcentaje = Convert.ToInt32(rojo + amarillo + verde);
+                int porcentajeRojo = Convert.ToInt32((rojo / totalPorcentaje) * 100);
+                int porcentajeAmarillo = Convert.ToInt32((amarillo / totalPorcentaje) * 100);
+                int porcentajeVerde = Convert.ToInt32((verde / totalPorcentaje) * 100);
                 //----------------------------------------------------
-                if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+                //if (resultadoObtenido <= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+                if (resultadoObtenido <= resultadoRojo )
                 {
                     bRojo = true;
                 }
-                if (resultadoObtenido >= resultadoAmarillo && resultadoObtenido < resultadoVerde)
+                if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoVerde)
                 {
                     bAmarillo = true;
                 }
@@ -117,7 +122,7 @@
                         <div class="panel-body">
                             <div class="col-md-4" id="@count">
                                 <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" data-html="true"
-                                     title="<div class='cuadroRojo'></div>rojo = @resultadoRojo% <br> <div class='cuadroAmarillo'></div>amarillo = @resultadoAmarillo% <br><div class='cuadroVerde'></div> verde = @resultadoVerde% <br> target = @target <br> obtenido = @resultadoObtenido%">
+                                     title="<div class='cuadroRojo'></div>rojo = @porcentajeRojo% <br> <div class='cuadroAmarillo'></div>amarillo = @porcentajeAmarillo% <br><div class='cuadroVerde'></div> verde = @porcentajeVerde%">
 
                                 </div>
                             </div>
@@ -169,16 +174,22 @@
             decimal target = Convert.ToDecimal(item.target);
             decimal obtenido = Convert.ToDecimal(item.conseguido);
             //---------------------------------------------------
-            decimal resultadoRojo = rojo * 100 / target;
-            decimal resultadoVerde = verde * 100 / target;
-            decimal resultadoAmarillo = amarillo * 100 / target;
-            int resultadoObtenido = Convert.ToInt32(obtenido * 100 / target);
+            int resultadoRojo = Convert.ToInt32((rojo / target) * 100);
+            int resultadoVerde = Convert.ToInt32((verde / target) * 100);
+            int resultadoAmarillo = Convert.ToInt32((amarillo / target) * 100);
+            int resultadoObtenido = Convert.ToInt32((obtenido / target) * 100);
+            //---CALCULO DE LOS PORCENTAJES
+            int totalPorcentaje = Convert.ToInt32(rojo + amarillo + verde);
+            int porcentajeRojo = Convert.ToInt32((rojo / totalPorcentaje) * 100);
+            int porcentajeAmarillo = Convert.ToInt32((amarillo / totalPorcentaje) * 100);
+            int porcentajeVerde = Convert.ToInt32((verde / totalPorcentaje) * 100);
             //----------------------------------------------------
-            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+            //if (resultadoObtenido <= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+            if (resultadoObtenido <= resultadoRojo)
             {
                 bRojo = true;
             }
-            if (resultadoObtenido >= resultadoAmarillo && resultadoObtenido < resultadoVerde)
+            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoVerde)
             {
                 bAmarillo = true;
             }
@@ -202,11 +213,20 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="col-md-4" id="@Clientes">
-                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
+                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" data-html="true"
+                                 title="<div class='cuadroRojo'></div>rojo = @porcentajeRojo% <br> <div class='cuadroAmarillo'></div>amarillo = @porcentajeAmarillo% <br><div class='cuadroVerde'></div> verde = @porcentajeVerde%">
+
+                            </div>
                         </div>
                     </div>
                     <h4>Indicador @item.nombre</h4>
-
+                    <ul>
+                        <li><div class="cuadroRojo"></div>rojo = @rojo</li>
+                        <li><div class="cuadroAmarillo"></div>amarillo = @amarillo</li>
+                        <li><div class="cuadroVerde"></div>verde = @verde</li>
+                        <li>target = @target</li>
+                        <li>obtenido = @obtenido</li>
+                    </ul>
                 </div>
             </div>
             <script>
@@ -245,16 +265,22 @@
             decimal target = Convert.ToDecimal(item.target);
             decimal obtenido = Convert.ToDecimal(item.conseguido);
             //---------------------------------------------------
-            decimal resultadoRojo = rojo * 100 / target;
-            decimal resultadoVerde = verde * 100 / target;
-            decimal resultadoAmarillo = amarillo * 100 / target;
-            int resultadoObtenido = Convert.ToInt32(obtenido * 100 / target);
+            int resultadoRojo = Convert.ToInt32((rojo / target) * 100);
+            int resultadoVerde = Convert.ToInt32((verde / target) * 100);
+            int resultadoAmarillo = Convert.ToInt32((amarillo / target) * 100);
+            int resultadoObtenido = Convert.ToInt32((obtenido / target) * 100);
+            //---CALCULO DE LOS PORCENTAJES
+            int totalPorcentaje = Convert.ToInt32(rojo + amarillo + verde);
+            int porcentajeRojo = Convert.ToInt32((rojo / totalPorcentaje) * 100);
+            int porcentajeAmarillo = Convert.ToInt32((amarillo / totalPorcentaje) * 100);
+            int porcentajeVerde = Convert.ToInt32((verde / totalPorcentaje) * 100);
             //----------------------------------------------------
-            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+            //if (resultadoObtenido <= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+            if (resultadoObtenido <= resultadoRojo)
             {
                 bRojo = true;
             }
-            if (resultadoObtenido >= resultadoAmarillo && resultadoObtenido < resultadoVerde)
+            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoVerde)
             {
                 bAmarillo = true;
             }
@@ -278,11 +304,20 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="col-md-4" id="@Interna">
-                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
+                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" data-html="true"
+                                 title="<div class='cuadroRojo'></div>rojo = @porcentajeRojo% <br> <div class='cuadroAmarillo'></div>amarillo = @porcentajeAmarillo% <br><div class='cuadroVerde'></div> verde = @porcentajeVerde%">
+
+                            </div>
                         </div>
                     </div>
                     <h4>Indicador @item.nombre</h4>
-
+                    <ul>
+                        <li><div class="cuadroRojo"></div>rojo = @rojo</li>
+                        <li><div class="cuadroAmarillo"></div>amarillo = @amarillo</li>
+                        <li><div class="cuadroVerde"></div>verde = @verde</li>
+                        <li>target = @target</li>
+                        <li>obtenido = @obtenido</li>
+                    </ul>
                 </div>
             </div>
             <script>
@@ -321,16 +356,22 @@
             decimal target = Convert.ToDecimal(item.target);
             decimal obtenido = Convert.ToDecimal(item.conseguido);
             //---------------------------------------------------
-            decimal resultadoRojo = rojo * 100 / target;
-            decimal resultadoVerde = verde * 100 / target;
-            decimal resultadoAmarillo = amarillo * 100 / target;
-            int resultadoObtenido = Convert.ToInt32(obtenido * 100 / target);
+            int resultadoRojo = Convert.ToInt32((rojo / target) * 100);
+            int resultadoVerde = Convert.ToInt32((verde / target) * 100);
+            int resultadoAmarillo = Convert.ToInt32((amarillo / target) * 100);
+            int resultadoObtenido = Convert.ToInt32((obtenido / target) * 100);
+            //---CALCULO DE LOS PORCENTAJES
+            int totalPorcentaje = Convert.ToInt32(rojo + amarillo + verde);
+            int porcentajeRojo = Convert.ToInt32((rojo / totalPorcentaje) * 100);
+            int porcentajeAmarillo = Convert.ToInt32((amarillo / totalPorcentaje) * 100);
+            int porcentajeVerde = Convert.ToInt32((verde / totalPorcentaje) * 100);
             //----------------------------------------------------
-            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+            //if (resultadoObtenido <= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+            if (resultadoObtenido <= resultadoRojo)
             {
                 bRojo = true;
             }
-            if (resultadoObtenido >= resultadoAmarillo && resultadoObtenido < resultadoVerde)
+            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoVerde)
             {
                 bAmarillo = true;
             }
@@ -354,11 +395,20 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="col-md-4" id="@Aprendizaje">
-                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></div>
+                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" data-html="true"
+                                 title="<div class='cuadroRojo'></div>rojo = @porcentajeRojo% <br> <div class='cuadroAmarillo'></div>amarillo = @porcentajeAmarillo% <br><div class='cuadroVerde'></div> verde = @porcentajeVerde%">
+
+                            </div>
                         </div>
                     </div>
                     <h4>Indicador @item.nombre</h4>
-
+                    <ul>
+                        <li><div class="cuadroRojo"></div>rojo = @rojo</li>
+                        <li><div class="cuadroAmarillo"></div>amarillo = @amarillo</li>
+                        <li><div class="cuadroVerde"></div>verde = @verde</li>
+                        <li>target = @target</li>
+                        <li>obtenido = @obtenido</li>
+                    </ul>
                 </div>
             </div>
             <script>

@@ -13,7 +13,7 @@ namespace Zentrix.Controllers
 {
     public class IndicadorsController : Controller
     {
-        private SAINTPALLEntities db = new SAINTPALLEntities();
+        private SAINTPALLEntities1 db = new SAINTPALLEntities1();
 
         // GET: Indicadors
         public ActionResult Index()

@@ -71,5 +71,6 @@ namespace Zentrix.Models.BD
         public decimal Volumen { get; set; }
         public string UndVol { get; set; }
         public short EsReten { get; set; }
+        public int DiasTole { get; set; }
     }
 }

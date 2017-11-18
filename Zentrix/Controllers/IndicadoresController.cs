@@ -12,7 +12,7 @@ namespace Zentrix.Controllers
 {
     public class IndicadoresController : Controller
     {
-        private SAINTPALLEntities db = new SAINTPALLEntities();
+        private SAINTPALLEntities1 db = new SAINTPALLEntities1();
         private Helper.Helper help = new Helper.Helper();
         // GET: Indicadores
         public ActionResult Index()
@@ -54,7 +54,9 @@ namespace Zentrix.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                string anio = "2016";
+                string mes = indicador.fecha.Split('/').First();
+                string periodo = anio + mes;
                 Indicador ind = new Indicador();
                 ind.nombre = indicador.nombre;
                 ind.objetivoEstrategico = indicador.objetivoEstrategico;
@@ -62,8 +64,8 @@ namespace Zentrix.Controllers
                 ind.rojo = indicador.rojo;
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
-                ind.fecha = indicador.fecha;
-                ind.conseguido = help.GetResult();
+                ind.fecha = periodo;
+                ind.conseguido = help.GetResult(periodo);
                 ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.Indicador.Add(ind);
                 db.SaveChanges();
@@ -92,6 +94,9 @@ namespace Zentrix.Controllers
         {
             if (ModelState.IsValid)
             {
+                string anio = indicador.fecha.Split('/').Last();
+                string mes = indicador.fecha.Split('/').First();
+                string periodo = anio + mes;
                 var ind = db.Indicador.Find(indicador.IDIndicador);
                 ind.nombre = indicador.nombre;
                 ind.objetivoEstrategico = indicador.objetivoEstrategico;
@@ -100,7 +105,7 @@ namespace Zentrix.Controllers
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
                 ind.fecha = indicador.fecha;
-                ind.conseguido = help.GetResult();
+                ind.conseguido = help.GetResult(periodo);
                 ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.SaveChanges();
                 return RedirectToAction("Index");
