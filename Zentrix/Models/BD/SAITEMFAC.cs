@@ -76,5 +76,6 @@ namespace Zentrix.Models.BD
         public string CodSucu { get; set; }
         public decimal MtoTax { get; set; }
         public decimal PriceO { get; set; }
+        public string Periodo { get; set; }
     }
 }

@@ -39,7 +39,6 @@ namespace Zentrix.Models.BD
         public virtual DbSet<DBTHIRD> DBTHIRD { get; set; }
         public virtual DbSet<dtproperties> dtproperties { get; set; }
         public virtual DbSet<EntityPrefix> EntityPrefix { get; set; }
-        public virtual DbSet<Indicador> Indicador { get; set; }
         public virtual DbSet<LogLockReg> LogLockReg { get; set; }
         public virtual DbSet<LogStation> LogStation { get; set; }
         public virtual DbSet<MasterPerspectivaIndicador> MasterPerspectivaIndicador { get; set; }
@@ -278,5 +277,6 @@ namespace Zentrix.Models.BD
         public virtual DbSet<X1SISTEMA2_STIB01> X1SISTEMA2_STIB01 { get; set; }
         public virtual DbSet<X1SISTEMAS2_STIB01> X1SISTEMAS2_STIB01 { get; set; }
         public virtual DbSet<Proveedor> Proveedor { get; set; }
+        public virtual DbSet<Indicador> Indicador { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="77434b3d7dd34ae9b057776717626573" Name="Diagram1" ZoomLevel="62">
+      <Diagram DiagramId="77434b3d7dd34ae9b057776717626573" Name="Diagram1" ZoomLevel="81">
         <EntityTypeShape EntityType="SAINTPALLModel.ataCompCXP" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.ataFactCXC" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.AtaSucu" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
@@ -19,7 +19,6 @@
         <EntityTypeShape EntityType="SAINTPALLModel.DBTHIRD" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.dtproperties" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.EntityPrefix" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.Indicador" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.LogLockReg" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.LogStation" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.MasterPerspectivaIndicador" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
@@ -260,10 +259,11 @@
         <AssociationConnector Association="SAINTPALLModel.CompanyFK01" ManuallyRouted="false" />
         <AssociationConnector Association="SAINTPALLModel.CompanyJoinFK01" ManuallyRouted="false" />
         <AssociationConnector Association="SAINTPALLModel.RatesFK01" ManuallyRouted="false" />
-        <AssociationConnector Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" ManuallyRouted="false" />
         <AssociationConnector Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Perspectiva" ManuallyRouted="false" />
         <AssociationConnector Association="SAINTPALLModel.ModelAccountType" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.Proveedor" Width="1.5" PointX="47.375" PointY="52.75" />
+        <EntityTypeShape EntityType="SAINTPALLModel.Indicador" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

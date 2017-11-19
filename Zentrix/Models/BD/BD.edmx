@@ -213,6 +213,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.ATAProdPall' does not have a primary
           <Property Name="fecha" Type="varchar" MaxLength="50" />
           <Property Name="conseguido" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IDPerspectiva" Type="int" />
+          <Property Name="CodItem" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="LogLockReg">
           <Key>
@@ -2860,6 +2861,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.SAITEMCOM2' does not have a primary 
           <Property Name="CodSucu" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="MtoTax" Type="decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="PriceO" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Periodo" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.SAITEMFAC2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7927,22 +7929,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <Property Name="Prefix" Type="Int16" Nullable="false" />
           <Property Name="IDParam" Type="Binary" MaxLength="400" FixedLength="true" />
         </EntityType>
-        <EntityType Name="Indicador">
-          <Key>
-            <PropertyRef Name="IDIndicador" />
-          </Key>
-          <Property Name="IDIndicador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="objetivoEstrategico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="target" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="rojo" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="amarillo" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="verde" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="conseguido" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="IDPerspectiva" Type="Int32" />
-          <NavigationProperty Name="MasterPerspectivaIndicador" Relationship="Self.FK_MasterPerspectivaIndicador_Indicador" FromRole="Indicador" ToRole="MasterPerspectivaIndicador" />
-        </EntityType>
         <EntityType Name="LogLockReg">
           <Key>
             <PropertyRef Name="KeyRegLock" />
@@ -7976,8 +7962,8 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <Property Name="IDPerspectivaIndicador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDIndicador" Type="Int32" />
           <Property Name="IDPerspectiva" Type="Int32" />
-          <NavigationProperty Name="Indicador" Relationship="Self.FK_MasterPerspectivaIndicador_Indicador" FromRole="MasterPerspectivaIndicador" ToRole="Indicador" />
           <NavigationProperty Name="Perspectiva" Relationship="Self.FK_MasterPerspectivaIndicador_Perspectiva" FromRole="MasterPerspectivaIndicador" ToRole="Perspectiva" />
+          <NavigationProperty Name="Indicador" Relationship="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" FromRole="MasterPerspectivaIndicador" ToRole="Indicador" />
         </EntityType>
         <EntityType Name="ModelAccount">
           <Key>
@@ -9730,6 +9716,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <Property Name="CodSucu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MtoTax" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="PriceO" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SAITEMFACHist">
           <Key>
@@ -13784,18 +13771,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MasterPerspectivaIndicador_Indicador">
-          <End Role="Indicador" Type="Self.Indicador" Multiplicity="0..1" />
-          <End Role="MasterPerspectivaIndicador" Type="Self.MasterPerspectivaIndicador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Indicador">
-              <PropertyRef Name="IDIndicador" />
-            </Principal>
-            <Dependent Role="MasterPerspectivaIndicador">
-              <PropertyRef Name="IDIndicador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MasterPerspectivaIndicador_Perspectiva">
           <End Role="Perspectiva" Type="Self.Perspectiva" Multiplicity="0..1" />
           <End Role="MasterPerspectivaIndicador" Type="Self.MasterPerspectivaIndicador" Multiplicity="*" />
@@ -13827,7 +13802,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <EntitySet Name="DBTHIRD" EntityType="Self.DBTHIRD" />
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" />
           <EntitySet Name="EntityPrefix" EntityType="Self.EntityPrefix" />
-          <EntitySet Name="Indicador" EntityType="Self.Indicador" />
           <EntitySet Name="LogLockReg" EntityType="Self.LogLockReg" />
           <EntitySet Name="LogStation" EntityType="Self.LogStation" />
           <EntitySet Name="MasterPerspectivaIndicador" EntityType="Self.MasterPerspectivaIndicador" />
@@ -14077,10 +14051,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Rates" EntitySet="Rates" />
           </AssociationSet>
-          <AssociationSet Name="FK_MasterPerspectivaIndicador_Indicador" Association="Self.FK_MasterPerspectivaIndicador_Indicador">
-            <End Role="Indicador" EntitySet="Indicador" />
-            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
-          </AssociationSet>
           <AssociationSet Name="FK_MasterPerspectivaIndicador_Perspectiva" Association="Self.FK_MasterPerspectivaIndicador_Perspectiva">
             <End Role="Perspectiva" EntitySet="Perspectiva" />
             <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
@@ -14090,6 +14060,11 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
             <End Role="CompaniyType" EntitySet="CompaniyType" />
           </AssociationSet>
           <EntitySet Name="Proveedor" EntityType="SAINTPALLModel.Proveedor" />
+          <EntitySet Name="Indicador" EntityType="SAINTPALLModel.Indicador" />
+          <AssociationSet Name="FK_MasterPerspectivaIndicador_Indicador" Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador">
+            <End Role="Indicador" EntitySet="Indicador" />
+            <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Proveedor">
           <Key>
@@ -14098,6 +14073,35 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <Property Name="Proveedor1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Indicador">
+          <Key>
+            <PropertyRef Name="IDIndicador" />
+          </Key>
+          <Property Name="IDIndicador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="objetivoEstrategico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="target" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="rojo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="amarillo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="verde" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="conseguido" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IDPerspectiva" Type="Int32" />
+          <Property Name="CodItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterPerspectivaIndicador" Relationship="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" FromRole="Indicador" ToRole="MasterPerspectivaIndicador" />
+        </EntityType>
+        <Association Name="FK_MasterPerspectivaIndicador_Indicador">
+          <End Type="SAINTPALLModel.Indicador" Role="Indicador" Multiplicity="0..1" />
+          <End Type="SAINTPALLModel.MasterPerspectivaIndicador" Role="MasterPerspectivaIndicador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicador">
+              <PropertyRef Name="IDIndicador" />
+            </Principal>
+            <Dependent Role="MasterPerspectivaIndicador">
+              <PropertyRef Name="IDIndicador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -14287,22 +14291,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
               <MappingFragment StoreEntitySet="EntityPrefix">
                 <ScalarProperty Name="Prefix" ColumnName="Prefix" />
                 <ScalarProperty Name="IDParam" ColumnName="IDParam" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Indicador">
-            <EntityTypeMapping TypeName="SAINTPALLModel.Indicador">
-              <MappingFragment StoreEntitySet="Indicador">
-                <ScalarProperty Name="IDIndicador" ColumnName="IDIndicador" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="objetivoEstrategico" ColumnName="objetivoEstrategico" />
-                <ScalarProperty Name="target" ColumnName="target" />
-                <ScalarProperty Name="rojo" ColumnName="rojo" />
-                <ScalarProperty Name="amarillo" ColumnName="amarillo" />
-                <ScalarProperty Name="verde" ColumnName="verde" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="conseguido" ColumnName="conseguido" />
-                <ScalarProperty Name="IDPerspectiva" ColumnName="IDPerspectiva" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -16012,6 +16000,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <EntitySetMapping Name="SAITEMFAC">
             <EntityTypeMapping TypeName="SAINTPALLModel.SAITEMFAC">
               <MappingFragment StoreEntitySet="SAITEMFAC">
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
                 <ScalarProperty Name="TipoFac" ColumnName="TipoFac" />
                 <ScalarProperty Name="NumeroD" ColumnName="NumeroD" />
                 <ScalarProperty Name="OTipo" ColumnName="OTipo" />
@@ -19758,6 +19747,23 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
               <MappingFragment StoreEntitySet="Proveedor">
                 <ScalarProperty Name="Marca" ColumnName="Marca" />
                 <ScalarProperty Name="Proveedor1" ColumnName="Proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Indicador">
+            <EntityTypeMapping TypeName="SAINTPALLModel.Indicador">
+              <MappingFragment StoreEntitySet="Indicador">
+                <ScalarProperty Name="CodItem" ColumnName="CodItem" />
+                <ScalarProperty Name="IDPerspectiva" ColumnName="IDPerspectiva" />
+                <ScalarProperty Name="conseguido" ColumnName="conseguido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="verde" ColumnName="verde" />
+                <ScalarProperty Name="amarillo" ColumnName="amarillo" />
+                <ScalarProperty Name="rojo" ColumnName="rojo" />
+                <ScalarProperty Name="target" ColumnName="target" />
+                <ScalarProperty Name="objetivoEstrategico" ColumnName="objetivoEstrategico" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="IDIndicador" ColumnName="IDIndicador" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

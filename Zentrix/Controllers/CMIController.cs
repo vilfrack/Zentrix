@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Zentrix.ViewModel;
 using Zentrix.Models.BD;
+using System.Data.SqlClient;
+
 
 namespace Zentrix.Controllers
 {
@@ -17,8 +19,8 @@ namespace Zentrix.Controllers
         private SAINTPALLEntities1 db = new SAINTPALLEntities1();
         public ActionResult Index()
         {
-
             return View(db.Indicador.ToList());
+            
         }
     }
 }

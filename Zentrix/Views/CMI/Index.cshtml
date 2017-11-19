@@ -10,7 +10,7 @@
     bool boolInterna = Model.Where(w => w.IDPerspectiva == 2).Any();
     bool boolAprendizaje = Model.Where(w => w.IDPerspectiva == 4).Any();
 }
-<link rel="stylesheet" href="~/Content/tooltipster.bundle.css"/>
+<link rel="stylesheet" href="~/Content/tooltipster.bundle.css" />
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/gauge/FlexGauge.js"></script>
 <script src="~/Scripts/tooltipster.bundle.js"></script>
@@ -34,32 +34,36 @@
     .panel-body {
         padding-left: 15%;
     }
+
     .cuadroRojo {
-        height:8px;
-        width:8px;
-        background-color:red;
+        height: 8px;
+        width: 8px;
+        background-color: red;
         display: inline-block;
-        margin-right:5px;
-        border-radius : 100px;
+        margin-right: 5px;
+        border-radius: 100px;
     }
+
     .cuadroAmarillo {
-        height:8px;
-        width:8px;
-        background-color:#e8d751;
+        height: 8px;
+        width: 8px;
+        background-color: #e8d751;
         display: inline-block;
-        margin-right:5px;
-        border-radius : 100px;
+        margin-right: 5px;
+        border-radius: 100px;
     }
+
     .cuadroVerde {
-        height:8px;
-        width:8px;
-        background-color:#74fc2b;
+        height: 8px;
+        width: 8px;
+        background-color: #74fc2b;
         display: inline-block;
-        margin-right:5px;
-        border-radius : 100px;
+        margin-right: 5px;
+        border-radius: 100px;
     }
+
     ul {
-        list-style:none;
+        list-style: none;
     }
 </style>
 @if (boolFinanciera)
@@ -82,7 +86,7 @@
                 decimal target = Convert.ToDecimal(item.target);
                 decimal obtenido = Convert.ToDecimal(item.conseguido);
                 //---------------------------------------------------
-                int resultadoRojo = Convert.ToInt32((rojo  / target) * 100);
+                int resultadoRojo = Convert.ToInt32((rojo / target) * 100);
                 int resultadoVerde = Convert.ToInt32((verde / target) * 100);
                 int resultadoAmarillo = Convert.ToInt32((amarillo / target) * 100);
                 int resultadoObtenido = Convert.ToInt32((obtenido / target) * 100);
@@ -93,7 +97,7 @@
                 int porcentajeVerde = Convert.ToInt32((verde / totalPorcentaje) * 100);
                 //----------------------------------------------------
                 //if (resultadoObtenido <= resultadoRojo && resultadoObtenido < resultadoAmarillo)
-                if (resultadoObtenido <= resultadoRojo )
+                if (resultadoObtenido <= resultadoRojo)
                 {
                     bRojo = true;
                 }
@@ -162,6 +166,55 @@
         <h2>Perspectiva Clientes</h2>
         @foreach (var item in Model.Where(w => w.IDPerspectiva == 3))
         {
+            Zentrix.Models.BD.SAINTPALLEntities1 db = new Zentrix.Models.BD.SAINTPALLEntities1();
+
+            //            select top 5000 SAFACT.Descrip,SAFACT.CodClie,SAITEMFAC.Descrip1,SAITEMFAC.FechaE,SAITEMFAC.Cantidad,SAITEMFAC.CodItem
+            //from SAITEMFAC
+            //inner join SAFACT on SAFACT.NumeroD = SAITEMFAC.NumeroD--descrip 1 FechaE Cantidad CodItem
+            //where SAITEMFAC.CodItem = '3M001' and SAITEMFAC.FechaE between '2016-01-01' and '2016-01-30'
+            //a.Start.Date >= startDate.Date && a.Start.Date <= endDate
+            //2016-01-01' and '2016-01-30
+            var datos = (from SAITEMFAC in db.SAITEMFAC
+                         join SAFACT in db.SAFACT on SAITEMFAC.NumeroD equals SAFACT.NumeroD
+                         where SAITEMFAC.CodItem == item.CodItem && SAITEMFAC.Periodo == item.fecha
+                         select new
+                         {
+                             Descrip = SAFACT.Descrip,
+                             CodClie = SAFACT.CodClie,
+                             Descrip1 = SAITEMFAC.Descrip1,
+                             FechaE = SAITEMFAC.FechaE,
+                             Cantidad = SAITEMFAC.Cantidad,
+                             CodItem = SAITEMFAC.CodItem
+                         }).ToList().OrderBy(o => o.Descrip);
+
+            Zentrix.Helper.Helper Duplicados = new Zentrix.Helper.Helper();
+
+            List<Zentrix.Helper.ClientesDuplicados> lista = new List<Zentrix.Helper.ClientesDuplicados>();
+
+            lista.AddRange(Duplicados.clienteDuplicadoMes(item.CodItem, item.fecha));
+            //string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["Saint"].ToString();
+            //using (System.Data.SqlClient.SqlConnection cn = new System.Data.SqlClient.SqlConnection(conexion))
+            //{
+            //    cn.Open();
+
+            //    System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("getCliente", cn);
+            //    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            //    cmd.Parameters.AddWithValue("@Periodo", item.fecha);
+            //    cmd.Parameters.AddWithValue("@CodItem", item.CodItem);
+            //    System.Data.SqlClient.SqlDataReader dr = cmd.ExecuteReader();
+
+            //    while (dr.Read())
+            //    {
+            //        lista.Add(new Zentrix.Helper.ClientesDuplicados
+            //        {
+            //            decripcion = dr["Descrip"].ToString(),
+            //            cantidad = dr["cantidad"].ToString(),
+            //        });
+            //    }
+
+            //}
+
             string Clientes = "Clientes" + count;
             bool bAmarillo = false;
             bool bVerde = false;
@@ -215,7 +268,6 @@
                         <div class="col-md-4" id="@Clientes">
                             <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" data-html="true"
                                  title="<div class='cuadroRojo'></div>rojo = @porcentajeRojo% <br> <div class='cuadroAmarillo'></div>amarillo = @porcentajeAmarillo% <br><div class='cuadroVerde'></div> verde = @porcentajeVerde%">
-
                             </div>
                         </div>
                     </div>
@@ -227,6 +279,26 @@
                         <li>target = @target.ToString("N0")</li>
                         <li>obtenido =@obtenido.ToString("N0")</li>
                     </ul>
+                    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseFrecuencia" aria-expanded="false" aria-controls="collapseExample">
+                        Frecuencia de clientes
+                    </a>
+                    <div class="collapse" id="collapseFrecuencia">
+                        <div class="well">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                                @foreach (var cliente in lista)
+                                {
+                                    <tr>
+                                        <td>@cliente.decripcion</td>
+                                        <td>@cliente.cantidad</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <script>
@@ -243,10 +315,10 @@
                     $('[data-toggle="tooltip"]').tooltip()
                 })
             </script>
-            count++;
-        }
+                                    count++;
+                                }
     </div>
-}
+                                }
 @if (boolInterna)
 {
     <div class="col-sm-12">

@@ -11,23 +11,22 @@ namespace Zentrix.Helper
         public SAINTPALLEntities1 db = new SAINTPALLEntities1();
         public decimal? GetResult(string periodo,string CodProd)
         {
-            //MONTANA - CORIMON PINTURAS, C.A
-            //MNT0536 -	DURAMAX ESMALTE BRILL. LILA PRIMAVERA GL
-            //MNT0537 - DURAMAX ESMALTE BRILL. VERDE TILO GL.
-            //MNT0050 -	DURAMAX ESMALTE BRILL. BLANCO GAL.
-            //MNT0228 - AV - 2000 INTERIOR BLANCO GAL.
+            //MAGIC
+            //MGY005
+            //MGY006
 
-            //GRAFFITI - INVERSIONES SIMBI, C.A
-            //GRF0003	BARRA SILICON 8 MM X 30 CM P/PISTOLA
-            //GRF0007	SILIPEX TUBO NEGRO 70ml
-            //GRF0041	BARRA SILICON 8 MM X 20 CM P/PISTOLA
-            //GRF0002   BARRA SILICON 11 MM X 15 CM P/ PISTOLA
+
+            //GRAFFITI
+            //GRF0002
+            //GRF0044
+            //GRF0049
+            //GRF0006
 
             //3M - 3M MANUFACTURERA VENEZUELA, C.A.
-            //3M016	3M LIJA DE AGUA IMPERIAL 401Q GRANO 2000
-            //3M008	LIJA DE AGUA GRANO 280
-            //3M022   3M FIBRODISCOS GRANO 36
-            //3M021   3M FIBRODISCOS GRANO 24
+            //3M001
+            //3M008
+            //3M007
+            //3M006
             var result = (from SAEPRD in db.SAEPRD
                           join SAPROD in db.SAPROD on SAEPRD.CodProd equals SAPROD.CodProd
                           where SAEPRD.Periodo == periodo && SAEPRD.CodProd == CodProd
@@ -79,6 +78,34 @@ namespace Zentrix.Helper
             ListObject.AddRange(result);
             return ListObject;
         }
+        public List<ClientesDuplicados> clienteDuplicadoMes(string codigo,string periodo) {
+            List<ClientesDuplicados> lista = new List<ClientesDuplicados>();
 
+            string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["Saint"].ToString();
+
+            using (System.Data.SqlClient.SqlConnection cn = new System.Data.SqlClient.SqlConnection(conexion))
+            {
+                cn.Open();
+
+                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("getCliente", cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Periodo", periodo);
+                cmd.Parameters.AddWithValue("@CodItem", codigo);
+                System.Data.SqlClient.SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    lista.Add(new Zentrix.Helper.ClientesDuplicados
+                    {
+                        decripcion = dr["Descrip"].ToString(),
+                        cantidad = dr["cantidad"].ToString(),
+                    });
+                }
+
+            }
+
+            return lista;
+        }
     }
 }

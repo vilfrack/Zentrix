@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Zentrix.Helper;
 using Zentrix.Models.BD;
 using Zentrix.ViewModel;
 
@@ -66,7 +67,25 @@ namespace Zentrix.Controllers
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
                 ind.fecha = periodo;
-                ind.conseguido = help.GetResult(periodo, DropProducto);
+                ind.CodItem = DropProducto;
+                switch (IDPerspectiva)
+                {
+                    case "1":
+                        ind.conseguido = help.GetResult(periodo, DropProducto);
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        List<ClientesDuplicados> lista = new List<ClientesDuplicados>();
+                        lista.AddRange(help.clienteDuplicadoMes(DropProducto, periodo));
+                        ind.conseguido = lista.Count;
+                        break;
+                    case "4":
+                        break;
+                    default:
+                        break;
+                }
+
                 ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.Indicador.Add(ind);
                 db.SaveChanges();
