@@ -9,20 +9,36 @@ namespace Zentrix.Helper
     public class Helper
     {
         public SAINTPALLEntities1 db = new SAINTPALLEntities1();
-        public decimal GetResult(string periodo)
+        public decimal? GetResult(string periodo,string CodProd)
         {
+            //MONTANA - CORIMON PINTURAS, C.A
+            //MNT0536 -	DURAMAX ESMALTE BRILL. LILA PRIMAVERA GL
+            //MNT0537 - DURAMAX ESMALTE BRILL. VERDE TILO GL.
+            //MNT0050 -	DURAMAX ESMALTE BRILL. BLANCO GAL.
+            //MNT0228 - AV - 2000 INTERIOR BLANCO GAL.
 
+            //GRAFFITI - INVERSIONES SIMBI, C.A
+            //GRF0003	BARRA SILICON 8 MM X 30 CM P/PISTOLA
+            //GRF0007	SILIPEX TUBO NEGRO 70ml
+            //GRF0041	BARRA SILICON 8 MM X 20 CM P/PISTOLA
+            //GRF0002   BARRA SILICON 11 MM X 15 CM P/ PISTOLA
+
+            //3M - 3M MANUFACTURERA VENEZUELA, C.A.
+            //3M016	3M LIJA DE AGUA IMPERIAL 401Q GRANO 2000
+            //3M008	LIJA DE AGUA GRANO 280
+            //3M022   3M FIBRODISCOS GRANO 36
+            //3M021   3M FIBRODISCOS GRANO 24
             var result = (from SAEPRD in db.SAEPRD
                           join SAPROD in db.SAPROD on SAEPRD.CodProd equals SAPROD.CodProd
-                          where SAEPRD.Periodo == periodo && SAEPRD.CodProd == "GRF0007"
+                          where SAEPRD.Periodo == periodo && SAEPRD.CodProd == CodProd
                           select new
                           {
                               CntVentas = SAEPRD.CntVentas,
-                              MtoVentas = SAEPRD.MtoVentas,
+                              Precio3 = SAPROD.Precio3,
                           }).SingleOrDefault();
 
-            decimal total = default(decimal);
-            total = result.CntVentas * result.MtoVentas;
+            decimal? total = default(decimal);
+            total = result.CntVentas * result.Precio3;
             //foreach (var item in result)
             //{
             //    total = total + item.TotalMes;

@@ -4,53 +4,53 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="77434b3d7dd34ae9b057776717626573" Name="Diagram1">
+      <Diagram DiagramId="77434b3d7dd34ae9b057776717626573" Name="Diagram1" ZoomLevel="62">
         <EntityTypeShape EntityType="SAINTPALLModel.ataCompCXP" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.ataFactCXC" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.AtaSucu" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.City" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.City" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.CompaniyType" Width="1.5" PointX="5" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.Company" Width="1.5" PointX="7.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.CompanyJoin" Width="1.5" PointX="9.5" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.Connections" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.Connections" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.Country" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.CPSistema" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.Currency" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.DBTHIRD" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.dtproperties" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.dtproperties" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.EntityPrefix" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.Indicador" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.LogLockReg" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.LogLockReg" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.LogStation" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.MasterPerspectivaIndicador" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.ModelAccount" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.Municipality" Width="1.5" PointX="13.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.Perspectiva" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.PriceIdx" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.PriceIdx" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.Rates" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAACAMPOS" Width="1.5" PointX="13.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAACXC" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAACXCHist" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAACXP" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAACXPHist" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAACXC" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAACXCHist" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAACXP" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAACXPHist" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAAGRUPOS" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAAOPER" Width="1.5" PointX="15.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAATACONF" Width="1.5" PointX="15.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAATACXCISLR" Width="1.5" PointX="15.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAATACXCRET" Width="1.5" PointX="2.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAATACXCRETMAN" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAATAUSER" Width="1.5" PointX="6.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SACLICNV" Width="1.5" PointX="16.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SACLIE" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAATACXCRET" Width="1.5" PointX="2.75" PointY="16.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAATACXCRETMAN" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAATAUSER" Width="1.5" PointX="6.75" PointY="16.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SACLICNV" Width="1.5" PointX="16.75" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SACLIE" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACLIE_01" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACLIE_02" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACLIE_05" Width="1.5" PointX="17.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACLILOT" Width="1.5" PointX="17.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SACLIOFE" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SACLPR" Width="1.5" PointX="18.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SACLIOFE" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SACLPR" Width="1.5" PointX="18.75" PointY="16.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACMEC" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SACOMP" Width="1.5" PointX="6.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SACOMPHist" Width="1.5" PointX="2.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SACOMP" Width="1.5" PointX="6.75" PointY="19.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SACOMPHist" Width="1.5" PointX="2.75" PointY="20.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACONF" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACONV" Width="1.5" PointX="18.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACVEN" Width="1.5" PointX="20.75" PointY="19.75" IsExpanded="true" />
@@ -81,10 +81,10 @@
         <EntityTypeShape EntityType="SAINTPALLModel.SAINSTA" Width="1.5" PointX="28.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAIPACXC" Width="1.5" PointX="28.75" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAIPAVTA" Width="1.5" PointX="28.75" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAIPRD" Width="1.5" PointX="8.75" PointY="29.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAIPRV" Width="1.5" PointX="10.75" PointY="29.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAITCV" Width="1.5" PointX="12.75" PointY="29.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAITEMCOM" Width="1.5" PointX="14.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAIPRD" Width="1.5" PointX="8.75" PointY="29.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAIPRV" Width="1.5" PointX="10.75" PointY="29.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAITCV" Width="1.5" PointX="12.75" PointY="29.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAITEMCOM" Width="1.5" PointX="14.75" PointY="29.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAITEMCOMHist" Width="1.5" PointX="28.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAITEMFAC" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAITEMFACHist" Width="1.5" PointX="30.75" PointY="14.75" IsExpanded="true" />
@@ -93,7 +93,7 @@
         <EntityTypeShape EntityType="SAINTPALLModel.SAITEO" Width="1.5" PointX="22.75" PointY="31.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAITFL" Width="1.5" PointX="32.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAITOR" Width="1.5" PointX="32.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAITRE" Width="1.5" PointX="8.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAITRE" Width="1.5" PointX="8.75" PointY="32.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAIVEN" Width="1.5" PointX="32.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAJOIN" Width="1.5" PointX="32.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SALOTE" Width="1.5" PointX="32.75" PointY="15.75" IsExpanded="true" />
@@ -104,7 +104,7 @@
         <EntityTypeShape EntityType="SAINTPALLModel.SAOPER" Width="1.5" PointX="34.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAORDT" Width="1.5" PointX="34.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAPAGCXC" Width="1.5" PointX="34.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAPAGCXCHist" Width="1.5" PointX="10.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAPAGCXCHist" Width="1.5" PointX="10.75" PointY="34.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAPAGCXP" Width="1.5" PointX="34.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAPAGCXPHist" Width="1.5" PointX="34.75" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAPART" Width="1.5" PointX="34.75" PointY="29.75" IsExpanded="true" />
@@ -173,7 +173,7 @@
         <EntityTypeShape EntityType="SAINTPALLModel.SBDesA" Width="1.5" PointX="6.75" PointY="44.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SBDIFE" Width="1.5" PointX="44.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SBDOpF" Width="1.5" PointX="8.75" PointY="44.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SBDTRN" Width="1.5" PointX="10.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SBDTRN" Width="1.5" PointX="10.75" PointY="44.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SBEsti" Width="1.5" PointX="12.75" PointY="44.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SBFDCCONS" Width="1.5" PointX="14.75" PointY="44.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SBFDCPER" Width="1.5" PointX="44.75" PointY="15.75" IsExpanded="true" />
@@ -221,15 +221,15 @@
         <EntityTypeShape EntityType="SAINTPALLModel.SACFAC" Width="1.5" PointX="46.75" PointY="48.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACIUDAD" Width="1.5" PointX="48.75" PointY="47.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACODBAR" Width="1.5" PointX="0.75" PointY="49.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SACOMP2" Width="1.5" PointX="24.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SACOMP2" Width="1.5" PointX="24.75" PointY="49.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACONPRECIO" Width="1.5" PointX="36.75" PointY="49.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACORRELSIS" Width="1.5" PointX="42.75" PointY="49.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SACORTEZ" Width="1.5" PointX="50.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAESTADO" Width="1.5" PointX="2.75" PointY="50.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAEX" Width="1.5" PointX="50.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAFACT2" Width="1.5" PointX="12.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAFACT2" Width="1.5" PointX="12.75" PointY="50.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAITEMCOM2" Width="1.5" PointX="50.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SAITEMFAC2" Width="1.5" PointX="20.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SAITEMFAC2" Width="1.5" PointX="20.75" PointY="50.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAPAIS" Width="1.5" PointX="26.75" PointY="50.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SAPRNGIROS" Width="1.5" PointX="50.75" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SATAXCOM2" Width="1.5" PointX="28.75" PointY="50.75" IsExpanded="true" />
@@ -239,19 +239,19 @@
         <EntityTypeShape EntityType="SAINTPALLModel.SATMPCHQ" Width="1.5" PointX="50.75" PointY="41.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SATRADEDOCS" Width="1.5" PointX="50.75" PointY="44.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SBCONF" Width="1.5" PointX="50.75" PointY="47.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.SRCCP" Width="1.5" PointX="14.75" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.SRCCP" Width="1.5" PointX="14.75" PointY="51.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.STIB01" Width="1.5" PointX="38.75" PointY="51.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.STIB02" Width="1.5" PointX="52.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.SXAuditProd" Width="1.5" PointX="52.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.TMP_CXP_PC_STIB01" Width="1.5" PointX="4.75" PointY="52.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.TMP_CXP_STIB01" Width="1.5" PointX="6.75" PointY="52.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.TMP_GERENCIA_STIB01" Width="1.5" PointX="8.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.TMP_CXP_PC_STIB01" Width="1.5" PointX="4.75" PointY="52.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.TMP_CXP_STIB01" Width="1.5" PointX="6.75" PointY="52.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.TMP_GERENCIA_STIB01" Width="1.5" PointX="8.75" PointY="52.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.TMP_KARLA_PC_STIB01" Width="1.5" PointX="52.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.TMP_SIETEMASI5_PC_STIB01" Width="1.5" PointX="16.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.TMP_SIETEMASI5_PC_STIB01" Width="1.5" PointX="16.75" PointY="52.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.TMP_TRANRESPROD" Width="1.5" PointX="52.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.X1ADMINISTACION4_STIB01" Width="1.5" PointX="52.75" PointY="21.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.X1ADMINISTRACION_STIB01" Width="1.5" PointX="52.75" PointY="29.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SAINTPALLModel.X1ADMINISTRACION1_STIB01" Width="1.5" PointX="30.75" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAINTPALLModel.X1ADMINISTRACION1_STIB01" Width="1.5" PointX="30.75" PointY="52.75" IsExpanded="false" />
         <EntityTypeShape EntityType="SAINTPALLModel.X1ADMINISTRACION2_STIB01" Width="1.5" PointX="52.75" PointY="37.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.X1ADMINISTRACION3_STIB01" Width="1.5" PointX="40.75" PointY="52.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SAINTPALLModel.X1ENCARGADO1_STIB01" Width="1.5" PointX="42.75" PointY="52.75" IsExpanded="true" />
@@ -263,6 +263,7 @@
         <AssociationConnector Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" ManuallyRouted="false" />
         <AssociationConnector Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Perspectiva" ManuallyRouted="false" />
         <AssociationConnector Association="SAINTPALLModel.ModelAccountType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SAINTPALLModel.Proveedor" Width="1.5" PointX="47.375" PointY="52.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

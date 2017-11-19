@@ -4,78 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SAINTPALLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.acacias' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="acacias">
-          <Property Name="CODIGO" Type="varchar" MaxLength="255" />
-          <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" />
-          <Property Name="precio   " Type="decimal" Precision="38" Scale="2" />
-          <Property Name="costopall" Type="decimal" Precision="38" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.ACCESORIOSN' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ACCESORIOSN">
-          <Property Name="REFERENCIA" Type="varchar" MaxLength="255" />
-          <Property Name="DESCRIPCION" Type="varchar" MaxLength="255" />
-          <Property Name="COSTO_LISTA" Type="decimal" Precision="38" Scale="2" />
-          <Property Name="COSTO_PALL" Type="decimal" Precision="38" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.ATA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ATA">
-          <Property Name="contCOO" Type="varchar" MaxLength="6" />
-          <Property Name="HoraInicio" Type="datetime" />
-          <Property Name="DataReferencia" Type="varchar" MaxLength="10" />
-          <Property Name="RZRestantes" Type="int" />
-          <Property Name="mfdNumSerie" Type="varchar" MaxLength="20" />
-          <Property Name="contGNF" Type="varchar" MaxLength="4" />
-          <Property Name="contCRO" Type="varchar" MaxLength="4" />
-          <Property Name="contFacturas" Type="varchar" MaxLength="6" />
-          <Property Name="contCNC" Type="varchar" MaxLength="6" />
-          <Property Name="contCFD" Type="varchar" MaxLength="6" />
-          <Property Name="diaVentaBruta" Type="varchar" MaxLength="50" />
-          <Property Name="diaDescuentos" Type="varchar" MaxLength="50" />
-          <Property Name="diaNotasDeCredito" Type="varchar" MaxLength="50" />
-          <Property Name="diaVentaNeta" Type="varchar" MaxLength="50" />
-          <Property Name="rtTributados" Type="varchar" MaxLength="50" />
-          <Property Name="rtTributadosIVA" Type="varchar" MaxLength="50" />
-          <Property Name="rtExentos" Type="varchar" MaxLength="50" />
-          <Property Name="rtNotasDeCredito" Type="varchar" MaxLength="50" />
-          <Property Name="rtNotasDeCreditoIVA" Type="varchar" MaxLength="50" />
-          <Property Name="rtSuma" Type="varchar" MaxLength="50" />
-          <Property Name="rtSumaIVA" Type="varchar" MaxLength="50" />
-          <Property Name="tbiExentos" Type="varchar" MaxLength="50" />
-          <Property Name="tbiBIG" Type="varchar" MaxLength="50" />
-          <Property Name="tbiBIGIVA" Type="varchar" MaxLength="50" />
-          <Property Name="tbiBIR" Type="varchar" MaxLength="50" />
-          <Property Name="tbiBIRIVA" Type="varchar" MaxLength="50" />
-          <Property Name="tbiBIA" Type="varchar" MaxLength="50" />
-          <Property Name="tbiBIAIVA" Type="varchar" MaxLength="50" />
-          <Property Name="ncbiExentos" Type="varchar" MaxLength="50" />
-          <Property Name="ncbiBIG" Type="varchar" MaxLength="50" />
-          <Property Name="ncbiBIGIVA" Type="varchar" MaxLength="50" />
-          <Property Name="ncbiBIR" Type="varchar" MaxLength="50" />
-          <Property Name="ncbiBIRIVA" Type="varchar" MaxLength="50" />
-          <Property Name="ncbiBIA" Type="varchar" MaxLength="50" />
-          <Property Name="ncbiBIAIVA" Type="varchar" MaxLength="50" />
-          <Property Name="abiExentos" Type="varchar" MaxLength="50" />
-          <Property Name="abiBIG" Type="varchar" MaxLength="50" />
-          <Property Name="abiBIGIVA" Type="varchar" MaxLength="50" />
-          <Property Name="abiBIR" Type="varchar" MaxLength="50" />
-          <Property Name="abiBIRIVA" Type="varchar" MaxLength="50" />
-          <Property Name="abiBIA" Type="varchar" MaxLength="50" />
-          <Property Name="abiBIAIVA" Type="varchar" MaxLength="50" />
-          <Property Name="ibiExentos" Type="varchar" MaxLength="50" />
-          <Property Name="ibiBIG" Type="varchar" MaxLength="50" />
-          <Property Name="ibiBIGIVA" Type="varchar" MaxLength="50" />
-          <Property Name="ibiBIR" Type="varchar" MaxLength="50" />
-          <Property Name="ibiBIRIVA" Type="varchar" MaxLength="50" />
-          <Property Name="ibiBIA" Type="varchar" MaxLength="50" />
-          <Property Name="ibiBIAIVA" Type="varchar" MaxLength="50" />
-          <Property Name="totalGT" Type="varchar" MaxLength="50" />
-          <Property Name="totalIVA" Type="varchar" MaxLength="50" />
-        </EntityType>-->
+    <Schema Namespace="SAINTPALLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ataCompCXP">
           <Key>
             <PropertyRef Name="CodProv" />
@@ -94,28 +23,6 @@ warning 6013: The table/view 'SAINTPALL.dbo.ATA' does not have a primary key def
           <Property Name="NumeroD" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="NroUnico" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.ataProd' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ataProd">
-          <Property Name="Instan" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="255" />
-          <Property Name="Descri" Type="varchar" MaxLength="255" />
-          <Property Name="Descri2" Type="varchar" MaxLength="255" />
-          <Property Name="Descri3" Type="varchar" MaxLength="255" />
-          <Property Name="Und" Type="varchar" MaxLength="255" />
-          <Property Name="REFERE" Type="varchar" MaxLength="255" />
-          <Property Name="Impo" Type="varchar" MaxLength="255" />
-          <Property Name="Costos" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="P1" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="P2" Type="decimal" Precision="23" Scale="3" />
-          <Property Name="P3" Type="decimal" Precision="23" Scale="3" />
-          <Property Name="IMP" Type="varchar" MaxLength="255" />
-          <Property Name="UndEmp" Type="varchar" MaxLength="255" />
-          <Property Name="UndM" Type="decimal" Precision="23" Scale="0" />
-          <Property Name="Pu1" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Pu2" Type="decimal" Precision="23" Scale="3" />
-          <Property Name="Pu3" Type="decimal" Precision="23" Scale="3" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.ATAProdPall' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ATAProdPall">
@@ -138,26 +45,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.ATAProdPall' does not have a primary
           <Property Name="DescripSucu" Type="varchar" MaxLength="100" />
           <Property Name="Orden" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.Audit' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Audit">
-          <Property Name="Type" Type="char" MaxLength="1" />
-          <Property Name="TableName" Type="varchar" MaxLength="128" />
-          <Property Name="PK" Type="varchar" MaxLength="1000" />
-          <Property Name="PKValue" Type="varchar" MaxLength="1000" />
-          <Property Name="FieldName" Type="varchar" MaxLength="128" />
-          <Property Name="OldValue" Type="varchar" MaxLength="1000" />
-          <Property Name="NewValue" Type="varchar" MaxLength="1000" />
-          <Property Name="UpdateDate" Type="datetime" />
-          <Property Name="PC" Type="varchar" MaxLength="128" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.BM' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="BM">
-          <Property Name="CODIGO" Type="nvarchar" MaxLength="255" />
-          <Property Name="DESCR" Type="nvarchar" MaxLength="255" />
-          <Property Name="COSTO" Type="decimal" Precision="38" Scale="2" />
-        </EntityType>-->
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="IDCountry" />
@@ -169,12 +56,6 @@ warning 6013: The table/view 'SAINTPALL.dbo.BM' does not have a primary key defi
           <Property Name="IDCity" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="Descrip" Type="varchar" MaxLength="80" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.CLAVES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CLAVES">
-          <Property Name="CodUsua" Type="varchar" MaxLength="10" />
-          <Property Name="CLAVE" Type="varchar" MaxLength="10" />
-        </EntityType>-->
         <EntityType Name="CompaniyType">
           <Key>
             <PropertyRef Name="ID_TypeEntity" />
@@ -318,13 +199,6 @@ warning 6013: The table/view 'SAINTPALL.dbo.CLAVES' does not have a primary key 
           <Property Name="Prefix" Type="smallint" Nullable="false" />
           <Property Name="IDParam" Type="binary" MaxLength="400" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.FP' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="FP">
-          <Property Name="CODIGO" Type="nvarchar" MaxLength="255" />
-          <Property Name="DESCRIP" Type="nvarchar" MaxLength="255" />
-          <Property Name="COSTO" Type="decimal" Precision="38" Scale="2" />
-        </EntityType>-->
         <EntityType Name="Indicador">
           <Key>
             <PropertyRef Name="IDIndicador" />
@@ -366,12 +240,6 @@ warning 6013: The table/view 'SAINTPALL.dbo.FP' does not have a primary key defi
           <Property Name="Status" Type="smallint" Nullable="false" />
           <Property Name="StationName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.MANAPLAS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="MANAPLAS">
-          <Property Name="REFERE" Type="nvarchar" MaxLength="255" />
-          <Property Name="COSTO" Type="decimal" Precision="38" Scale="2" />
-        </EntityType>-->
         <EntityType Name="MasterPerspectivaIndicador">
           <Key>
             <PropertyRef Name="IDPerspectivaIndicador" />
@@ -466,20 +334,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.PreciosJue' does not have a primary 
           <Property Name="PrecioU2" Type="decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="PrecioU3" Type="decimal" Precision="28" Scale="3" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.PreciosL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PreciosL">
-          <Property Name="codprod" Type="varchar" MaxLength="15" />
-          <Property Name="precio1" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="precio2" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="precio3" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="preciou" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="preciou2" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="preciou3" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="costact" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="costpro" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="costant" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.PreciosMier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PreciosMier">
@@ -580,6 +434,13 @@ warning 6002: The table/view 'SAINTPALL.dbo.PreciosVier' does not have a primary
           <Property Name="siYear" Type="smallint" Nullable="false" />
           <Property Name="siMonth" Type="tinyint" Nullable="false" />
           <Property Name="Factor" Type="decimal" Precision="28" Scale="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="Proveedor" />
+          </Key>
+          <Property Name="Proveedor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Rates">
           <Key>
@@ -1044,13 +905,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.SAANULAC' does not have a primary ke
           <Property Name="NroOper" Type="int" Nullable="false" />
           <Property Name="PDtaReq" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SAATACLIERETEN' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SAATACLIERETEN">
-          <Property Name="CodClie" Type="varchar" MaxLength="15" />
-          <Property Name="Reten" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="Fecha" Type="datetime" />
-        </EntityType>-->
         <EntityType Name="SAATACONF">
           <Key>
             <PropertyRef Name="Programa" />
@@ -1098,16 +952,6 @@ warning 6013: The table/view 'SAINTPALL.dbo.SAATACLIERETEN' does not have a prim
           <Property Name="FechaD" Type="varchar" MaxLength="7" />
           <Property Name="NroRet" Type="varchar" MaxLength="20" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SAATARETEN' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SAATARETEN">
-          <Property Name="Tipo" Type="bit" />
-          <Property Name="Codigo" Type="varchar" MaxLength="15" />
-          <Property Name="Reten" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="Fecha" Type="datetime" />
-          <Property Name="Emp" Type="bit" />
-          <Property Name="Descrip" Type="varchar" MaxLength="60" />
-        </EntityType>-->
         <EntityType Name="SAATAUSER">
           <Key>
             <PropertyRef Name="Coduser" />
@@ -4216,14 +4060,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.SAPRNGIROS' does not have a primary 
           <Property Name="RetenIVA" Type="decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="TipoIns" Type="smallint" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SATAX2' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SATAX2">
-          <Property Name="CodProd" Type="nvarchar" MaxLength="255" />
-          <Property Name="CodTaxs" Type="nvarchar" MaxLength="255" />
-          <Property Name="Monto" Type="float" />
-          <Property Name="EsPorct" Type="float" />
-        </EntityType>-->
         <EntityType Name="SATAXCOM">
           <Key>
             <PropertyRef Name="TipoCom" />
@@ -4632,19 +4468,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.SATRADEDOCS' does not have a primary
           <Property Name="Departamento" Type="varchar" MaxLength="35" />
           <Property Name="Grupo" Type="varchar" MaxLength="35" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SAZDATA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SAZDATA">
-          <Property Name="Ver" Type="int" />
-          <Property Name="Name" Type="varchar" MaxLength="100" />
-          <Property Name="Direc" Type="varchar" MaxLength="120" />
-          <Property Name="RIF" Type="varchar" MaxLength="13" />
-          <Property Name="Remoto" Type="tinyint" />
-          <Property Name="Sucu" Type="varchar" MaxLength="20" />
-          <Property Name="URL" Type="varchar" MaxLength="120" />
-          <Property Name="UserR" Type="varchar" MaxLength="20" />
-          <Property Name="Pass" Type="varchar" MaxLength="20" />
-        </EntityType>-->
         <EntityType Name="SAZONA">
           <Key>
             <PropertyRef Name="CodZona" />
@@ -5449,296 +5272,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.SBCONF' does not have a primary key 
           <Property Name="CodBanc" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="CRefer" Type="varchar" MaxLength="35" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCDOCON' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCDOCON">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="FechaI" Type="datetime" />
-          <Property Name="FechaF" Type="datetime" />
-          <Property Name="TipoOper" Type="varchar" MaxLength="4" />
-          <Property Name="User" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIALICUOTA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIALICUOTA">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="15" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="CtaCash" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCr" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCompra" Type="varchar" MaxLength="24" />
-          <Property Name="DPCC" Type="bit" />
-          <Property Name="UCCO" Type="int" />
-          <Property Name="CentroCostoCompra" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRealInventario" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCargosPart" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDescargoPart" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesCrV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesC" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCICLIE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCICLIE">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="10" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="UsaCtaParticular" Type="bit" />
-          <Property Name="Cuenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaND" Type="varchar" MaxLength="24" />
-          <Property Name="CtaNC" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCICONEX' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCICONEX">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="ServerC" Type="varchar" MaxLength="255" />
-          <Property Name="DBC" Type="varchar" MaxLength="255" />
-          <Property Name="SW" Type="int" />
-          <Property Name="ID_Entity" Type="varchar" MaxLength="10" />
-          <Property Name="Prefix" Type="int" />
-          <Property Name="UserC" Type="varchar" MaxLength="30" />
-          <Property Name="Passw" Type="varchar" MaxLength="30" />
-          <Property Name="Periodo" Type="int" />
-          <Property Name="Active" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIDEPART' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIDEPART">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="10" />
-          <Property Name="TipoIns" Type="int" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="CtaVtasContado" Type="varchar" MaxLength="24" />
-          <Property Name="CtaVtasCredito" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCompras" Type="varchar" MaxLength="24" />
-          <Property Name="DPCC" Type="bit" />
-          <Property Name="UCCO" Type="int" />
-          <Property Name="CentroCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoCompra" Type="varchar" MaxLength="24" />
-          <Property Name="VentaContadoxCaja" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCaja" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCargosPart" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDescargoPart" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRealInventario" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIDEPO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIDEPO">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="10" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="CtaVtasContado" Type="varchar" MaxLength="24" />
-          <Property Name="CtaVtasCredito" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCompras" Type="varchar" MaxLength="24" />
-          <Property Name="DPCC" Type="bit" />
-          <Property Name="CentroCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoCompra" Type="varchar" MaxLength="24" />
-          <Property Name="VentaContadoxCaja" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCaja" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCargosPart" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDescargoPart" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRealInventario" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIDPCC' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIDPCC">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="TipoI" Type="int" />
-          <Property Name="Tipo" Type="int" />
-          <Property Name="CodigoI" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="255" />
-          <Property Name="PorI" Type="decimal" Precision="28" Scale="3" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIINCON' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIINCON">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="ErrorN" Type="int" />
-          <Property Name="Document" Type="varchar" MaxLength="255" />
-          <Property Name="Detail" Type="varchar" MaxLength="255" />
-          <Property Name="ErrorD" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIOPERA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIOPERA">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="10" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="DPCC" Type="bit" />
-          <Property Name="CentroCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoCompra" Type="varchar" MaxLength="24" />
-          <Property Name="DPCCI" Type="bit" />
-          <Property Name="CentroCostoDesc" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoCarg" Type="varchar" MaxLength="24" />
-          <Property Name="CtaVtasContado" Type="varchar" MaxLength="24" />
-          <Property Name="CtaVtasCredito" Type="varchar" MaxLength="24" />
-          <Property Name="CargosInventario" Type="varchar" MaxLength="24" />
-          <Property Name="DescargosInventario" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCompras" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRetencion" Type="varchar" MaxLength="24" />
-          <Property Name="CtaND" Type="varchar" MaxLength="24" />
-          <Property Name="CtaNC" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRealInventario" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoCxC" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoCxP" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesCrV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesC" Type="varchar" MaxLength="24" />
-          <Property Name="CxcGeneral" Type="varchar" MaxLength="24" />
-          <Property Name="CxpGeneral" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRetencionV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRetencionC" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIPARAM' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIPARAM">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="DirecSaint" Type="varchar" MaxLength="80" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="DirecContab" Type="varchar" MaxLength="80" />
-          <Property Name="TipoCon" Type="int" />
-          <Property Name="PrxComprobante" Type="int" />
-          <Property Name="RifNit" Type="varchar" MaxLength="40" />
-          <Property Name="CxCGeneral" Type="varchar" MaxLength="24" />
-          <Property Name="CxPGeneral" Type="varchar" MaxLength="24" />
-          <Property Name="CtaIngresos" Type="varchar" MaxLength="24" />
-          <Property Name="CtaEgresos" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRealInventario" Type="varchar" MaxLength="24" />
-          <Property Name="CargosInventario" Type="varchar" MaxLength="24" />
-          <Property Name="DescargosInventario" Type="varchar" MaxLength="24" />
-          <Property Name="OperxDeposito" Type="bit" />
-          <Property Name="ObviarDiferencias" Type="bit" />
-          <Property Name="InventarioPermanente" Type="bit" />
-          <Property Name="CtaCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaAjuste" Type="varchar" MaxLength="24" />
-          <Property Name="Consolidar" Type="varchar" MaxLength="24" />
-          <Property Name="ConectAuto" Type="bit" />
-          <Property Name="CtaClassVta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaClassPVta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaClassCom" Type="varchar" MaxLength="24" />
-          <Property Name="CtaClassOper" Type="varchar" MaxLength="24" />
-          <Property Name="CtaClassCxC" Type="varchar" MaxLength="24" />
-          <Property Name="CtaClassCxp" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCompras" Type="varchar" MaxLength="24" />
-          <Property Name="CtaVtaContado" Type="varchar" MaxLength="24" />
-          <Property Name="CtaVtaCredito" Type="varchar" MaxLength="24" />
-          <Property Name="ImporCfg" Type="int" />
-          <Property Name="ConfigDoc" Type="varchar" MaxLength="24" />
-          <Property Name="DocOper" Type="varchar" MaxLength="24" />
-          <Property Name="CtaProvidenciaV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaProvXenterarV" Type="varchar" MaxLength="24" />
-          <Property Name="RifNitFiscoV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDctoCashV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDctoCrV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaFletesV" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoFletesV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesCRV" Type="varchar" MaxLength="24" />
-          <Property Name="VentaContadoxCaja" Type="bit" />
-          <Property Name="CtaCajaV" Type="varchar" MaxLength="24" />
-          <Property Name="UsaClieTercero" Type="bit" />
-          <Property Name="CodificaRifNitV" Type="int" />
-          <Property Name="CrearTerV" Type="bit" />
-          <Property Name="GuardarItemFactura" Type="bit" />
-          <Property Name="NitOpEventual" Type="varchar" MaxLength="24" />
-          <Property Name="CtaProvidenciaC" Type="varchar" MaxLength="24" />
-          <Property Name="CtaProvXenterarC" Type="varchar" MaxLength="24" />
-          <Property Name="RifNitFiscoC" Type="varchar" MaxLength="24" />
-          <Property Name="ContabCostoNeto" Type="bit" />
-          <Property Name="CtaDescuentosC" Type="varchar" MaxLength="24" />
-          <Property Name="CtaFletesC" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoFletesC" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesC" Type="varchar" MaxLength="24" />
-          <Property Name="CompraContadoxCaja" Type="bit" />
-          <Property Name="CtaCajaC" Type="varchar" MaxLength="24" />
-          <Property Name="UsaProvTercero" Type="bit" />
-          <Property Name="CodificaRifNitC" Type="int" />
-          <Property Name="CrearTerC" Type="bit" />
-          <Property Name="NitOpEventualC" Type="varchar" MaxLength="24" />
-          <Property Name="UsaPFiscal" Type="varchar" MaxLength="1" />
-          <Property Name="CtaAdelantoV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaAdelantoC" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIPROD' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIPROD">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="15" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="CtaCash" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCr" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCompra" Type="varchar" MaxLength="24" />
-          <Property Name="DPCC" Type="bit" />
-          <Property Name="UCCO" Type="int" />
-          <Property Name="CentroCostoCompra" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaRealInventario" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCargosPart" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDescargoPart" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesCrV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesC" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIPROV' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIPROV">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="10" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="UsaCtaParticular" Type="bit" />
-          <Property Name="Cuenta" Type="varchar" MaxLength="24" />
-          <Property Name="CtaND" Type="varchar" MaxLength="24" />
-          <Property Name="CtaNC" Type="varchar" MaxLength="24" />
-          <Property Name="CtaGastos" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCISERV' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCISERV">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="15" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="CtaCash" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCr" Type="varchar" MaxLength="24" />
-          <Property Name="CtaCompra" Type="varchar" MaxLength="24" />
-          <Property Name="DPCC" Type="bit" />
-          <Property Name="UCCO" Type="int" />
-          <Property Name="CentroCostoCompra" Type="varchar" MaxLength="24" />
-          <Property Name="CentroCostoVenta" Type="varchar" MaxLength="24" />
-          <Property Name="CCPUD" Type="bit" />
-          <Property Name="CtaCxC" Type="varchar" MaxLength="24" />
-          <Property Name="CPPUD" Type="bit" />
-          <Property Name="CtaCxP" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesCrV" Type="varchar" MaxLength="24" />
-          <Property Name="CtaDevolucionesC" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCITAXS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCITAXS">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="DataContab" Type="varchar" MaxLength="255" />
-          <Property Name="Tipo" Type="int" />
-          <Property Name="Codigo" Type="varchar" MaxLength="10" />
-          <Property Name="CtaTaxs" Type="varchar" MaxLength="24" />
-          <Property Name="CtaTaxsD" Type="varchar" MaxLength="24" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SCIUSER' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SCIUSER">
-          <Property Name="DB" Type="varchar" MaxLength="255" />
-          <Property Name="Codigo" Type="varchar" MaxLength="10" />
-          <Property Name="Consol" Type="varchar" MaxLength="24" />
-          <Property Name="Setup" Type="varchar" MaxLength="24" />
-        </EntityType>-->
         <EntityType Name="SCProperty">
           <Key>
             <PropertyRef Name="siType" />
@@ -5858,12 +5391,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.SRCCP' does not have a primary key d
           <Property Name="MtoTaxD" Type="decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="NroD" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.SSAUSRS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="SSAUSRS">
-          <Property Name="CodUsua" Type="varchar" MaxLength="10" />
-          <Property Name="FechaM" Type="datetime" />
-        </EntityType>-->
         <EntityType Name="SSAUTR">
           <Key>
             <PropertyRef Name="CodAutr" />
@@ -6091,81 +5618,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.SXAuditProd' does not have a primary
           <Property Name="Compro" Type="decimal" Precision="28" Scale="3" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TemporaryUpsizedTable2' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TemporaryUpsizedTable2">
-          <Property Name="CodProd" Type="nvarchar" MaxLength="15" />
-          <Property Name="CodInst" Type="int" />
-          <Property Name="Descrip" Type="nvarchar" MaxLength="40" />
-          <Property Name="Descrip2" Type="nvarchar" MaxLength="40" />
-          <Property Name="Descrip3" Type="nvarchar" MaxLength="40" />
-          <Property Name="Refere" Type="nvarchar" MaxLength="15" />
-          <Property Name="Marca" Type="nvarchar" MaxLength="20" />
-          <Property Name="Unidad" Type="nvarchar" MaxLength="3" />
-          <Property Name="UndEmpaq" Type="nvarchar" MaxLength="3" />
-          <Property Name="CantEmpaq" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Precio1" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Precio2" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Precio3" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="PrecioU" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="CostAct" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="CostPro" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="CostAnt" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Existen" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="ExUnidad" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Compro" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Pedido" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Solici" Type="int" />
-          <Property Name="Minimo" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Maximo" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Tara" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="DEsComp" Type="smallint" />
-          <Property Name="DEsComi" Type="smallint" />
-          <Property Name="DEsSeri" Type="smallint" />
-          <Property Name="DEsProdu" Type="smallint" />
-          <Property Name="DEsLote" Type="smallint" />
-          <Property Name="DEsVence" Type="smallint" />
-          <Property Name="DEsTabla" Type="smallint" />
-          <Property Name="DEsPsico" Type="smallint" />
-          <Property Name="DEsAttr1" Type="smallint" />
-          <Property Name="DEsAttr2" Type="smallint" />
-          <Property Name="DEsAttr3" Type="smallint" />
-          <Property Name="EsPublish" Type="smallint" />
-          <Property Name="EsImport" Type="smallint" />
-          <Property Name="EsExento" Type="smallint" />
-          <Property Name="EsEnser" Type="smallint" />
-          <Property Name="EsOferta" Type="smallint" />
-          <Property Name="EsPesa" Type="smallint" />
-          <Property Name="EsEmpaque" Type="smallint" />
-          <Property Name="ExDecimal" Type="smallint" />
-          <Property Name="DiasEntr" Type="int" />
-          <Property Name="FechaUV" Type="datetime" />
-          <Property Name="FechaUC" Type="datetime" />
-          <Property Name="ExistenCon" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="ExUnidadCon" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="EdoABP" Type="nvarchar" MaxLength="5" />
-          <Property Name="Activo" Type="smallint" />
-          <Property Name="PrecioU2" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="PrecioU3" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Peso" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Volumen" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="UndVol" Type="nvarchar" MaxLength="3" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_COMPROCLIE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_COMPROCLIE">
-          <Property Name="CodTabla" Type="varchar" MaxLength="100" />
-          <Property Name="CodClie" Type="varchar" MaxLength="20" />
-          <Property Name="Descrip" Type="varchar" MaxLength="60" />
-          <Property Name="Clase" Type="varchar" MaxLength="20" />
-          <Property Name="CodZona" Type="varchar" MaxLength="20" />
-          <Property Name="CodItem" Type="varchar" MaxLength="20" />
-          <Property Name="Descrip1" Type="varchar" MaxLength="40" />
-          <Property Name="Cantidad" Type="float" />
-          <Property Name="Precio" Type="float" />
-          <Property Name="Utilidad" Type="float" />
-          <Property Name="Costo" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.TMP_CXP_PC_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TMP_CXP_PC_STIB01">
           <Key>
@@ -6201,17 +5653,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.TMP_CXP_PC_STIB01' does not have a p
           <Property Name="MtoTxt2" Type="varchar" MaxLength="150" />
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_CXP_PC_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_CXP_PC_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.TMP_CXP_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TMP_CXP_STIB01">
@@ -6249,17 +5690,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.TMP_CXP_STIB01' does not have a prim
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_CXP_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_CXP_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="70" />
-          <Property Name="DesCta" Type="varchar" MaxLength="70" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="70" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.TMP_GERENCIA_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TMP_GERENCIA_STIB01">
           <Key>
@@ -6295,17 +5725,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.TMP_GERENCIA_STIB01' does not have a
           <Property Name="MtoTxt2" Type="varchar" MaxLength="150" />
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_GERENCIA_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_GERENCIA_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="70" />
-          <Property Name="DesCta" Type="varchar" MaxLength="70" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="70" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.TMP_KARLA_PC_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TMP_KARLA_PC_STIB01">
@@ -6343,98 +5762,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.TMP_KARLA_PC_STIB01' does not have a
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_KARLA_PC_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_KARLA_PC_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="70" />
-          <Property Name="DesCta" Type="varchar" MaxLength="70" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="70" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_PARTSERPROD' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_PARTSERPROD">
-          <Property Name="CodTabla" Type="varchar" MaxLength="100" />
-          <Property Name="Tipo" Type="varchar" MaxLength="10" />
-          <Property Name="CodProd" Type="varchar" MaxLength="20" />
-          <Property Name="Descrip" Type="varchar" MaxLength="50" />
-          <Property Name="CodAlte" Type="varchar" MaxLength="20" />
-          <Property Name="Cantidad" Type="numeric" Precision="28" Scale="3" />
-          <Property Name="NroSerial" Type="varchar" MaxLength="40" />
-          <Property Name="CodUbic" Type="varchar" MaxLength="20" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_PARTSERPRODVCO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_PARTSERPRODVCO">
-          <Property Name="CodTabla" Type="varchar" MaxLength="100" />
-          <Property Name="Tipo" Type="varchar" MaxLength="10" />
-          <Property Name="TipoDoc" Type="varchar" MaxLength="15" />
-          <Property Name="NumeroD" Type="varchar" MaxLength="15" />
-          <Property Name="Codigo" Type="varchar" MaxLength="20" />
-          <Property Name="CodProd" Type="varchar" MaxLength="20" />
-          <Property Name="CodAlte" Type="varchar" MaxLength="15" />
-          <Property Name="Cantidad" Type="numeric" Precision="28" Scale="3" />
-          <Property Name="NroSerial" Type="varchar" MaxLength="15" />
-          <Property Name="CodUbic" Type="varchar" MaxLength="20" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_SADEYPAIVA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_SADEYPAIVA">
-          <Property Name="CodTabla" Type="varchar" MaxLength="100" />
-          <Property Name="Tipo_Tra" Type="int" />
-          <Property Name="FechaE" Type="smalldatetime" />
-          <Property Name="IVA_Incluido" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="Base_Imponible" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="IVA_Retenido" Type="decimal" Precision="28" Scale="3" />
-          <Property Name="IVA" Type="decimal" Precision="28" Scale="3" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_SAEPRD' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_SAEPRD">
-          <Property Name="CodTabla" Type="varchar" MaxLength="100" />
-          <Property Name="CodProd" Type="varchar" MaxLength="30" />
-          <Property Name="Periodo" Type="varchar" MaxLength="6" />
-          <Property Name="Mes" Type="varchar" MaxLength="10" />
-          <Property Name="ExInicial" Type="float" />
-          <Property Name="MtoCompra" Type="float" />
-          <Property Name="CntCompra" Type="float" />
-          <Property Name="MtoVentas" Type="float" />
-          <Property Name="CntVentas" Type="float" />
-          <Property Name="Costo" Type="float" />
-          <Property Name="MtoCargos" Type="float" />
-          <Property Name="CntCargos" Type="float" />
-          <Property Name="MtoDescarg" Type="float" />
-          <Property Name="CntDescarg" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_SAESRVC' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_SAESRVC">
-          <Property Name="CodTabla" Type="varchar" MaxLength="100" />
-          <Property Name="CodServ" Type="varchar" MaxLength="30" />
-          <Property Name="Periodo" Type="varchar" MaxLength="6" />
-          <Property Name="Mes" Type="varchar" MaxLength="10" />
-          <Property Name="MtoVentas" Type="float" />
-          <Property Name="CntVentas" Type="int" />
-          <Property Name="Costo" Type="float" />
-          <Property Name="MtoCompra" Type="float" />
-          <Property Name="CntCompra" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_SAEVEN' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_SAEVEN">
-          <Property Name="CodTabla" Type="varchar" MaxLength="100" />
-          <Property Name="CodVend" Type="varchar" MaxLength="10" />
-          <Property Name="Periodo" Type="varchar" MaxLength="6" />
-          <Property Name="Mes" Type="varchar" MaxLength="10" />
-          <Property Name="MtoVentas" Type="float" />
-          <Property Name="MtoIngreso" Type="float" />
-          <Property Name="Costo" Type="float" />
-          <Property Name="MtoComiVta" Type="float" />
-          <Property Name="MtoComiCob" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.TMP_SIETEMASI5_PC_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TMP_SIETEMASI5_PC_STIB01">
           <Key>
@@ -6471,17 +5798,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.TMP_SIETEMASI5_PC_STIB01' does not h
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_SIETEMASI5_PC_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_SIETEMASI5_PC_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.TMP_TRANRESPROD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TMP_TRANRESPROD">
           <Key>
@@ -6499,22 +5815,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.TMP_TRANRESPROD' does not have a pri
           <Property Name="Costo" Type="float" />
           <Property Name="EsUnid" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.TMP_VENTASxVEND' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="TMP_VENTASxVEND">
-          <Property Name="CodTabla" Type="varchar" MaxLength="255" />
-          <Property Name="CodVend" Type="varchar" MaxLength="50" />
-          <Property Name="Descrip" Type="varchar" MaxLength="100" />
-          <Property Name="MontoVenta" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="Por" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.truper' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="truper">
-          <Property Name="Descripcion Del Producto" Type="varchar" MaxLength="255" />
-          <Property Name="costo" Type="decimal" Precision="38" Scale="0" />
-          <Property Name="CODITEM" Type="varchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="UserMsg">
           <Key>
             <PropertyRef Name="NLine" />
@@ -6527,16 +5827,6 @@ warning 6013: The table/view 'SAINTPALL.dbo.truper' does not have a primary key 
           <Property Name="dtDate" Type="datetime" Nullable="false" />
           <Property Name="Status" Type="smallint" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.usy' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="usy">
-          <Property Name="CÓDIGO" Type="nvarchar" MaxLength="255" />
-          <Property Name="DESCRIPCIÓN" Type="nvarchar" MaxLength="255" />
-          <Property Name="PRECIO" Type="float" />
-          <Property Name="F4" Type="nvarchar" MaxLength="255" />
-          <Property Name="F5" Type="nvarchar" MaxLength="255" />
-          <Property Name="F6" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTACION4_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1ADMINISTACION4_STIB01">
@@ -6574,17 +5864,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTACION4_STIB01' does not ha
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.X1ADMINISTACION4_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="X1ADMINISTACION4_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1ADMINISTRACION_STIB01">
           <Key>
@@ -6620,17 +5899,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION_STIB01' does not ha
           <Property Name="MtoTxt2" Type="varchar" MaxLength="150" />
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="X1ADMINISTRACION_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION1_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1ADMINISTRACION1_STIB01">
@@ -6668,17 +5936,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION1_STIB01' does not h
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION1_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="X1ADMINISTRACION1_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION2_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1ADMINISTRACION2_STIB01">
           <Key>
@@ -6714,17 +5971,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION2_STIB01' does not h
           <Property Name="MtoTxt2" Type="varchar" MaxLength="150" />
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION2_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="X1ADMINISTRACION2_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION3_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1ADMINISTRACION3_STIB01">
@@ -6762,17 +6008,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION3_STIB01' does not h
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.X1ADMINISTRACION3_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="X1ADMINISTRACION3_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1ENCARGADO1_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1ENCARGADO1_STIB01">
           <Key>
@@ -6808,17 +6043,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1ENCARGADO1_STIB01' does not have a
           <Property Name="MtoTxt2" Type="varchar" MaxLength="150" />
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.X1ENCARGADO1_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="X1ENCARGADO1_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMA2_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1SISTEMA2_STIB01">
@@ -6856,17 +6080,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMA2_STIB01' does not have a p
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.X1SISTEMA2_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="X1SISTEMA2_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1SISTEMAS2_STIB01">
           <Key>
@@ -6902,17 +6115,6 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <Property Name="MtoTxt2" Type="varchar" MaxLength="150" />
           <Property Name="MtoTxt3" Type="varchar" MaxLength="150" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="X1SISTEMAS2_STIB02">
-          <Property Name="NOpe" Type="int" />
-          <Property Name="CodCta" Type="varchar" MaxLength="50" />
-          <Property Name="DesCta" Type="varchar" MaxLength="50" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="MtoOp" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoDb" Type="decimal" Precision="28" Scale="2" />
-          <Property Name="MtoCr" Type="decimal" Precision="28" Scale="2" />
-        </EntityType>-->
         <Association Name="CompanyFK01">
           <End Role="CompaniyType" Type="Self.CompaniyType" Multiplicity="1" />
           <End Role="Company" Type="Self.Company" Multiplicity="*" />
@@ -7021,6 +6223,7 @@ warning 6013: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB02' does not have a 
           <EntitySet Name="Municipality" EntityType="Self.Municipality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perspectiva" EntityType="Self.Perspectiva" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceIdx" EntityType="Self.PriceIdx" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rates" EntityType="Self.Rates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SAACAMPOS" EntityType="Self.SAACAMPOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SAACXC" EntityType="Self.SAACXC" Schema="dbo" store:Type="Tables" />
@@ -8534,8 +7737,7 @@ warning 6013: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB02' does not have a 
             <End Role="Rates" EntitySet="Rates" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SAINTPALLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -14887,7 +14089,15 @@ warning 6013: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB02' does not have a 
             <End Role="ModelAccount" EntitySet="ModelAccount" />
             <End Role="CompaniyType" EntitySet="CompaniyType" />
           </AssociationSet>
+          <EntitySet Name="Proveedor" EntityType="SAINTPALLModel.Proveedor" />
         </EntityContainer>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="Proveedor1" />
+          </Key>
+          <Property Name="Proveedor1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20543,6 +19753,14 @@ warning 6013: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB02' does not have a 
               <ScalarProperty Name="ID_TypeEntity" ColumnName="ID_TypeEntity" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="SAINTPALLModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Proveedor1" ColumnName="Proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

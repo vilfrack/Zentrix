@@ -47,10 +47,11 @@ namespace Zentrix.Controllers
         public ActionResult Create()
         {
             Perpestiva();
+            marca();
             return View();
         }
         [HttpPost]
-        public ActionResult Create(ViewIndicadorPerspectiva indicador, string IDPerspectiva)
+        public ActionResult Create(ViewIndicadorPerspectiva indicador, string IDPerspectiva, string DropProducto)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +66,7 @@ namespace Zentrix.Controllers
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
                 ind.fecha = periodo;
-                ind.conseguido = help.GetResult(periodo);
+                ind.conseguido = help.GetResult(periodo, DropProducto);
                 ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.Indicador.Add(ind);
                 db.SaveChanges();
@@ -105,7 +106,7 @@ namespace Zentrix.Controllers
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
                 ind.fecha = indicador.fecha;
-                ind.conseguido = help.GetResult(periodo);
+                ind.conseguido = help.GetResult(periodo,"");
                 ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -138,5 +139,75 @@ namespace Zentrix.Controllers
         {
             ViewBag.Perpestiva = new SelectList(db.Perspectiva.ToList(), "IDPerspectiva", "Perspectiva1");
         }
+        public void marca() {
+            ViewBag.Marca = new SelectList(db.Proveedor.ToList(), "Proveedor1", "Marca");
+
+        }
+        public void producto(string marca) {
+            switch (marca)
+            {
+                case "MAGIC":
+                    ViewBag.Producto = new SelectList(db.SAPROD.Where(w => w.CodProd == "MGY005" || w.CodProd == "MGY006")
+                                                            .Select(s=>s.Descrip).Distinct().ToList(), "CodProd", "Descrip");
+                    break;
+                case "GRAFFITI":
+                    ViewBag.Producto = new SelectList(db.SAPROD.Where(w => w.CodProd == "GRF0002" || w.CodProd == "GRF0044" || w.CodProd == "GRF0049" || w.CodProd == "GRF0006")
+                                                               .Select(s => s.Descrip).Distinct().ToList(), "CodProd", "Descrip");
+                    break;
+                case "3M":
+                    ViewBag.Producto = new SelectList(db.SAPROD.Where(w => w.CodProd == "3M001" || w.CodProd == "3M008" || w.CodProd == "3M007" || w.CodProd == "3M006")
+                                                                .Select(s => s.Descrip).Distinct().ToList(), "CodProd", "Descrip");
+                    break;
+            }
+            //MARCA MAGIC
+            //MGY005
+            //MGY006
+
+            //GRAFFITI - INVERSIONES SIMBI, C.A
+            //GRF0003	BARRA SILICON 8 MM X 30 CM P/PISTOLA
+            //GRF0007	SILIPEX TUBO NEGRO 70ml
+            //GRF0041	BARRA SILICON 8 MM X 20 CM P/PISTOLA
+            //GRF0002   BARRA SILICON 11 MM X 15 CM P/ PISTOLA
+
+            //3M - 3M MANUFACTURERA VENEZUELA, C.A.
+            //3M016	3M LIJA DE AGUA IMPERIAL 401Q GRANO 2000
+            //3M008	LIJA DE AGUA GRANO 280
+            //3M022   3M FIBRODISCOS GRANO 36
+            //3M021   3M FIBRODISCOS GRANO 24
+        }
+
+        public JsonResult GetProdutos(string id)
+        {
+            List<SelectListItem> states = new List<SelectListItem>();
+            switch (id)
+            {
+                case "MAGIC":
+                    var MONTANA = db.SAPROD.Where(w => w.CodProd == "MGY005" || w.CodProd == "MGY006")
+                                                            .Select(s => new { Descrip = s.Descrip, CodProd=s.CodProd } ).ToList();
+                    foreach (var item in MONTANA)
+                    {
+                        states.Add(new SelectListItem { Text = item.Descrip, Value = item.CodProd });
+                    }
+                    break;
+                case "GRAFFITI":
+                    var GRAFFITI = db.SAPROD.Where(w => w.CodProd == "GRF0002" || w.CodProd == "GRF0044" || w.CodProd == "GRF0049" || w.CodProd == "GRF0006")
+                                                               .Select(s => new { Descrip = s.Descrip, CodProd = s.CodProd }).ToList();
+                    foreach (var item in GRAFFITI)
+                    {
+                        states.Add(new SelectListItem { Text = item.Descrip, Value = item.CodProd });
+                    }
+                    break;
+                case "3M":
+                    var m = db.SAPROD.Where(w => w.CodProd == "3M001" || w.CodProd == "3M008" || w.CodProd == "3M007" || w.CodProd == "3M006")
+                                                                 .Select(s => new { Descrip = s.Descrip, CodProd = s.CodProd }).ToList();
+                    foreach (var item in m)
+                    {
+                        states.Add(new SelectListItem { Text = item.Descrip, Value = item.CodProd });
+                    }
+                    break;
+            }
+            return Json(new SelectList(states, "Value", "Text"));
+        }
+
     }
 }

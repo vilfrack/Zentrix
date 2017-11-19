@@ -277,5 +277,6 @@ namespace Zentrix.Models.BD
         public virtual DbSet<X1ENCARGADO1_STIB01> X1ENCARGADO1_STIB01 { get; set; }
         public virtual DbSet<X1SISTEMA2_STIB01> X1SISTEMA2_STIB01 { get; set; }
         public virtual DbSet<X1SISTEMAS2_STIB01> X1SISTEMAS2_STIB01 { get; set; }
+        public virtual DbSet<Proveedor> Proveedor { get; set; }
     }
 }

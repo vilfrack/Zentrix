@@ -6,6 +6,8 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
+    SelectList marca = ViewBag.Marca;
+    //SelectList DropUsuario = ViewBag.DropUsuario;
 }
 <link rel="stylesheet" href="~/Content/bootstrap-datepicker.css" />
 
@@ -20,6 +22,12 @@
         <h4>Indicador</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.DropDownList("Proveedor1", marca, "Seleccionar", new { @class = "form-control select2-allow-clear" })
+
+        @Html.DropDownList("DropProducto", new SelectList(string.Empty, "CodProd", "Descrip"), "Seleccionar un producto", new { @class = "form-control select2-allow-clear" })
+
+
         <div class="form-group">
            <label class = "control-label col-md-2">Nombre del indicador</label>
             <div class="col-md-10">
@@ -91,6 +99,7 @@
         </div>
 }
 
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
@@ -105,4 +114,28 @@
         format: "mm/yyyy",
         minViewMode: 1
     });
-    </script>
+
+    $("#Proveedor1").change(function () {
+        $("#DropProducto").empty();
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("GetProdutos")', // we are calling json method
+            dataType: 'json',
+            data: { id: $("#Proveedor1 option:selected").text() },
+            success: function (states) {
+                // states contains the JSON formatted list
+                // of states passed from the controller
+                $.each(states, function (i, state) {
+                    $("#DropProducto").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                }); // here we are adding option for States
+            },
+            error: function (ex) {
+                alert('Failed to retrieve states.' + ex);
+            }
+        });
+        return false;
+    })
+</script>
+
+
+
