@@ -163,169 +163,179 @@
 @if (boolCliente)
 {
     <div class="col-sm-12">
-        <h2>Perspectiva Clientes</h2>
-        @foreach (var item in Model.Where(w => w.IDPerspectiva == 3))
-        {
-            Zentrix.Models.BD.SAINTPALLEntities1 db = new Zentrix.Models.BD.SAINTPALLEntities1();
-
-            //            select top 5000 SAFACT.Descrip,SAFACT.CodClie,SAITEMFAC.Descrip1,SAITEMFAC.FechaE,SAITEMFAC.Cantidad,SAITEMFAC.CodItem
-            //from SAITEMFAC
-            //inner join SAFACT on SAFACT.NumeroD = SAITEMFAC.NumeroD--descrip 1 FechaE Cantidad CodItem
-            //where SAITEMFAC.CodItem = '3M001' and SAITEMFAC.FechaE between '2016-01-01' and '2016-01-30'
-            //a.Start.Date >= startDate.Date && a.Start.Date <= endDate
-            //2016-01-01' and '2016-01-30
-            var datos = (from SAITEMFAC in db.SAITEMFAC
-                         join SAFACT in db.SAFACT on SAITEMFAC.NumeroD equals SAFACT.NumeroD
-                         where SAITEMFAC.CodItem == item.CodItem && SAITEMFAC.Periodo == item.fecha
-                         select new
-                         {
-                             Descrip = SAFACT.Descrip,
-                             CodClie = SAFACT.CodClie,
-                             Descrip1 = SAITEMFAC.Descrip1,
-                             FechaE = SAITEMFAC.FechaE,
-                             Cantidad = SAITEMFAC.Cantidad,
-                             CodItem = SAITEMFAC.CodItem
-                         }).ToList().OrderBy(o => o.Descrip);
-
-            Zentrix.Helper.Helper Duplicados = new Zentrix.Helper.Helper();
-
-            List<Zentrix.Helper.ClientesDuplicados> lista = new List<Zentrix.Helper.ClientesDuplicados>();
-
-            lista.AddRange(Duplicados.clienteDuplicadoMes(item.CodItem, item.fecha));
-            //string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["Saint"].ToString();
-            //using (System.Data.SqlClient.SqlConnection cn = new System.Data.SqlClient.SqlConnection(conexion))
-            //{
-            //    cn.Open();
-
-            //    System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("getCliente", cn);
-            //    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-            //    cmd.Parameters.AddWithValue("@Periodo", item.fecha);
-            //    cmd.Parameters.AddWithValue("@CodItem", item.CodItem);
-            //    System.Data.SqlClient.SqlDataReader dr = cmd.ExecuteReader();
-
-            //    while (dr.Read())
-            //    {
-            //        lista.Add(new Zentrix.Helper.ClientesDuplicados
-            //        {
-            //            decripcion = dr["Descrip"].ToString(),
-            //            cantidad = dr["cantidad"].ToString(),
-            //        });
-            //    }
-
-            //}
-
-            string Clientes = "Clientes" + count;
-            bool bAmarillo = false;
-            bool bVerde = false;
-            bool bRojo = false;
-            string clase = "btn-primary";
-            //campo x 100 / target
-            decimal rojo = Convert.ToDecimal(item.rojo);
-            decimal verde = Convert.ToDecimal(item.verde);
-            decimal amarillo = Convert.ToDecimal(item.amarillo);
-            decimal target = Convert.ToDecimal(item.target);
-            decimal obtenido = Convert.ToDecimal(item.conseguido);
-            //---------------------------------------------------
-            int resultadoRojo = Convert.ToInt32((rojo / target) * 100);
-            int resultadoVerde = Convert.ToInt32((verde / target) * 100);
-            int resultadoAmarillo = Convert.ToInt32((amarillo / target) * 100);
-            int resultadoObtenido = Convert.ToInt32((obtenido / target) * 100);
-            //---CALCULO DE LOS PORCENTAJES
-            int totalPorcentaje = Convert.ToInt32(rojo + amarillo + verde);
-            int porcentajeRojo = Convert.ToInt32((rojo / totalPorcentaje) * 100);
-            int porcentajeAmarillo = Convert.ToInt32((amarillo / totalPorcentaje) * 100);
-            int porcentajeVerde = Convert.ToInt32((verde / totalPorcentaje) * 100);
-            //----------------------------------------------------
-            //if (resultadoObtenido <= resultadoRojo && resultadoObtenido < resultadoAmarillo)
-            if (resultadoObtenido <= resultadoRojo)
+        <div class="row">
+            <h2>Perspectiva Clientes</h2>
+            @foreach (var item in Model.Where(w => w.IDPerspectiva == 3))
             {
-                bRojo = true;
-            }
-            if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoVerde)
-            {
-                bAmarillo = true;
-            }
-            if (resultadoObtenido >= resultadoVerde)
-            {
-                bVerde = true;
-            }
-            if (bRojo)
-            {
-                clase = "btn-danger";
-            }
-            if (bAmarillo)
-            {
-                clase = "btn-warning";
-            }
-            if (bVerde)
-            {
-                clase = "btn-success";
-            }
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="col-md-4" id="@Clientes">
-                            <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" data-html="true"
-                                 title="<div class='cuadroRojo'></div>rojo = @porcentajeRojo% <br> <div class='cuadroAmarillo'></div>amarillo = @porcentajeAmarillo% <br><div class='cuadroVerde'></div> verde = @porcentajeVerde%">
+                Zentrix.Models.BD.SAINTPALLEntities1 db = new Zentrix.Models.BD.SAINTPALLEntities1();
+
+                //            select top 5000 SAFACT.Descrip,SAFACT.CodClie,SAITEMFAC.Descrip1,SAITEMFAC.FechaE,SAITEMFAC.Cantidad,SAITEMFAC.CodItem
+                //from SAITEMFAC
+                //inner join SAFACT on SAFACT.NumeroD = SAITEMFAC.NumeroD--descrip 1 FechaE Cantidad CodItem
+                //where SAITEMFAC.CodItem = '3M001' and SAITEMFAC.FechaE between '2016-01-01' and '2016-01-30'
+                //a.Start.Date >= startDate.Date && a.Start.Date <= endDate
+                //2016-01-01' and '2016-01-30
+                var datos = (from SAITEMFAC in db.SAITEMFAC
+                             join SAFACT in db.SAFACT on SAITEMFAC.NumeroD equals SAFACT.NumeroD
+                             where SAITEMFAC.CodItem == item.CodItem && SAITEMFAC.Periodo == item.fecha
+                             select new
+                             {
+                                 Descrip = SAFACT.Descrip,
+                                 CodClie = SAFACT.CodClie,
+                                 Descrip1 = SAITEMFAC.Descrip1,
+                                 FechaE = SAITEMFAC.FechaE,
+                                 Cantidad = SAITEMFAC.Cantidad,
+                                 CodItem = SAITEMFAC.CodItem
+                             }).ToList().OrderBy(o => o.Descrip);
+
+                Zentrix.Helper.Helper Duplicados = new Zentrix.Helper.Helper();
+
+                List<Zentrix.Helper.ClientesDuplicados> lista = new List<Zentrix.Helper.ClientesDuplicados>();
+
+                lista.AddRange(Duplicados.clienteDuplicadoMes(item.CodItem, item.FechaInicio, item.FechaFin2));
+                //string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["Saint"].ToString();
+                //using (System.Data.SqlClient.SqlConnection cn = new System.Data.SqlClient.SqlConnection(conexion))
+                //{
+                //    cn.Open();
+
+                //    System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("getCliente", cn);
+                //    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                //    cmd.Parameters.AddWithValue("@Periodo", item.fecha);
+                //    cmd.Parameters.AddWithValue("@CodItem", item.CodItem);
+                //    System.Data.SqlClient.SqlDataReader dr = cmd.ExecuteReader();
+
+                //    while (dr.Read())
+                //    {
+                //        lista.Add(new Zentrix.Helper.ClientesDuplicados
+                //        {
+                //            decripcion = dr["Descrip"].ToString(),
+                //            cantidad = dr["cantidad"].ToString(),
+                //        });
+                //    }
+
+                //}
+
+                string Clientes = "Clientes" + count;
+                string ClientesFrecuencia = "ClientesFrecuencia" + count;
+                bool bAmarillo = false;
+                bool bVerde = false;
+                bool bRojo = false;
+                string clase = "btn-primary";
+                //campo x 100 / target
+                decimal rojo = Convert.ToDecimal(item.rojo);
+                decimal verde = Convert.ToDecimal(item.verde);
+                decimal amarillo = Convert.ToDecimal(item.amarillo);
+                decimal target = Convert.ToDecimal(item.target);
+                decimal obtenido = Convert.ToDecimal(item.conseguido);
+                //---------------------------------------------------
+                int resultadoRojo = Convert.ToInt32((rojo / target) * 100);
+                int resultadoVerde = Convert.ToInt32((verde / target) * 100);
+                int resultadoAmarillo = Convert.ToInt32((amarillo / target) * 100);
+                int resultadoObtenido = Convert.ToInt32((obtenido / target) * 100);
+                //---CALCULO DE LOS PORCENTAJES
+                int totalPorcentaje = Convert.ToInt32(rojo + amarillo + verde);
+                int porcentajeRojo = Convert.ToInt32((rojo / totalPorcentaje) * 100);
+                int porcentajeAmarillo = Convert.ToInt32((amarillo / totalPorcentaje) * 100);
+                int porcentajeVerde = Convert.ToInt32((verde / totalPorcentaje) * 100);
+                //----------------------------------------------------
+                //if (resultadoObtenido <= resultadoRojo && resultadoObtenido < resultadoAmarillo)
+                if (resultadoObtenido <= resultadoRojo)
+                {
+                    bRojo = true;
+                }
+                if (resultadoObtenido >= resultadoRojo && resultadoObtenido < resultadoVerde)
+                {
+                    bAmarillo = true;
+                }
+                if (resultadoObtenido >= resultadoVerde)
+                {
+                    bVerde = true;
+                }
+                if (bRojo)
+                {
+                    clase = "btn-danger";
+                }
+                if (bAmarillo)
+                {
+                    clase = "btn-warning";
+                }
+                if (bVerde)
+                {
+                    clase = "btn-success";
+                }
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-4" id="@Clientes">
+                                <div class="existingDivWithClass" data-toggle="tooltip" data-placement="left" data-html="true"
+                                     title="<div class='cuadroRojo'></div>rojo = @porcentajeRojo% <br> <div class='cuadroAmarillo'></div>amarillo = @porcentajeAmarillo% <br><div class='cuadroVerde'></div> verde = @porcentajeVerde%">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <h4>Indicador @item.nombre</h4>
-                    <ul>
-                        <li><div class="cuadroRojo"></div>rojo =@rojo.ToString("N0")</li>
-                        <li><div class="cuadroAmarillo"></div>amarillo =@amarillo.ToString("N0")</li>
-                        <li><div class="cuadroVerde"></div>verde = @verde.ToString("N0")</li>
-                        <li>target = @target.ToString("N0")</li>
-                        <li>obtenido =@obtenido.ToString("N0")</li>
-                    </ul>
-                    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseFrecuencia" aria-expanded="false" aria-controls="collapseExample">
-                        Frecuencia de clientes
-                    </a>
-                    <div class="collapse" id="collapseFrecuencia">
-                        <div class="well">
-                            <table class="table table-condensed">
-                                <tr>
-                                    <th>Cliente</th>
-                                    <th>Cantidad</th>
-                                </tr>
-                                @foreach (var cliente in lista)
-                                {
-                                    <tr>
-                                        <td>@cliente.decripcion</td>
-                                        <td>@cliente.cantidad</td>
-                                    </tr>
-                                }
-                            </table>
+                        <h4>Indicador @item.nombre</h4>
+                        <ul>
+                            <li><div class="cuadroRojo"></div>rojo =@rojo.ToString("N0")</li>
+                            <li><div class="cuadroAmarillo"></div>amarillo =@amarillo.ToString("N0")</li>
+                            <li><div class="cuadroVerde"></div>verde = @verde.ToString("N0")</li>
+                            <li>target = @target.ToString("N0")</li>
+                            <li>obtenido =@obtenido.ToString("N0")</li>
+                        </ul>
+                        <div class="text-center">
+                            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#@ClientesFrecuencia" aria-expanded="false" aria-controls="collapseExample">
+                                Frecuencia de clientes
+                            </a>
                         </div>
-                    </div>
+                            <div class="collapse" id="@ClientesFrecuencia">
+                                <div class="well">
+                                    <table class="table table-condensed">
+                                        <tr>
+                                            <th>Cliente</th>
+                                            <th>Cantidad</th>
+                                        </tr>
+                                        @foreach (var cliente in lista)
+                                        {
+                                            <tr>
+                                                <td>@cliente.decripcion</td>
+                                                <td>@cliente.cantidad</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-            </div>
-            <script>
-                var gauge = new FlexGauge({
-                    appendTo: '#@Clientes',
-                    dialValue: true,
-                    styleArcFg: '@clase',
-                    styleSrc: 'background-color',
-                    dialClass: 'existingDivWithClass',
-                    arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
-                    arcFillTotal: 100//% total esto se extrae desde la base de datos
-                });
-                $(function () {
-                    $('[data-toggle="tooltip"]').tooltip()
-                })
-            </script>
-                                    count++;
-                                }
+                <script>
+                    var gauge = new FlexGauge({
+                        appendTo: '#@Clientes',
+                        dialValue: true,
+                        styleArcFg: '@clase',
+                        styleSrc: 'background-color',
+                        dialClass: 'existingDivWithClass',
+                        arcFillInt: @resultadoObtenido,//% obtenido esto se extrae desde la base de datos
+                        arcFillTotal: 100//% total esto se extrae desde la base de datos
+                    });
+                    $(function () {
+                        $('[data-toggle="tooltip"]').tooltip()
+                    })
+                </script>
+                count++;
+            }
+        </div>
     </div>
-                                }
+}
 @if (boolInterna)
 {
     <div class="col-sm-12">
         <h2>Perspectiva Interna</h2>
         @foreach (var item in Model.Where(w => w.IDPerspectiva == 2))
         {
+            Zentrix.Helper.Helper Duplicados = new Zentrix.Helper.Helper();
+            List<Zentrix.Helper.EstadisticaVendedores> lista = new List<Zentrix.Helper.EstadisticaVendedores>();
+
+            lista.AddRange(Duplicados.VendedoresEstadistica(item.CodItem, item.FechaInicio, item.FechaFin2));
             string Interna = "Interna" + count;
+            string InternaFrecuencia = "InternaFrecuencia" + count;
             bool bAmarillo = false;
             bool bVerde = false;
             bool bRojo = false;
@@ -390,6 +400,29 @@
                         <li>target = @target.ToString("N0")</li>
                         <li>obtenido =@obtenido.ToString("N0")</li>
                     </ul>
+                    <div class="text-center">
+                        <a class="btn btn-primary text-center" role="button" data-toggle="collapse" href="#@InternaFrecuencia" aria-expanded="false" aria-controls="collapseExample">
+                            Frecuencia de Vendedores
+                        </a>
+                    </div>
+                        <div class="collapse" id="@InternaFrecuencia">
+                            <div class="well">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <th>Vendedor</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                    @foreach (var vendedor in lista)
+                                {
+                                        <tr>
+                                            <td>@vendedor.Usuario</td>
+                                            <td>@vendedor.cantidad</td>
+                                        </tr>
+                                }
+                                </table>
+                            </div>
+                        </div>
+
                 </div>
             </div>
             <script>

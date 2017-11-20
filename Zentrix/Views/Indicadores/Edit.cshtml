@@ -4,6 +4,7 @@
     SelectList DropPerpestiva = ViewBag.Perpestiva;
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    SelectList marca = ViewBag.Marca;
 }
 
 <h2>Edit</h2>
@@ -18,7 +19,18 @@
         <hr />
         @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
         @Html.HiddenFor(model => model.IDIndicador)
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Marca</label>
+                @Html.DropDownList("Proveedor1", marca, "Seleccionar", new { @class = "form-control select2-allow-clear" })
+            </div>
 
+            <div class="col-sm-3">
+                <label>Producto</label>
+                @Html.DropDownList("DropProducto", new SelectList(string.Empty, "CodProd", "Descrip"), "Seleccionar un producto", new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
         <div class="form-group">
             <label class = "control-label col-md-2">Nombre del indicador</label>
             <div class="col-md-10">
@@ -67,18 +79,19 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
         <div class="form-group">
-            @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Fecha inicio</label>
             <div class="input-group date col-md-10" id="DivDatapiker">
                 @*<input type="text" name="fecha" class="form-control">*@
                 @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Fecha Fin</label>
+            <div class="input-group date col-md-10" id="DivDatapiker">
+                @*<input type="text" name="fecha" class="form-control">*@
+                @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
@@ -109,5 +122,25 @@
         format: "mm/yyyy",
         minViewMode: 1
     });
+    $("#Proveedor1").change(function () {
+        $("#DropProducto").empty();
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("GetProdutos")', // we are calling json method
+            dataType: 'json',
+            data: { id: $("#Proveedor1 option:selected").text() },
+            success: function (states) {
+                // states contains the JSON formatted list
+                // of states passed from the controller
+                $.each(states, function (i, state) {
+                    $("#DropProducto").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                }); // here we are adding option for States
+            },
+            error: function (ex) {
+                alert('Failed to retrieve states.' + ex);
+            }
+        });
+        return false;
+    })
 </script>
 

@@ -58,7 +58,11 @@ namespace Zentrix.Controllers
             {
                 string anio = "2016";
                 string mes = indicador.fecha.Split('/').First();
-                string periodo = anio + mes;
+                string periodoInicio = anio + mes;
+                //PERIODO FINAL------------------------------------
+                string mesFin = indicador.fechaFin.Split('/').First();
+                string periodoFinal = anio + mesFin;
+                //-------------------------------------------------
                 Indicador ind = new Indicador();
                 ind.nombre = indicador.nombre;
                 ind.objetivoEstrategico = indicador.objetivoEstrategico;
@@ -66,19 +70,26 @@ namespace Zentrix.Controllers
                 ind.rojo = indicador.rojo;
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
-                ind.fecha = periodo;
+                ind.fecha = periodoInicio;
+                ind.FechaFin = periodoFinal;
                 ind.CodItem = DropProducto;
+                //---------------------------------------------------
+                ind.FechaInicio = Convert.ToDateTime("01/" + mes + "/" + anio);
+                ind.FechaFin2 = Convert.ToDateTime("01/" + mesFin + "/" + anio);
+                //---------------------------------------------------
                 switch (IDPerspectiva)
                 {
                     case "1":
-                        ind.conseguido = help.GetResult(periodo, DropProducto);
+                        //FINANCIERA
+                        ind.conseguido = help.GetResultSemestral(ind.FechaInicio, ind.FechaFin2, DropProducto);
                         break;
                     case "2":
+                        //INTERNA
+                        ind.conseguido = help.NumeroVentasxVendedor(DropProducto, ind.FechaInicio, ind.FechaFin2);
                         break;
                     case "3":
-                        List<ClientesDuplicados> lista = new List<ClientesDuplicados>();
-                        lista.AddRange(help.clienteDuplicadoMes(DropProducto, periodo));
-                        ind.conseguido = lista.Count;
+                        //CLIENTE
+                        ind.conseguido = help.CantidadCliente(DropProducto, ind.FechaInicio, ind.FechaFin2);
                         break;
                     case "4":
                         break;
@@ -97,6 +108,7 @@ namespace Zentrix.Controllers
         public ActionResult Edit(int? id)
         {
             Perpestiva();
+            marca();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,22 +122,49 @@ namespace Zentrix.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ViewIndicadorPerspectiva indicador, string IDPerspectiva)
+        public ActionResult Edit(ViewIndicadorPerspectiva indicador, string IDPerspectiva, string DropProducto)
         {
             if (ModelState.IsValid)
             {
-                string anio = indicador.fecha.Split('/').Last();
-                string mes = indicador.fecha.Split('/').First();
-                string periodo = anio + mes;
                 var ind = db.Indicador.Find(indicador.IDIndicador);
+                string anio = "2016";
+                string mes = indicador.fecha.Split('/').First();
+                string periodoInicio = anio + mes;
+                //PERIODO FINAL------------------------------------
+                string mesFin = indicador.fechaFin.Split('/').First();
+                string periodoFinal = anio + mesFin;
+                //-------------------------------------------------
                 ind.nombre = indicador.nombre;
                 ind.objetivoEstrategico = indicador.objetivoEstrategico;
                 ind.target = indicador.target;
                 ind.rojo = indicador.rojo;
                 ind.amarillo = indicador.amarillo;
                 ind.verde = indicador.verde;
-                ind.fecha = indicador.fecha;
-                ind.conseguido = help.GetResult(periodo,"");
+                ind.fecha = periodoInicio;
+                ind.FechaFin = periodoFinal;
+                ind.CodItem = DropProducto;
+                //---------------------------------------------------
+                ind.FechaInicio = Convert.ToDateTime("01/" + mes + "/" + anio);
+                ind.FechaFin2 = Convert.ToDateTime("01/" + mesFin + "/" + anio);
+                //---------------------------------------------------
+                switch (IDPerspectiva)
+                {
+                    case "1":
+                        ind.conseguido = help.GetResultSemestral(ind.FechaInicio, ind.FechaFin2, DropProducto);
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        List<ClientesDuplicados> lista = new List<ClientesDuplicados>();
+                        lista.AddRange(help.clienteDuplicadoMes(DropProducto, ind.FechaInicio, ind.FechaFin2));
+                        ind.conseguido = lista.Count;
+                        break;
+                    case "4":
+                        break;
+                    default:
+                        break;
+                }
+
                 ind.IDPerspectiva = Convert.ToInt32(IDPerspectiva);
                 db.SaveChanges();
                 return RedirectToAction("Index");

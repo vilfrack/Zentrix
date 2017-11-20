@@ -44,6 +44,36 @@ namespace Zentrix.Helper
             //}
             return total;
         }
+        public decimal? GetResultSemestral(DateTime? fechaInicio, DateTime? fechaFin, string CodProd)
+        {
+            decimal? total = default(decimal);
+            int Unidades = 0;
+            var result = (from SAEPRD in db.SAEPRD
+                          join SAPROD in db.SAPROD on SAEPRD.CodProd equals SAPROD.CodProd
+                          where SAEPRD.Fecha >= fechaInicio && SAEPRD.Fecha <= fechaFin && SAEPRD.CodProd == CodProd
+                          select new
+                          {
+                              CntVentas = SAEPRD.CntVentas,
+                              Precio3 = SAPROD.Precio3,
+                              CantidadInicial = SAEPRD.CntInicial,
+                              CantidadFinal =  SAEPRD.ExFinal
+                          }).ToList();
+
+            foreach (var item in result)
+            {
+                decimal? sub = item.CntVentas * item.Precio3;
+                total = total + sub;
+                Unidades = Unidades + Convert.ToInt32(item.CntVentas);
+            }
+            //total = result.CntVentas * result.Precio3;
+            ResultSemestral resultSemestral = new ResultSemestral();
+
+            resultSemestral.total = total;
+            resultSemestral.Unidades = Unidades;
+
+            return Unidades;
+        }
+
         public List<object> GetProducto() {
             /*
              SELECT SAEPRD.CntCompra, SAEPRD.CntVentas,
@@ -78,7 +108,7 @@ namespace Zentrix.Helper
             ListObject.AddRange(result);
             return ListObject;
         }
-        public List<ClientesDuplicados> clienteDuplicadoMes(string codigo,string periodo) {
+        public List<ClientesDuplicados> clienteDuplicadoMes(string codigo, DateTime? fechaInicio, DateTime? fechaFin) {
             List<ClientesDuplicados> lista = new List<ClientesDuplicados>();
 
             string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["Saint"].ToString();
@@ -90,7 +120,8 @@ namespace Zentrix.Helper
                 System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("getCliente", cn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@Periodo", periodo);
+                cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@fechaFin", fechaFin);
                 cmd.Parameters.AddWithValue("@CodItem", codigo);
                 System.Data.SqlClient.SqlDataReader dr = cmd.ExecuteReader();
 
@@ -107,5 +138,74 @@ namespace Zentrix.Helper
 
             return lista;
         }
+        public int? CantidadCliente(string codigoItem, DateTime? fechaInicio, DateTime? fechaFin)
+        {
+            /*
+             	SELECT SAFACT.Descrip, count(*) as cantidad
+	            from SAITEMFAC 
+	            inner join SAFACT on SAFACT.NumeroD = SAITEMFAC.NumeroD --descrip 1 FechaE Cantidad CodItem
+	            where SAITEMFAC.CodItem=@CodItem and  SAITEMFAC.FechaE between @fechaInicio and @fechaFin
+	            GROUP BY SAFACT.Descrip
+	            HAVING count(*) > 1
+             */
+            var result = (from SAITEMFAC in db.SAITEMFAC
+                          join SAFACT in db.SAFACT on SAITEMFAC.NumeroD equals SAFACT.NumeroD
+                          where SAITEMFAC.FechaE >= fechaInicio && SAITEMFAC.FechaE <= fechaFin && SAITEMFAC.CodItem == codigoItem
+                          select new
+                          {
+                              Descrip = SAFACT.Descrip
+                          }).Count();
+            return result;
+        }
+        public List<EstadisticaVendedores> VendedoresEstadistica(string codigoItem, DateTime? fechaInicio, DateTime? fechaFin)
+        {
+            List<EstadisticaVendedores> lista = new List<EstadisticaVendedores>();
+            string conexion = System.Configuration.ConfigurationManager.ConnectionStrings["Saint"].ToString();
+            using (System.Data.SqlClient.SqlConnection cn = new System.Data.SqlClient.SqlConnection(conexion))
+            {
+                cn.Open();
+
+                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("getVendedor", cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandTimeout = 600;
+                cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@fechaFin", fechaFin);
+                cmd.Parameters.AddWithValue("@CodItem", codigoItem);
+                System.Data.SqlClient.SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    lista.Add(new Zentrix.Helper.EstadisticaVendedores
+                    {
+                        Usuario = dr["CodUsua"].ToString(),
+                        cantidad = dr["cantidad"].ToString(),
+                    });
+                }
+
+            }
+
+            return lista;
+        }
+        public int? NumeroVentasxVendedor(string codigoItem, DateTime? fechaInicio, DateTime? fechaFin) {
+            /*
+             	SELECT SAFACT.CodUsua, SAITEMFAC.CodItem,SAITEMFAC.FechaE
+	            from SAITEMFAC
+	            inner join SAFACT on SAFACT.NumeroD = SAITEMFAC.NumeroD --descrip 1 FechaE Cantidad CodItem
+	            where SAITEMFAC.CodItem='3M001' and  SAITEMFAC.FechaE between '2016-01-01' and '2016-07-01'
+             */
+            var result = (from SAITEMFAC in db.SAITEMFAC
+                          join SAFACT in db.SAFACT on SAITEMFAC.NumeroD equals SAFACT.NumeroD
+                          where SAITEMFAC.FechaE >= fechaInicio && SAITEMFAC.FechaE <= fechaFin && SAITEMFAC.CodItem == codigoItem
+                          select new
+                          {
+                              Usuario = SAFACT.CodUsua
+                          }).Count();
+            return result;
+        }
+    }
+    public class ResultSemestral
+    {
+        public decimal? total { get; set; }
+        public decimal Unidades { get; set; }
     }
 }

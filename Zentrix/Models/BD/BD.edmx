@@ -214,6 +214,9 @@ warning 6002: The table/view 'SAINTPALL.dbo.ATAProdPall' does not have a primary
           <Property Name="conseguido" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IDPerspectiva" Type="int" />
           <Property Name="CodItem" Type="varchar" MaxLength="50" />
+          <Property Name="FechaFin" Type="varchar" MaxLength="50" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFin2" Type="date" />
         </EntityType>
         <EntityType Name="LogLockReg">
           <Key>
@@ -1828,6 +1831,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.SACORTEZ' does not have a primary ke
           <Property Name="CntInicial" Type="decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="ExFinal" Type="decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="CostoFinal" Type="decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
         </EntityType>
         <EntityType Name="SAEPRV">
           <Key>
@@ -8970,6 +8974,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <Property Name="CntInicial" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="ExFinal" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
           <Property Name="CostoFinal" Type="Decimal" Precision="28" Scale="3" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="SAEPRV">
           <Key>
@@ -14089,6 +14094,9 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <Property Name="IDPerspectiva" Type="Int32" />
           <Property Name="CodItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MasterPerspectivaIndicador" Relationship="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" FromRole="Indicador" ToRole="MasterPerspectivaIndicador" />
+          <Property Name="FechaFin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFin2" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_MasterPerspectivaIndicador_Indicador">
           <End Type="SAINTPALLModel.Indicador" Role="Indicador" Multiplicity="0..1" />
@@ -15309,6 +15317,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <EntitySetMapping Name="SAEPRD">
             <EntityTypeMapping TypeName="SAINTPALLModel.SAEPRD">
               <MappingFragment StoreEntitySet="SAEPRD">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="CodProd" ColumnName="CodProd" />
                 <ScalarProperty Name="Periodo" ColumnName="Periodo" />
                 <ScalarProperty Name="ExInicial" ColumnName="ExInicial" />
@@ -19753,6 +19762,9 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <EntitySetMapping Name="Indicador">
             <EntityTypeMapping TypeName="SAINTPALLModel.Indicador">
               <MappingFragment StoreEntitySet="Indicador">
+                <ScalarProperty Name="FechaFin2" ColumnName="FechaFin2" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
                 <ScalarProperty Name="CodItem" ColumnName="CodItem" />
                 <ScalarProperty Name="IDPerspectiva" ColumnName="IDPerspectiva" />
                 <ScalarProperty Name="conseguido" ColumnName="conseguido" />

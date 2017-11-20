@@ -29,5 +29,6 @@ namespace Zentrix.Models.BD
         public decimal CntInicial { get; set; }
         public decimal ExFinal { get; set; }
         public decimal CostoFinal { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
     }
 }
