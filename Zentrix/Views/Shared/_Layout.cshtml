@@ -4,42 +4,78 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img src="~/Content/Logo2.png" width="400" />
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Dashboard</title>
 
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    <li>@Html.ActionLink("Indicador financiero", "Index", "Indicadores")</li>
-                    <li>@Html.ActionLink("Cuadro de Mando", "Index", "CMI")</li>
+    @Styles.Render("~/Content/css")
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>LT</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b>LTE</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <div class="navbar-custom-menu">
+
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Alexander Pierce</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Logout</a>
+                    </div>
+                </div>
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">Menu</li>
+                    <li >
+                        <a href="~/CMI/Index">
+                            <i class="fa fa-dashboard"></i> <span>Cuadro de Mando</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="~/Indicadores/Index">
+                            <i class="fa fa-edit"></i> <span>Indicadores</span>
+                        </a>
+                    </li>
+
+                    <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Reportes</span></a></li>
+
                 </ul>
-                @Html.Partial("_LoginPartial")
+            </section>
+
+        </aside>
+
+        <div class="content-wrapper">
+            <div style="margin-left:5px;">
+                @RenderBody()
             </div>
+
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
+        <footer class="main-footer">
 
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

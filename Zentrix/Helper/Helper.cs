@@ -119,7 +119,7 @@ namespace Zentrix.Helper
 
                 System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("getCliente", cn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
+                cmd.CommandTimeout = 900;
                 cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio);
                 cmd.Parameters.AddWithValue("@fechaFin", fechaFin);
                 cmd.Parameters.AddWithValue("@CodItem", codigo);
@@ -142,7 +142,7 @@ namespace Zentrix.Helper
         {
             /*
              	SELECT SAFACT.Descrip, count(*) as cantidad
-	            from SAITEMFAC 
+	            from SAITEMFAC
 	            inner join SAFACT on SAFACT.NumeroD = SAITEMFAC.NumeroD --descrip 1 FechaE Cantidad CodItem
 	            where SAITEMFAC.CodItem=@CodItem and  SAITEMFAC.FechaE between @fechaInicio and @fechaFin
 	            GROUP BY SAFACT.Descrip

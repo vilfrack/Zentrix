@@ -10,10 +10,13 @@
     bool boolInterna = Model.Where(w => w.IDPerspectiva == 2).Any();
     bool boolAprendizaje = Model.Where(w => w.IDPerspectiva == 4).Any();
 }
-<link rel="stylesheet" href="~/Content/tooltipster.bundle.css" />
+
+@*<link rel="stylesheet" href="~/Content/tooltipster.bundle.css" />*@
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/gauge/FlexGauge.js"></script>
 <script src="~/Scripts/tooltipster.bundle.js"></script>
+@*<script src="~/dist/js/adminlte.min.js"></script>*@
+
 
 
 <style>
@@ -26,15 +29,12 @@
         top: 100px;
         width: 250%;
     }
-
     .col-md-4 h4 {
         text-align: center;
     }
-
     .panel-body {
         padding-left: 15%;
     }
-
     .cuadroRojo {
         height: 8px;
         width: 8px;
@@ -43,7 +43,6 @@
         margin-right: 5px;
         border-radius: 100px;
     }
-
     .cuadroAmarillo {
         height: 8px;
         width: 8px;
@@ -52,7 +51,6 @@
         margin-right: 5px;
         border-radius: 100px;
     }
-
     .cuadroVerde {
         height: 8px;
         width: 8px;
@@ -61,20 +59,22 @@
         margin-right: 5px;
         border-radius: 100px;
     }
-
     ul {
         list-style: none;
     }
 </style>
-@if (boolFinanciera)
-{
-    <div class="col-sm-12">
-        <div class="row">
-            <ul class="list-inline">
-                <li><h2>Perspectiva financiera</h2></li>
-                <li><a href="~/FinancieraChart/IndicadorFinanciera/" class="btn btn-primary"><span class="glyphicon glyphicon-signal"></span> Visualizar en barra</a></li>
-            </ul>
-            @foreach (var item in Model.Where(w => w.IDPerspectiva == 1))
+<div style="margin-left:10px;">
+
+
+    @if (boolFinanciera)
+    {
+        <div class="col-sm-12" style="margin-left:3px;">
+            <div class="row">
+                <ul class="list-inline">
+                    <li><h2>Perspectiva financiera</h2></li>
+                    <li><a href="~/FinancieraChart/IndicadorFinanciera/" class="btn btn-primary"><span class="glyphicon glyphicon-signal"></span> Visualizar en barra</a></li>
+                </ul>
+                @foreach (var item in Model.Where(w => w.IDPerspectiva == 1))
             {
                 string Fincanciera = "Financiera" + count;
                 bool bAmarillo = false;
@@ -159,18 +159,18 @@
                 </script>
                 count++;
             }
+            </div>
         </div>
-    </div>
-}
-@if (boolCliente)
-{
-    <div class="col-sm-12">
-        <div class="row">
-            <ul class="list-inline">
-                <li><h2>Perspectiva Clientes</h2></li>
-                <li><a href="~/FinancieraChart/IndicadorCliente/" class="btn btn-primary"><span class="glyphicon glyphicon-signal"></span> Visualizar en barra</a></li>
-            </ul>
-            @foreach (var item in Model.Where(w => w.IDPerspectiva == 3))
+    }
+    @if (boolCliente)
+    {
+        <div class="col-sm-12" style="margin-left:3px;">
+            <div class="row">
+                <ul class="list-inline">
+                    <li><h2>Perspectiva Clientes</h2></li>
+                    <li><a href="~/FinancieraChart/IndicadorCliente/" class="btn btn-primary"><span class="glyphicon glyphicon-signal"></span> Visualizar en barra</a></li>
+                </ul>
+                @foreach (var item in Model.Where(w => w.IDPerspectiva == 3))
             {
                 Zentrix.Models.BD.SAINTPALLEntities1 db = new Zentrix.Models.BD.SAINTPALLEntities1();
 
@@ -291,24 +291,24 @@
                                 Frecuencia de clientes
                             </a>
                         </div>
-                            <div class="collapse" id="@ClientesFrecuencia">
-                                <div class="well">
-                                    <table class="table table-condensed">
-                                        <tr>
-                                            <th>Cliente</th>
-                                            <th>Cantidad</th>
-                                        </tr>
-                                        @foreach (var cliente in lista)
+                        <div class="collapse" id="@ClientesFrecuencia">
+                            <div class="well">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                    @foreach (var cliente in lista)
                                         {
-                                            <tr>
-                                                <td>@cliente.decripcion</td>
-                                                <td>@cliente.cantidad</td>
-                                            </tr>
+                                <tr>
+                                    <td>@cliente.decripcion</td>
+                                    <td>@cliente.cantidad</td>
+                                </tr>
                                         }
-                                    </table>
-                                </div>
+                                </table>
                             </div>
                         </div>
+                    </div>
                 </div>
                 <script>
                     var gauge = new FlexGauge({
@@ -326,17 +326,17 @@
                 </script>
                 count++;
             }
+            </div>
         </div>
-    </div>
-}
-@if (boolInterna)
-{
-    <div class="col-sm-12">
-        <ul class="list-inline">
-            <li><h2>Perspectiva Interna</h2></li>
-            <li><a href="~/FinancieraChart/IndicadorInterno/" class="btn btn-primary"><span class="glyphicon glyphicon-signal"></span> Visualizar en barra</a></li>
-        </ul>
-        @foreach (var item in Model.Where(w => w.IDPerspectiva == 2))
+    }
+    @if (boolInterna)
+    {
+        <div class="col-sm-12">
+            <ul class="list-inline">
+                <li><h2>Perspectiva Interna</h2></li>
+                <li><a href="~/FinancieraChart/IndicadorInterno/" class="btn btn-primary"><span class="glyphicon glyphicon-signal"></span> Visualizar en barra</a></li>
+            </ul>
+            @foreach (var item in Model.Where(w => w.IDPerspectiva == 2))
         {
             Zentrix.Helper.Helper Duplicados = new Zentrix.Helper.Helper();
             List<Zentrix.Helper.EstadisticaVendedores> lista = new List<Zentrix.Helper.EstadisticaVendedores>();
@@ -413,23 +413,23 @@
                             Frecuencia de Vendedores
                         </a>
                     </div>
-                        <div class="collapse" id="@InternaFrecuencia">
-                            <div class="well">
-                                <table class="table table-condensed">
-                                    <tr>
-                                        <th>Vendedor</th>
-                                        <th>Cantidad</th>
-                                    </tr>
-                                    @foreach (var vendedor in lista)
+                    <div class="collapse" id="@InternaFrecuencia">
+                        <div class="well">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <th>Vendedor</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                                @foreach (var vendedor in lista)
                                 {
-                                        <tr>
-                                            <td>@vendedor.Usuario</td>
-                                            <td>@vendedor.cantidad</td>
-                                        </tr>
+                            <tr>
+                                <td>@vendedor.Usuario</td>
+                                <td>@vendedor.cantidad</td>
+                            </tr>
                                 }
-                                </table>
-                            </div>
+                            </table>
                         </div>
+                    </div>
 
                 </div>
             </div>
@@ -449,6 +449,7 @@
             </script>
             count++;
         }
-    </div>
-}
+        </div>
+    }
+</div>
 

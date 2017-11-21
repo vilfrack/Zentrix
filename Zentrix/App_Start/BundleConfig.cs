@@ -25,8 +25,10 @@ namespace Zentrix
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-
-                      "~/Content/site.css"));
+                      "~/bower_components/font-awesome/css/font-awesome.min.css",
+                      //"~/bower_components/Ionicons/css/ionicons.min.css",
+                      "~/dist/css/AdminLTE.css",
+                      "~/dist/css/skins/_all-skins.min.css"));
 
             //bundles.Add(new StyleBundle("~/Content/DatepickerCss").Include(
             //         "~/Content/bootstrap-datepicker.css"));
@@ -35,6 +37,8 @@ namespace Zentrix
 
             bundles.Add(new ScriptBundle("~/bundles/DataPikerJs").Include(
                 "~/Scripts/bootstrap-datepicker.js").IncludeDirectory("~/Scripts", ".js"));
+
+            //<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
         }
     }
