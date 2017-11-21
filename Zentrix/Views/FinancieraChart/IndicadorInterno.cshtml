@@ -11,43 +11,159 @@
     <li><a href="~/CMI">Cuadro de mando</a></li>
     <li class="active">Indicador Cliente</li>
 </ol>
+<button id="download-pdf" class="btn btn-default">
+    <span class="fa fa-book" aria-hidden="true" style="margin-right:10px;"></span>Descargar en PDF
+</button>
+<script src="~/Scripts/jspdf.min.js"></script>
 <script src="~/Scripts/Chart.js"></script>
-@foreach (var item in Model)
-{
-    <div class="col-sm-12">
+<div id="reportPage" style="height:900px;">
+    @foreach (var item in Model)
+    {
+        string Financiero = "Financiero" + count;
+        <div class="col-sm-12">
 
-        <div class="col-md-4">
-            <canvas id="@count" width="500" height="500"></canvas>
+            <div class="col-md-4">
+                <canvas id="@Financiero" width="500" height="500"></canvas>
+            </div>
+
         </div>
+        <script>
 
-    </div>
-    <script>
-
-                new Chart(document.getElementById("@count"), {
-                    type: 'bar',
-                    data: {
-                        labels: ["@item.FechaInicio.Value.ToShortDateString() - @item.FechaFin2.Value.ToShortDateString()"],
-                        datasets: [
-                          {
-                              label: "Target",
-                              backgroundColor: "#3e95cd",
-                              data: [@item.target]
-                          }, {
-                              label: "Conseguido",
-                              backgroundColor: "#8e5ea2",
-                              data: [@item.conseguido]
-                          }
-                        ]
-                    },
-                    options: {
-                        title: {
-                            display: true,
-                            text: '@item.nombre'
-                        }
+            new Chart(document.getElementById("@Financiero"), {
+                type: 'bar',
+                data: {
+                    labels: ["@item.FechaInicio.Value.ToShortDateString() - @item.FechaFin2.Value.ToShortDateString()"],
+                    datasets: [
+                      {
+                          label: "Target",
+                          backgroundColor: "#3e95cd",
+                          data: [@item.target]
+                      }, {
+                          label: "Conseguido",
+                          backgroundColor: "#8e5ea2",
+                          data: [@item.conseguido]
+                      }
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: '@item.nombre'
                     }
-                });
-    </script>
-    count++;
-}
+                }
+            });
 
+        </script>
+        count++;
+    }
+</div>
+
+    <script>
+        document.getElementById('download-pdf').addEventListener("click", downloadPDF);
+
+        //donwload pdf from original canvas
+        //function downloadPDF() {
+        //    alert('sd');
+        //    var canvas = document.querySelector('#Financiero0');
+        //    var canvas2 = document.querySelector('#Financiero1');
+        //    //creates image
+        //    var canvasImg = canvas.toDataURL("image/PNG", 1.0);
+        //    var canvasImg2 = canvas2.toDataURL("image/PNG", 1.0);
+        //    //creates PDF from img
+        //    var doc = new jsPDF('landscape');
+        //    doc.setFontSize(20);
+        //    doc.text(15, 15, "Cool Chart");
+        //    //doc.addImage(canvasImg, 'PNG', EJE-X, EJE-Y, ANCHO, ALTO);
+        //    doc.addImage(canvasImg, 'PNG', 10, 20, 80, 50);
+        //    doc.addImage(canvasImg2, 'PNG', 50, 20, 80, 50);
+        //    doc.save('canvas.pdf');
+        //}
+        @*function downloadPDF() {
+        var count = @count;
+        var imgData;
+        for (var i = 0; i < count; i++)
+       {
+           var financiero = "Financiero" + i;
+           var canvas = document.querySelector('#'+financiero);
+           //creates image
+           var canvasImg = canvas.toDataURL("image/PNG", 1.0);
+           //creates PDF from img
+           var doc = new jsPDF('landscape');
+           doc.setFontSize(20);
+           doc.text(15, 15, "Cool Chart");
+            //doc.addImage(canvasImg, 'PNG', EJE-X, EJE-Y, ANCHO, ALTO);
+
+           doc.addImage(canvasImg, 'PNG', 10, 20, 80, 50);
+
+       }
+        doc.save('canvas.pdf');
+
+    }*@
+        function downloadPDF() {
+            // get size of report page
+            var reportPageHeight = $('#reportPage').innerHeight();
+            var reportPageWidth = $('#reportPage').innerWidth();
+
+            // create a new canvas object that we will populate with all other canvas objects
+            var pdfCanvas = $('<canvas />').attr({
+                id: "canvaspdf",
+                width: reportPageWidth,
+                height: reportPageHeight * 2
+            });
+            // keep track canvas position
+            var pdfctx = $(pdfCanvas)[0].getContext('2d');
+            var pdfctxX = 0;
+            var pdfctxY = 150;
+            var buffer = 100;
+
+            // for each chart.js chart
+            $("canvas").each(function (index) {
+                // get the chart height/width
+                var canvasHeight = $(this).innerHeight();
+                var canvasWidth = $(this).innerWidth();
+
+                // draw the chart into the new canvas
+                pdfctx.drawImage($(this)[0], pdfctxX, pdfctxY, canvasWidth, canvasHeight);
+                pdfctxX += canvasWidth + buffer;
+
+                // our report page is in a grid pattern so replicate that in the new canvas
+                if (index % 2 === 2) {
+                    console.log(index);
+                    pdfctxX = 0;
+                    pdfctxY += canvasHeight + buffer;
+                }
+            });
+
+            // create new pdf and add our new canvas as an image
+            var pdf = new jsPDF('l', 'pt', [reportPageWidth, reportPageHeight]);
+            //pdf.setFontSize(20);
+            pdf.text(380, 30, "Comercializadora de Productos y Servicios Zentrix C.A.").setFontSize(10);
+            pdf.text(520, 50, "Indicadores Internos").setFontSize(20);
+            pdf.addImage($(pdfCanvas)[0], 'PNG', 0, 0);
+
+            // download the pdf
+            pdf.save('Indicadores_Internos.pdf');
+        };
+        /*
+          var imgData = canvas.toDataURL('image/png');
+        var imgWidth = 210;
+        var pageHeight = 295;
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        var heightLeft = imgHeight;
+
+        var doc = new jsPDF('p', 'mm');
+        var position = 0;
+
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            doc.addPage();
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+        doc.save(filename + '.pdf');
+        */
+    </script>
 
