@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Zentrix.Models.BD.Indicador>
+@{
+    ViewBag.Title = "IndicadorFinanciera";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<h2>Indicador Financiero</h2>
+
+<ol class="breadcrumb">
+    <li><a href="~/CMI">Cuadro de mando</a></li>
+    <li class="active">Indicador Financiero</li>
+</ol>
+<script src="~/Scripts/Chart.js"></script>
+@foreach (var item in Model)
+{
+    <div class="col-sm-12">
+
+            <div class="col-md-4">
+                <canvas id="@count" width="500" height="500"></canvas>
+            </div>
+
+    </div>
+            <script>
+
+                new Chart(document.getElementById("@count"), {
+                    type: 'bar',
+                    data: {
+                        labels: ["@item.FechaInicio.Value.ToShortDateString() - @item.FechaFin2.Value.ToShortDateString()"],
+                        datasets: [
+                          {
+                              label: "Target",
+                              backgroundColor: "#3e95cd",
+                              data: [@item.target]
+                          }, {
+                              label: "Conseguido",
+                              backgroundColor: "#8e5ea2",
+                              data: [@item.conseguido]
+                          }
+                        ]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: '@item.nombre'
+                        }
+                    }
+                });
+            </script>
+            count++;
+            }
+

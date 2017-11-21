@@ -1,6 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="bootstrap.js" />
 /// <reference path="bootstrap-datepicker.js" />
+/// <reference path="chart.js" />
 /// <reference path="gauge/flexgauge.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />

@@ -171,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CMIController.cs" />
+    <Compile Include="Controllers\FinancieraChartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndicadoresController.cs" />
     <Compile Include="Controllers\IndicadorsController.cs" />
@@ -986,6 +987,7 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\gauge\FlexGauge.js" />
     <EntityDeploy Include="Models\BD\BD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1066,6 +1068,9 @@
     <Content Include="Views\Indicadores\Create.cshtml" />
     <Content Include="Views\Indicadores\Edit.cshtml" />
     <Content Include="Views\Indicadores\Delete.cshtml" />
+    <Content Include="Views\FinancieraChart\IndicadorFinanciera.cshtml" />
+    <Content Include="Views\FinancieraChart\IndicadorCliente.cshtml" />
+    <Content Include="Views\FinancieraChart\IndicadorInterno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
