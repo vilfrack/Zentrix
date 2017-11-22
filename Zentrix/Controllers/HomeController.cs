@@ -10,7 +10,11 @@ namespace Zentrix.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (!string.IsNullOrEmpty(Session["usuario"] as string))
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "Login");
         }
 
         public ActionResult About()

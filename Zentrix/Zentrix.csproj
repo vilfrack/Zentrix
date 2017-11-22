@@ -209,6 +209,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndicadoresController.cs" />
     <Compile Include="Controllers\IndicadorsController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -965,6 +966,9 @@
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BD\UserMsg.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BD\Usuario.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BD\X1ADMINISTACION4_STIB01.cs">
@@ -8178,6 +8182,7 @@
     <Content Include="Views\FinancieraChart\IndicadorFinanciera.cshtml" />
     <Content Include="Views\FinancieraChart\IndicadorCliente.cshtml" />
     <Content Include="Views\FinancieraChart\IndicadorInterno.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -73,6 +73,7 @@ namespace Zentrix.Controllers
                 ind.fecha = periodoInicio;
                 ind.FechaFin = periodoFinal;
                 ind.CodItem = DropProducto;
+                ind.NombreGerente = Session["NombreUsuario"].ToString();
                 //---------------------------------------------------
                 ind.FechaInicio = Convert.ToDateTime("01/" + mes + "/" + anio);
                 ind.FechaFin2 = Convert.ToDateTime("01/" + mesFin + "/" + anio);

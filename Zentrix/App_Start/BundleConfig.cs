@@ -26,7 +26,7 @@ namespace Zentrix
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/bower_components/font-awesome/css/font-awesome.min.css",
-                      //"~/bower_components/Ionicons/css/ionicons.min.css",
+                      "~/bower_components/Ionicons/css/ionicons.min.css",
                       "~/dist/css/AdminLTE.css",
                       "~/dist/css/skins/_all-skins.min.css"));
 

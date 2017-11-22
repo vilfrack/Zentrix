@@ -217,6 +217,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.ATAProdPall' does not have a primary
           <Property Name="FechaFin" Type="varchar" MaxLength="50" />
           <Property Name="FechaInicio" Type="date" />
           <Property Name="FechaFin2" Type="date" />
+          <Property Name="NombreGerente" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="LogLockReg">
           <Key>
@@ -5833,6 +5834,17 @@ warning 6002: The table/view 'SAINTPALL.dbo.TMP_TRANRESPROD' does not have a pri
           <Property Name="dtDate" Type="datetime" Nullable="false" />
           <Property Name="Status" Type="smallint" Nullable="false" />
         </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SAINTPALL.dbo.X1ADMINISTACION4_STIB01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="X1ADMINISTACION4_STIB01">
@@ -6410,6 +6422,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <EntitySet Name="SSUSRS" EntityType="Self.SSUSRS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMsg" EntityType="Self.UserMsg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATAProdPall" EntityType="Self.ATAProdPall" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ATAProdPall].[CodProd] AS [CodProd], 
@@ -14070,6 +14083,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
             <End Role="Indicador" EntitySet="Indicador" />
             <End Role="MasterPerspectivaIndicador" EntitySet="MasterPerspectivaIndicador" />
           </AssociationSet>
+          <EntitySet Name="Usuario" EntityType="SAINTPALLModel.Usuario" />
         </EntityContainer>
         <EntityType Name="Proveedor">
           <Key>
@@ -14097,6 +14111,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <Property Name="FechaFin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FechaInicio" Type="DateTime" Precision="0" />
           <Property Name="FechaFin2" Type="DateTime" Precision="0" />
+          <Property Name="NombreGerente" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_MasterPerspectivaIndicador_Indicador">
           <End Type="SAINTPALLModel.Indicador" Role="Indicador" Multiplicity="0..1" />
@@ -14110,6 +14125,17 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -19762,6 +19788,7 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
           <EntitySetMapping Name="Indicador">
             <EntityTypeMapping TypeName="SAINTPALLModel.Indicador">
               <MappingFragment StoreEntitySet="Indicador">
+                <ScalarProperty Name="NombreGerente" ColumnName="NombreGerente" />
                 <ScalarProperty Name="FechaFin2" ColumnName="FechaFin2" />
                 <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
                 <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
@@ -19776,6 +19803,18 @@ warning 6002: The table/view 'SAINTPALL.dbo.X1SISTEMAS2_STIB01' does not have a 
                 <ScalarProperty Name="objetivoEstrategico" ColumnName="objetivoEstrategico" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="IDIndicador" ColumnName="IDIndicador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="SAINTPALLModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

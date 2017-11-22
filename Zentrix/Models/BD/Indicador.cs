@@ -34,6 +34,7 @@ namespace Zentrix.Models.BD
         public string FechaFin { get; set; }
         public Nullable<System.DateTime> FechaInicio { get; set; }
         public Nullable<System.DateTime> FechaFin2 { get; set; }
+        public string NombreGerente { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MasterPerspectivaIndicador> MasterPerspectivaIndicador { get; set; }

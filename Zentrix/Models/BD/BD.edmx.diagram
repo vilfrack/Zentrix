@@ -264,6 +264,7 @@
         <EntityTypeShape EntityType="SAINTPALLModel.Proveedor" Width="1.5" PointX="47.375" PointY="52.75" />
         <EntityTypeShape EntityType="SAINTPALLModel.Indicador" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="SAINTPALLModel.FK_MasterPerspectivaIndicador_Indicador" />
+        <EntityTypeShape EntityType="SAINTPALLModel.Usuario" Width="1.5" PointX="9.375" PointY="15.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
